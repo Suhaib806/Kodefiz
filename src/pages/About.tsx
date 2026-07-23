@@ -2,6 +2,12 @@ import { Eye, Target, Heart, Lightbulb, Users, Award } from "lucide-react";
 import HomeResults from "@/components/sections/HomeResults";
 import HomeTeam from "@/components/sections/HomeTeam";
 import CTASection from "@/components/sections/CTASection";
+import AboutStory from "@/components/sections/story";
+import AboutBeliefs from "@/components/sections/whatwebeleive";
+import HomeDesignTabs from "@/components/sections/HomeDesignTabs";
+import AboutWhyClientsStay from "@/components/sections/whyclientstay";
+import HomeGlobalPresence from "@/components/sections/globalpresence";
+import HomeGetInTouch from "@/components/sections/HomeGetInTouch";
 
 const values = [
   {
@@ -107,7 +113,7 @@ const About = () => {
       </section>
 
       {/* ── Our Story ── */}
-      <section className="py-16 sm:py-20 bg-white">
+      {/* <section className="py-16 sm:py-20 bg-white">
         <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
             <div>
@@ -153,10 +159,10 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── Core Values ── */}
-      <section className="py-16 sm:py-20 bg-navy-50">
+      {/* <section className="py-16 sm:py-20 bg-navy-50">
         <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20">
           <div className="text-xs tracking-[0.2em] font-medium text-navy-400 flex items-center gap-3 mb-4">
             <span className="inline-flex h-[10px] w-[10px] bg-brand rounded-full" />
@@ -200,13 +206,13 @@ const About = () => {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── Technologies ── */}
-      <section className="py-16 sm:py-20 bg-white">
+      {/* <section className="py-16 sm:py-20 bg-white">
         <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
-            {/* Left: heading */}
+           
             <div>
               <div className="text-xs tracking-[0.2em] font-medium text-navy-400 flex items-center gap-3 mb-4">
                 <span className="inline-flex h-[10px] w-[10px] bg-brand rounded-full" />
@@ -224,7 +230,7 @@ const About = () => {
               </p>
             </div>
 
-            {/* Right: logo cards */}
+         
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {techGroups.map((group) => (
                 <div
@@ -253,10 +259,10 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── Our Journey ── */}
-      <section className="py-16 sm:py-20 bg-white">
+      {/* <section className="py-16 sm:py-20 bg-white">
         <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20">
           <div className="text-xs tracking-[0.2em] font-medium text-navy-400 flex items-center gap-3 mb-4">
             <span className="inline-flex h-[10px] w-[10px] bg-brand rounded-full" />
@@ -269,7 +275,7 @@ const About = () => {
             </span>
           </h2>
 
-          {/* Horizontal timeline — large screens */}
+          
           <div className="hidden lg:block">
             <div className="flex items-center mb-6">
               {timeline.map((item, i) => (
@@ -291,7 +297,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Vertical timeline — mobile & tablet */}
+    
           <div className="lg:hidden max-w-4xl">
             {timeline.map((item, i) => (
               <div key={item.year} className="flex gap-4 sm:gap-6 mb-6 last:mb-0">
@@ -309,11 +315,15 @@ const About = () => {
             ))}
           </div>
         </div>
-      </section>
-
-      <HomeResults />
+      </section> */}
+      <AboutStory />
+      <AboutBeliefs />
+      <AboutWhyClientsStay />
       <HomeTeam />
-      <CTASection />
+      <HomeGlobalPresence />
+      
+      
+     <HomeGetInTouch />
     </>
   );
 };
