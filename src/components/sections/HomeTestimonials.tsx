@@ -141,7 +141,7 @@ export default function HomeTestimonials() {
 
         {/* Stories */}
 
-        <div className="grid md:grid-cols-4 gap-8 mt-20">
+        <div className="grid md:grid-cols-3 gap-8 mt-20">
 
         {testimonials.map((item) => (
   <article
