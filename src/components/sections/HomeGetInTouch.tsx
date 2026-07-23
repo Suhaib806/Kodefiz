@@ -51,7 +51,7 @@ export default function HomeCTA() {
               </div>
 
               {/* Trust */}
-
+{/* 
               <div className="mt-16 grid grid-cols-2 gap-8">
 
                 <div>
@@ -94,7 +94,7 @@ export default function HomeCTA() {
                   </p>
                 </div>
 
-              </div>
+              </div> */}
 
             </div>
 
