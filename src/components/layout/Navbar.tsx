@@ -7,9 +7,9 @@ import logo from "../../assets/logow.png";
 const navLinks = [
   { label: "HOME", to: "/" },
   { label: "ABOUT", to: "/about" },
-  // { label: "SERVICES", to: "/services" },
-  // { label: "BLOG", to: "/testimonials" },
-  // { label: "CONTACT", to: "/contact-us" },
+  { label: "SERVICES", to: "/services" },
+  { label: "PORTFOLIO", to: "/portfolio" },
+  { label: "CONTACT", to: "/contact-us" },
 ];
 
 const BrandLogo = () => (

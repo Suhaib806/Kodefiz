@@ -5,6 +5,8 @@ import CTASection from "@/components/sections/CTASection";
 import { Mail, Phone, MapPin, Clock, ChevronDown, ShieldCheck, BadgeCheck, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import portfolioBg from "@/assets/contact.jpg";
+import HomeGetInTouch from "@/components/sections/HomeGetInTouch";
+import HomeFAQ from "@/components/sections/faq";
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: "hello@Kodefiz.com" },
@@ -336,48 +338,9 @@ const Contact = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28 bg-secondary">
-        <div className="container mx-auto px-6 lg:px-8 max-w-3xl">
-          <Reveal>
-            <h2 className="text-3xl font-display font-bold text-foreground mb-8 text-center">Frequently Asked Questions</h2>
-          </Reveal>
-          <div className="space-y-4">
-            {faqs.map((faq, i) => (
-              <Reveal key={i} delay={i * 0.05}>
-                <div className="bg-card rounded-xl border border-border overflow-hidden">
-                  <button
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    className="w-full flex items-center justify-between p-5 text-left"
-                  >
-                    <span className="font-medium text-foreground text-sm">{faq.q}</span>
-                    <motion.span
-                      animate={{ rotate: openFaq === i ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <ChevronDown className="w-5 h-5 text-muted-foreground" />
-                    </motion.span>
-                  </button>
-                  <AnimatePresence>
-                    {openFaq === i && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <p className="px-5 pb-5 text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
+     <HomeFAQ/>
 
-      <CTASection />
+      <HomeGetInTouch />
     </>
   );
 };

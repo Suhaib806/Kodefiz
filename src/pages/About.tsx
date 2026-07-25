@@ -8,6 +8,7 @@ import HomeDesignTabs from "@/components/sections/HomeDesignTabs";
 import AboutWhyClientsStay from "@/components/sections/whyclientstay";
 import HomeGlobalPresence from "@/components/sections/globalpresence";
 import HomeGetInTouch from "@/components/sections/HomeGetInTouch";
+import HomeFAQ from "@/components/sections/faq";
 
 const values = [
   {
@@ -322,7 +323,7 @@ const About = () => {
       <HomeTeam />
       <HomeGlobalPresence />
       
-      
+      <HomeFAQ/>
      <HomeGetInTouch />
     </>
   );
