@@ -25,14 +25,21 @@ const HeroSection = () => {
 
         <div className="relative z-10 h-full w-full px-4 sm:px-6 md:px-12 lg:px-20 pb-10 sm:pb-14 flex items-end">
           <div className="max-w-[620px]">
-            <h1 className="text-white font-display font-normal tracking-tight text-[42px] leading-[1.05] sm:text-[56px] sm:leading-[1.04] lg:text-[66px]">
-              Featured Projects <br />
-          
+            <h1 className="mt-8 text-5xl text-white lg:text-7xl font-bold leading-[0.95]">
+
+              Work that
+              <br />
+
+              <span className="text-[#F76F01]">
+                speaks for itself.
+              </span>
+
             </h1>
             <p className="mt-4 text-white/90 text-[15px] sm:text-[20px] leading-[1.45] max-w-[560px]">
-               Every build here shipped to real users and moved a real business
-            metric. Scroll through the work or jump straight to the
-            outcomes.
+              Explore websites, mobile apps, UI/UX designs,
+              branding, social media creatives, videos,
+              and digital experiences we've built for
+              startups, businesses and enterprises worldwide.
             </p>
           </div>
         </div>
