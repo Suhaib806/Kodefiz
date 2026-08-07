@@ -15,11 +15,15 @@ import CTASection from "@/components/sections/CTASection";
 import WhyUsScrollSection from "@/components/sections/WhyUsScrollSection";
 import CaseStudiesHero from "@/components/sections/CaseStudiesHero";
 import Videotestimonail from "@/components/sections/Videotestimonail";
+import ProblemAgitation from "@/components/sections/homeproblem";
+import SolutionSection from "@/components/sections/solution";
 
 const Home = () => {
   return (
     <div className="overflow-hidden bg-navy-50">
       <Hero />
+      <ProblemAgitation />
+      <SolutionSection />
       <HomeServices />
       <HomeDesignTabs />
       <WhyChooseUs/>

@@ -45,20 +45,18 @@ const Hero = () => {
         {/* Headline */}
         <Reveal delay={0.08}>
           <h1 className="mt-6 w-full font-atraen text-[clamp(2.25rem,6vw,6rem)] font-bold leading-[0.98] tracking-[-0.02em] text-white">
-          Automate Your Workflow.
+         Your Digital Presence,
             <br />
-          Accelerate <span className="text-primary">Your Growth.</span>
+        Built as One <span className="text-primary">System</span>
           </h1>
         </Reveal>
 
         {/* Bottom content: description/CTA left, services right */}
         <Reveal delay={0.2}>
           <div className="mt-6 flex flex-1 flex-col justify-end gap-10 pb-10 sm:flex-row sm:items-end sm:justify-between sm:pb-14">
-            <div className="max-w-[440px]">
-              <p className="text-[14px] leading-[1.7] text-white/70 sm:text-[15px]">
-                We build custom AI automation workflows that save 40+ hours per week,
-                cut operational costs by 60%, and scale your business without hiring
-                more people.
+            <div className="max-w-[760px]">
+              <p className="text-[14px] leading-[1.7] text-white/70 sm:text-[18px]">
+                We design websites, creative, and marketing systems that turn visibility into consistent leads and revenue trusted by businesses who were tired of stitching together freelancers.
               </p>
 
               <Link
@@ -67,7 +65,7 @@ const Hero = () => {
                 aria-label="Book Free Strategy Call — contact us"
               >
                 <span className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 text-[15px] font-medium tracking-[-0.01em] text-black transition-colors duration-300 group-hover:bg-white/90">
-                  Book Free Strategy Call
+                  Book a Free Strategy Call
                 </span>
                 <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-[#f76f01] text-white transition-colors duration-300 group-hover:bg-[#132F48]">
                   <ArrowUpRight className="h-5 w-5" strokeWidth={2.25} />
