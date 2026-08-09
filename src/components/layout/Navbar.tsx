@@ -236,7 +236,7 @@ const Navbar = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.25, delay: 0.05 }}
-              className="flex h-full flex-col px-8 pt-[calc(4.5rem+2rem)] pb-10 font-atraen"
+              className="flex h-full flex-col overflow-y-auto px-8 pt-[calc(4.5rem+2rem)] pb-10 font-atraen"
               aria-label="Mobile navigation"
             >
               <ul className="flex flex-col gap-1">
