@@ -17,6 +17,7 @@ import CaseStudiesHero from "@/components/sections/CaseStudiesHero";
 import Videotestimonail from "@/components/sections/Videotestimonail";
 import ProblemAgitation from "@/components/sections/homeproblem";
 import SolutionSection from "@/components/sections/solution";
+import ProgramSection from "@/components/sections/homeprogram";
 
 const Home = () => {
   return (
@@ -25,13 +26,15 @@ const Home = () => {
       <ProblemAgitation />
       <SolutionSection />
       <HomeServices />
-      <HomeDesignTabs />
+      <ProgramSection />
+      
       <WhyChooseUs/>
+      <HomeDesignTabs />
       {/* <WhyUsScrollSection /> */}
       <CaseStudiesHero /> 
-      <HomeResults />
-      <HomeAwards />
-      <HomeTeam />
+      {/* <HomeResults /> */}
+      {/* <HomeAwards /> */}
+      {/* <HomeTeam /> */}
       {/* <Videotestimonail /> */}
       <HomeTestimonials />
       <HomeGetInTouch />

@@ -1,28 +1,37 @@
-import React from "react";
 import HeroSection from "@/components/sections/featuredcasestudy";
 import HomeTestimonials from "@/components/sections/HomeTestimonials";
+import PortfolioCategorySections from "@/components/sections/portfolio/PortfolioCategorySections";
 import {
-  ClientStories,
   DiscoveryCTA,
-  FeaturedCaseStudy,
   IndustriesServed,
-  PortfolioShowcase,
   ProcessSection,
   TechStackShowcase,
 } from "@/components/sections/portfolio/PortfolioSections";
+import PageHero from "@/components/sections/PageHero";
 
 const PortfolioPage = () => {
   return (
-    <main>
-      <HeroSection />
-      <FeaturedCaseStudy />
-      <PortfolioShowcase />
+    <>
+    
+     <PageHero
+        badge="Case Studies"
+        title={
+          <>
+           Real Work.
+            <br />
+            <span className="text-[#F76F01]">Real Results.</span>
+          </>
+        }
+        description="A look at what we've built and the outcomes behind it."
+      />
+  
+      <PortfolioCategorySections />
       <IndustriesServed />
-      <ProcessSection />
-      <TechStackShowcase /> 
-      <HomeTestimonials />
+      {/* <ProcessSection /> */}
+      <TechStackShowcase />
+      {/* <HomeTestimonials /> */}
       <DiscoveryCTA />
-    </main>
+    </>
   );
 };
 

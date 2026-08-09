@@ -1,19 +1,17 @@
-import appDevelopment from "@/assets/Mobile_app.jpg";
 import automation from "@/assets/automation.jpg";
 import digitalMarketing from "@/assets/marketing.jpg";
 import makeLogo from "@/assets/make.png";
 import seoContentWriting from "@/assets/seo.jpg";
 import websiteDevelopment from "@/assets/web_development.jpg";
-import maintenance from "@/assets/web_maintenance.jpg";
 import zapierLogo from "@/assets/Zapier.png";
 
 export type ServiceSlug =
-  | "website-development"
-  | "app-development"
-  | "digital-marketing"
-  | "automation-ai"
-  | "website-maintenance"
-  | "seo-content-writing";
+  | "websites-online-stores"
+  | "brand-ui-ux-design"
+  | "ai-video-ugc-creative"
+  | "seo-google-ads"
+  | "social-media-growth"
+  | "ai-automation";
 
 export type ServiceExtraSection = {
   title: string;
@@ -30,7 +28,12 @@ export type ServiceFAQ = {
 
 export type ServiceDetail = {
   slug: ServiceSlug;
+  number: string;
   title: string;
+  shortDescription: string;
+  description: string;
+  offerings: string[];
+  detailItems: string[];
   heroSubtitle: string;
   heroIntro: string;
   descriptions: string[];
@@ -39,6 +42,7 @@ export type ServiceDetail = {
   advantageTitle: string;
   advantageDescription: string;
   heroImage: string;
+  cardTint: string;
   extraSections?: ServiceExtraSection[];
   faqs?: ServiceFAQ[];
   toolHighlights?: Array<{ name: string; logoUrl: string; description: string }>;
@@ -46,290 +50,326 @@ export type ServiceDetail = {
 
 export const howItWorks = {
   badge: "HOW IT WORKS",
-  title: "Unlock Astonishing Results with Just 3 Simple Steps!",
-  subtitle: "A focused process that keeps your project moving with clarity.",
+  title: "A clear path from strategy to launch.",
+  subtitle: "Every engagement follows a focused process so you always know what's happening next.",
   steps: [
     {
-      title: "Free Consultations",
-      description: "We offer free consultations to tailor digital solutions that fit your unique needs and goals.",
-      cta: "Chat Now",
+      title: "Discovery Call",
+      description:
+        "We learn about your business, goals, bottlenecks, and priorities before recommending the right service or program.",
+      cta: "Book a call",
     },
     {
-      title: "Discover the Product",
-      description: "Transforms your vision into reality with innovative solutions and exceptional results.",
-      cta: "Learn more",
+      title: "Strategy & Scope",
+      description:
+        "We define deliverables, timelines, success metrics, and the team needed to execute with clarity.",
+      cta: "See our process",
     },
     {
-      title: "Wireframe & Production",
-      description: "Turning concepts into reality with precise planning and expert execution.",
-      cta: "Learn more",
+      title: "Design & Build",
+      description:
+        "Creative, development, and marketing work happens in focused sprints with regular updates and feedback loops.",
+      cta: "View services",
     },
     {
-      title: "Prototype Application",
-      description: "Bringing your ideas to life with interactive models that refine and validate your vision.",
-      cta: "Learn more",
+      title: "Launch & Optimize",
+      description:
+        "We launch, measure performance, refine what works, and help you scale with ongoing support when needed.",
+      cta: "Get in touch",
     },
   ],
 };
 
 export const serviceOrder: Array<{ slug: ServiceSlug; label: string }> = [
-  { slug: "website-development", label: "Website Development" },
-  { slug: "app-development", label: "App Development" },
-  { slug: "digital-marketing", label: "Digital Marketing" },
-  { slug: "automation-ai", label: "Automation & AI" },
-  { slug: "website-maintenance", label: "Website Maintenance" },
-  { slug: "seo-content-writing", label: "SEO & Content Writing" },
+  { slug: "websites-online-stores", label: "Websites & Online Stores" },
+  { slug: "brand-ui-ux-design", label: "Brand & UI/UX Design" },
+  { slug: "ai-video-ugc-creative", label: "AI Video & UGC Ad Creative" },
+  { slug: "seo-google-ads", label: "SEO & Google Ads" },
+  { slug: "social-media-growth", label: "Social Media Growth" },
+  { slug: "ai-automation", label: "AI Automation" },
 ];
 
 export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
-  "website-development": {
-    slug: "website-development",
-    title: "Website Development",
-    heroSubtitle: "Designing websites that captivate users and provide a seamless, enjoyable browsing experience.",
+  "websites-online-stores": {
+    slug: "websites-online-stores",
+    number: "01",
+    title: "Websites & Online Stores",
+    shortDescription:
+      "Conversion-focused digital experiences built to make your business look credible, perform fast, and turn visitors into customers.",
+    description:
+      "Conversion-focused digital experiences built to make your business look credible, perform fast, and turn visitors into customers.",
+    offerings: ["WordPress", "Shopify", "Webflow", "Framer", "Custom Development"],
+    detailItems: [
+      "High-converting website design & development.",
+      "Shopify & e-commerce store setup.",
+      "WordPress, Webflow & Framer builds.",
+      "Landing pages for campaigns & lead gen.",
+      "Speed, SEO & mobile optimization.",
+    ],
+    heroSubtitle: "Websites that look premium and convert visitors into leads.",
     heroIntro:
-      "In today's digital age, a well-crafted website is crucial for making a lasting impression. From captivating designs to seamless functionality, website development is about more than just creating an online presence. It's about building an engaging and intuitive user experience.",
+      "Your website is often the first impression prospects get. We build fast, credible, conversion-focused sites that make your business look established and guide visitors toward action.",
     descriptions: [
-      "Our website development services provide comprehensive solutions from design to launch, ensuring your site is both visually appealing and highly functional. We create responsive, user-friendly websites that adapt seamlessly across devices, focusing on intuitive navigation and engaging content.",
-      "With a strong emphasis on SEO, our sites help you rank higher in search results and attract more organic traffic. We also offer robust e-commerce solutions, ongoing maintenance, and support to keep your website secure and up-to-date. Designed for scalability, our websites grow with your business needs.",
+      "We design and develop websites that do more than look good—they communicate trust, load quickly, and make it easy for visitors to take the next step. Whether you need a corporate site, portfolio, or full online store, we build with your business goals in mind.",
+      "Every build is responsive, SEO-ready, and structured for performance. From WordPress and Shopify to Webflow, Framer, and custom development, we choose the right platform for your budget, timeline, and growth plans.",
     ],
     comprehensiveItems: [
-      "Comprehensive Website Development",
-      "Custom Web Design and Development",
-      "Responsive and Adaptive Design",
-      "User-Centric Development",
-      "SEO-Friendly Websites",
-      "E-Commerce Solutions",
-      "Maintenance and Support",
-      "Integration and Scalability",
+      "Custom website design",
+      "E-commerce & Shopify stores",
+      "Landing page development",
+      "CMS setup & training",
+      "Performance optimization",
+      "SEO-friendly structure",
+      "Analytics integration",
+      "Launch support",
     ],
-    features: [
-      "Custom Design",
-      "User-Friendly Navigation",
-      "E-Commerce Integration",
-      "Performance Optimization",
-      "Analytics and Tracking",
-    ],
-    advantageTitle: "Pioneering Digital Excellence: Discover the Kodefiz Advantage.",
+    features: ["Conversion-focused UX", "Mobile-first design", "Fast load times", "SEO-ready builds", "Easy content management"],
+    advantageTitle: "Your website should work as hard as your team.",
     advantageDescription:
-      "Leading in Digital Excellence: Experience the Kodefiz Advantage. Discover how our innovative solutions and expertise can elevate your digital success.",
+      "We combine strategy, design, and development so your site becomes a reliable growth asset—not just a digital brochure.",
     heroImage: websiteDevelopment,
+    cardTint: "bg-[#FFF4E8]",
   },
-  "app-development": {
-    slug: "app-development",
-    title: "App Development",
-    heroSubtitle: "Innovative app solutions designed to elevate your brand and engage users.",
+  "brand-ui-ux-design": {
+    slug: "brand-ui-ux-design",
+    number: "02",
+    title: "Brand & UI/UX Design",
+    shortDescription:
+      "Strategic visual systems and interfaces that make your brand memorable, credible, and easy to engage with.",
+    description:
+      "Strategic visual systems and interfaces that make your brand memorable, credible, and easy to engage with.",
+    offerings: ["Brand Identity", "UI/UX Design", "Social Creatives", "Graphic Design", "Design Systems"],
+    detailItems: [
+      "Social media creatives.",
+      "Brand visual design.",
+      "Marketing materials & ad creatives.",
+      "Video production & editing.",
+      "Podcast editing & shorts.",
+    ],
+    heroSubtitle: "Visual identity and interfaces that build trust at first glance.",
     heroIntro:
-      "Our app development approach combines cutting-edge technology with thoughtful design to create applications that resonate with users. By focusing on user experience and scalability, we ensure your app not only meets your current needs but also adapts to future growth and trends.",
+      "Strong brands don't happen by accident. We create cohesive visual systems and user experiences that make your business look polished, professional, and instantly recognizable.",
     descriptions: [
-      "App development involves creating functional and engaging mobile applications tailored to meet your specific needs. Our process combines cutting-edge technology with intuitive design to ensure a seamless user experience.",
-      "We focus on building scalable apps that adapt to future growth and evolving trends. With a commitment to performance and security, we deliver solutions that enhance your brand and engage your audience effectively.",
+      "From logos and brand guidelines to UI/UX for websites and apps, we design experiences that feel intentional and premium. Every visual touchpoint is aligned with how you want to be perceived in your market.",
+      "We also produce the creative assets your marketing needs—social posts, ad graphics, pitch decks, and campaign visuals—so your brand stays consistent across every channel.",
     ],
     comprehensiveItems: [
-      "App Design and User Experience (UX)",
-      "App Architecture and Frameworks",
-      "Backend Development",
-      "Mobile App Security",
-      "Performance Optimization",
-      "App Monetization Strategies",
-      "App Store Submission and Marketing",
-      "Maintenance and Updates",
+      "Logo & brand identity",
+      "Brand guidelines",
+      "UI/UX for web & apps",
+      "Marketing collateral",
+      "Social media templates",
+      "Ad creative design",
+      "Presentation design",
+      "Design system setup",
     ],
-    features: ["User Interface (UI) Design", "Functionality and Performance", "Scalability", "Security", "Integration"],
-    advantageTitle: "Pioneering Digital Excellence: Discover the Kodefiz Advantage.",
+    features: ["Brand strategy", "Visual identity", "UI/UX design", "Marketing creatives", "Consistent design systems"],
+    advantageTitle: "Design that makes your business feel established.",
     advantageDescription:
-      "Leading in Digital Excellence: Experience the Kodefiz Advantage. Discover how our innovative solutions and expertise can elevate your digital success.",
-    heroImage: appDevelopment,
-  },
-  "digital-marketing": {
-    slug: "digital-marketing",
-    title: "Digital Marketing",
-    heroSubtitle: "Strategic Digital Marketing to Amplify Your Brand and Drive Growth",
-    heroIntro:
-      "Harness the power of digital marketing to elevate your brand and reach your target audience effectively. We craft tailored strategies that drive engagement, increase visibility, and generate measurable results across all digital channels.",
-    descriptions: [
-      "At Kodefiz, we specialize in advanced digital marketing to boost your online presence. Our team employs the latest trends and technologies, creating compelling visuals that resonate with your brand.",
-      "From engaging social media content to eye-catching advertisements, we prioritize creativity and excellence, ensuring your brand stands out. Whether launching a new campaign or revitalizing your online image, Kodefiz is your strategic partner for impactful, customized digital solutions. Elevate your brand in the digital realm with Kodefiz - where innovation meets results.",
-    ],
-    comprehensiveItems: [
-      "Content Marketing",
-      "Social Media Marketing",
-      "Influencer Marketing",
-      "Mobile Marketing",
-      "Email Marketing",
-      "Analytics and Reporting",
-      "Affiliate Marketing",
-      "Search Engine Optimization",
-    ],
-    features: [
-      "Search Engine Optimization",
-      "Content Marketing",
-      "Social Media Marketing",
-      "Email Marketing",
-      "Pay-Per-Click (PPC) Advertising",
-    ],
-    advantageTitle: "Pioneering Digital Excellence: Discover the Kodefiz Advantage.",
-    advantageDescription:
-      "Leading in Digital Excellence: Experience the Kodefiz Advantage. Discover how our innovative solutions and expertise can elevate your digital success.",
+      "We help you look like the category leader you are becoming—with visuals that build credibility and make every interaction feel on-brand.",
     heroImage: digitalMarketing,
+    cardTint: "bg-[#F3EEFF]",
   },
-  "automation-ai": {
-    slug: "automation-ai",
-    title: "Automation & AI",
-    heroSubtitle: "Streamlining Efficiency through Automation",
+  "ai-video-ugc-creative": {
+    slug: "ai-video-ugc-creative",
+    number: "03",
+    title: "AI Video & UGC Ad Creative",
+    shortDescription:
+      "Scroll-stopping video content designed around how people actually consume content today.",
+    description:
+      "Scroll-stopping video content designed around how people actually consume content today.",
+    offerings: ["AI Video", "UGC Ads", "Short-form Content", "Video Editing", "Ad Creatives"],
+    detailItems: [
+      "UGC-style ad scripts & filming direction.",
+      "AI-generated video variations.",
+      "Short-form content for Reels & TikTok.",
+      "Video editing & motion graphics.",
+      "Ad creative testing & iteration.",
+    ],
+    heroSubtitle: "Video creative built to stop the scroll and drive action.",
     heroIntro:
-      "Enhance your processes and drive efficiency with our cutting-edge automation solutions, designed to reduce manual tasks and boost productivity.",
+      "Paid and organic social success depends on creative that feels native, authentic, and compelling. We produce UGC-style and AI-enhanced video content optimized for today's platforms.",
     descriptions: [
-      "In today's fast-paced digital world, automation is the key to staying ahead. Our comprehensive automation solutions are crafted to optimize workflows, minimize errors, and save valuable time.",
-      "Whether you're looking to automate repetitive tasks, integrate systems seamlessly, or deploy intelligent bots, our solutions ensure that your operations run smoother, faster, and more efficiently. Embrace automation and unlock the potential of your business with our tailored strategies that drive growth and innovation.",
+      "We create short-form video, UGC-style ads, and platform-native creative that helps your brand stand out in crowded feeds. Every piece is built with hooks, pacing, and messaging designed to convert attention into clicks and leads.",
+      "From scripting and editing to AI-assisted variations and ad testing, we help you produce more creative, faster—without sacrificing quality or brand consistency.",
     ],
     comprehensiveItems: [
-      "Process Automation",
-      "Intelligent Workflow Management",
-      "Robotic Process Automation (RPA)",
-      "System Integration",
-      "Data-Driven Automation",
-      "Custom Automation Solutions",
-      "Scalability and Flexibility",
-      "Security and Compliance",
+      "UGC ad production",
+      "AI video generation",
+      "Short-form social content",
+      "Video editing & post-production",
+      "Hook & script development",
+      "Platform-specific formats",
+      "Creative testing support",
+      "Campaign asset packs",
     ],
-    features: [
-      "Automated Task Management",
-      "Seamless Integration",
-      "Real-Time Analytics",
-      "Customizable Workflows",
-      "Enhanced Security",
+    features: ["Scroll-stopping hooks", "UGC-style authenticity", "Platform-native formats", "Fast iteration", "Ad-ready deliverables"],
+    advantageTitle: "Creative volume without creative chaos.",
+    advantageDescription:
+      "We help you test more angles, launch faster, and find winning creative without juggling multiple freelancers.",
+    heroImage: digitalMarketing,
+    cardTint: "bg-[#E8F4FF]",
+  },
+  "seo-google-ads": {
+    slug: "seo-google-ads",
+    number: "04",
+    title: "SEO & Google Ads",
+    shortDescription:
+      "Search strategies designed to put your business in front of people who are already looking for what you offer.",
+    description:
+      "Search strategies designed to put your business in front of people who are already looking for what you offer.",
+    offerings: ["Technical SEO", "Local SEO", "Content SEO", "Google Ads", "Lead Generation"],
+    detailItems: [
+      "Technical SEO audits & fixes.",
+      "Local SEO & Google Business Profile.",
+      "Keyword research & content strategy.",
+      "Google Ads campaign setup & management.",
+      "Landing page optimization for leads.",
     ],
-    extraSections: [
-      {
-        title: "Maximize Efficiency with Automation",
-        cards: [
-          {
-            title: "01 Process Automation",
-            description:
-              "Automate repetitive tasks to boost efficiency and accuracy, reducing time and minimizing errors for smoother operations.",
-          },
-          {
-            title: "02 Custom Workflows",
-            description:
-              "Create and implement personalized workflows and custom automation solutions to enhance overall efficiency.",
-          },
-          {
-            title: "03 Reporting & Analytics",
-            description:
-              "Use advanced analytics to track performance and generate reports, helping make informed decisions and drive growth.",
-          },
-        ],
-      },
-      {
-        title: "Drive Your Success with Kodefiz Automation",
-        paragraphs: [
-          "Unlock New Levels of Productivity Through Smart Automation.",
-          "Automation enhances efficiency by handling repetitive tasks, allowing for more personal engagement in meaningful work. It leverages smart analytics to provide valuable insights and supports instant responses, ensuring quick and effective service. This blend of efficiency, personalized interaction, and real-time support makes automation essential for modern business success.",
-        ],
-      },
-      {
-        title: "Platforms & Custom Automation",
-        points: [
-          "Custom Automation - Custom automation refers to the creation of bespoke automated processes that are specifically designed to meet the unique requirements of a business or individual. Unlike out-of-the-box solutions, custom automation allows for the fine-tuning of workflows, ensuring that every step aligns with specific operational goals and preferences.",
-        ],
-      },
+    heroSubtitle: "Get found by buyers who are already searching for you.",
+    heroIntro:
+      "Search is one of the highest-intent channels available. We combine SEO and paid search to help you capture demand, generate qualified leads, and grow predictably.",
+    descriptions: [
+      "Our SEO work covers technical foundations, on-page optimization, content strategy, and local visibility—so your business ranks for the terms that actually drive revenue.",
+      "On the paid side, we build and manage Google Ads campaigns with clear targeting, compelling landing pages, and ongoing optimization focused on cost per lead—not vanity metrics.",
     ],
+    comprehensiveItems: [
+      "Technical SEO",
+      "On-page optimization",
+      "Local SEO",
+      "Content strategy",
+      "Google Ads setup",
+      "Campaign management",
+      "Conversion tracking",
+      "Monthly reporting",
+    ],
+    features: ["Search visibility", "Qualified lead generation", "Local discovery", "Paid search ROI", "Data-driven optimization"],
+    advantageTitle: "Visibility that turns into pipeline.",
+    advantageDescription:
+      "We connect search strategy to business outcomes—helping you show up where it matters and convert that traffic into real opportunities.",
+    heroImage: seoContentWriting,
+    cardTint: "bg-[#FFF4E8]",
+  },
+  "social-media-growth": {
+    slug: "social-media-growth",
+    number: "05",
+    title: "Social Media Growth",
+    shortDescription:
+      "A consistent content engine that turns your social presence into a source of attention, trust, and demand.",
+    description:
+      "A consistent content engine that turns your social presence into a source of attention, trust, and demand.",
+    offerings: ["Content Strategy", "Social Management", "Creative Production", "Paid Social", "Community Growth"],
+    detailItems: [
+      "Content strategy & monthly calendars.",
+      "Platform management & posting.",
+      "Creative production for feeds & stories.",
+      "Paid social campaign support.",
+      "Community engagement & growth tracking.",
+    ],
+    heroSubtitle: "Stay visible, stay consistent, stay top of mind.",
+    heroIntro:
+      "Social media only works when it's consistent, strategic, and aligned with your brand. We build content systems that keep your audience engaged and your pipeline warm.",
+    descriptions: [
+      "We plan, produce, and manage social content that reflects your brand voice and supports your business goals—whether that's awareness, trust-building, or direct lead generation.",
+      "From organic content calendars to paid social support and creative production, we help you show up consistently without adding more to your plate.",
+    ],
+    comprehensiveItems: [
+      "Content strategy",
+      "Monthly content calendars",
+      "Post design & copywriting",
+      "Platform management",
+      "Paid social support",
+      "Community engagement",
+      "Performance reporting",
+      "Brand voice alignment",
+    ],
+    features: ["Consistent posting", "On-brand creative", "Audience growth", "Engagement strategy", "Performance insights"],
+    advantageTitle: "Social presence that supports revenue—not just likes.",
+    advantageDescription:
+      "We treat social as a growth channel, not a checkbox—building systems that create attention, trust, and demand over time.",
+    heroImage: digitalMarketing,
+    cardTint: "bg-[#F3EEFF]",
+  },
+  "ai-automation": {
+    slug: "ai-automation",
+    number: "06",
+    title: "AI Automation",
+    shortDescription:
+      "Smart systems that remove repetitive work, connect your tools, and help your business respond faster.",
+    description:
+      "Smart systems that remove repetitive work, connect your tools, and help your business respond faster.",
+    offerings: ["AI Workflows", "CRM Automation", "Lead Follow-up", "AI Agents", "Process Automation"],
+    detailItems: [
+      "CRM & lead follow-up automation.",
+      "AI workflow design & implementation.",
+      "Tool integrations (Make, Zapier, n8n).",
+      "AI agents for support & operations.",
+      "Process mapping & efficiency audits.",
+    ],
+    heroSubtitle: "Automate repetitive work and free your team to focus on growth.",
+    heroIntro:
+      "Manual processes slow businesses down. We design AI-powered automations that connect your tools, follow up with leads, and handle repetitive tasks reliably.",
+    descriptions: [
+      "We map your workflows, identify bottlenecks, and build automations that save time, reduce errors, and improve response speed—from lead capture to customer follow-up and internal operations.",
+      "Using platforms like Make.com, Zapier, and n8n, plus AI agents where they add real value, we create systems that scale with your business instead of breaking as you grow.",
+    ],
+    comprehensiveItems: [
+      "Workflow automation",
+      "CRM integrations",
+      "Lead follow-up sequences",
+      "AI agent setup",
+      "Make.com / Zapier / n8n flows",
+      "Process documentation",
+      "Monitoring & maintenance",
+      "Custom automation builds",
+    ],
+    features: ["Reduced manual work", "Faster lead response", "Connected tools", "Scalable workflows", "AI where it adds value"],
     toolHighlights: [
       {
         name: "Make.com",
         logoUrl: makeLogo,
         description:
-          "Offers seamless no-code integrations with thousands of popular apps. Instead of spending hours learning, building, and testing on your own, you can hire experts to get the job done quickly and efficiently.",
+          "Powerful no-code integrations across thousands of apps—ideal for complex, multi-step automations tailored to your business.",
       },
       {
         name: "Zapier",
         logoUrl: zapierLogo,
         description:
-          "Zapier is a powerful online automation tool that connects various applications and services, enabling users to automate repetitive tasks and streamline their workflows without the need for coding knowledge.",
+          "Reliable app-to-app automation for teams that want fast setup and dependable workflows without heavy development.",
       },
     ],
     faqs: [
       {
-        question: "What is automation in technology?",
+        question: "What can be automated?",
         answer:
-          "Automation involves using technology to perform tasks with minimal human intervention. It includes software tools, scripts, and systems that execute repetitive or complex processes, enhancing efficiency and reducing errors. This can be applied across industries from manufacturing to IT, marketing, and more.",
+          "Lead follow-up, CRM updates, reporting, onboarding emails, social scheduling, data syncing, support triage, and many repetitive internal processes.",
       },
       {
-        question: "How can automation benefit my business?",
+        question: "Do I need technical knowledge?",
         answer:
-          "Automation can improve productivity by reducing time spent on manual tasks, lowering costs, and increasing accuracy. It also helps streamline processes, enabling employees to focus on higher-value tasks like strategy and innovation, ultimately driving business growth.",
-      },
-      {
-        question: "What types of tasks can be automated?",
-        answer:
-          "Common tasks that can be automated include data entry, report generation, customer support (via chatbots), marketing campaigns, social media scheduling, system monitoring, and workflow approvals. Automation is adaptable across multiple departments and processes.",
-      },
-      {
-        question: "Is automation expensive to implement?",
-        answer:
-          "The cost of automation depends on the complexity and scale of the system you choose. However, many automation solutions, such as RPA (Robotic Process Automation) or workflow automation tools, are available at different price points, including affordable options for small businesses. The long-term savings and productivity gains often outweigh the initial investment.",
+          "No. We design, build, and maintain the automations for you—and document everything so your team understands how it works.",
       },
     ],
-    advantageTitle: "Pioneering Digital Excellence: Discover the Kodefiz Advantage.",
+    advantageTitle: "Work smarter with systems that run in the background.",
     advantageDescription:
-      "Leading in Digital Excellence: Experience the Kodefiz Advantage. Discover how our innovative solutions and expertise can elevate your digital success.",
+      "We help you reclaim hours every week by replacing manual tasks with reliable automations that keep your business moving.",
     heroImage: automation,
+    cardTint: "bg-[#E8F4FF]",
   },
-  "website-maintenance": {
-    slug: "website-maintenance",
-    title: "Website Maintenance",
-    heroSubtitle: "Website Maintenance: Ensuring Optimal Performance",
-    heroIntro: "Professional website maintenance services to keep your site running smoothly, secure, and up-to-date.",
-    descriptions: [
-      "Our comprehensive website maintenance services are designed to ensure your site remains fully functional, secure, and optimized for performance. We handle everything from regular updates and backups to troubleshooting issues and improving site speed.",
-      "By entrusting us with your website maintenance, you can focus on your core business while we keep your online presence in top shape. Whether you need ongoing support or one-time fixes, our team is here to provide reliable, efficient service that keeps your site running at its best.",
-    ],
-    comprehensiveItems: [
-      "Security Updates and Patching",
-      "Backup Management",
-      "Performance Optimization",
-      "Content Updates and Management",
-      "SEO Monitoring and Adjustments",
-      "Functionality Checks and Bug Fixes",
-      "Compatibility Testing",
-      "Analytics and Reporting",
-    ],
-    features: [
-      "Security Updates and Patching",
-      "Backup Management",
-      "Performance Optimization",
-      "Uptime Monitoring",
-      "SEO Monitoring and Adjustments",
-    ],
-    advantageTitle: "Pioneering Digital Excellence: Discover the Kodefiz Advantage.",
-    advantageDescription:
-      "Leading in Digital Excellence: Experience the Kodefiz Advantage. Discover how our innovative solutions and expertise can elevate your digital success.",
-    heroImage: maintenance,
-  },
-  "seo-content-writing": {
-    slug: "seo-content-writing",
-    title: "SEO & Content Writing",
-    heroSubtitle: "Maximizing Visibility Through Strategic SEO Practices",
-    heroIntro:
-      "Maximizing visibility through SEO involves optimizing content and technical elements to improve search engine rankings and drive targeted traffic.",
-    descriptions: [
-      "At Kodefiz, we excel in advanced SEO strategies to enhance your online visibility. Our team leverages the latest trends and technologies, creating compelling content that resonates with your brand. From optimizing website elements to crafting engaging articles, we prioritize creativity and excellence, ensuring your brand stands out in search results.",
-      "Whether boosting current rankings or optimizing for new keywords, Kodefiz is your strategic partner for impactful, customized SEO solutions. Elevate your brand's digital presence with Kodefiz - where innovation meets results.",
-    ],
-    comprehensiveItems: [
-      "Keyword Research",
-      "On-Page Optimization",
-      "Technical SEO",
-      "Content Strategy",
-      "Link Building",
-      "Local SEO",
-      "SEO Analytics",
-      "Mobile Optimization",
-    ],
-    features: ["Keyword Research", "On-Page Optimization", "Technical SEO", "Content Strategy", "Link Building"],
-    advantageTitle: "Pioneering Digital Excellence: Discover the Kodefiz Advantage.",
-    advantageDescription:
-      "Leading in Digital Excellence: Experience the Kodefiz Advantage. Discover how our innovative solutions and expertise can elevate your digital success.",
-    heroImage: seoContentWriting,
-  },
+};
+
+export const serviceList = serviceOrder.map(({ slug }) => serviceDetails[slug]);
+
+export function getServiceBySlug(slug: string | undefined): ServiceDetail | undefined {
+  if (!slug) return undefined;
+  return serviceDetails[slug as ServiceSlug];
+}
+
+export const legacyServiceRedirects: Record<string, ServiceSlug> = {
+  "website-development": "websites-online-stores",
+  "app-development": "brand-ui-ux-design",
+  "digital-marketing": "social-media-growth",
+  "automation-ai": "ai-automation",
+  "website-maintenance": "websites-online-stores",
+  "seo-content-writing": "seo-google-ads",
 };

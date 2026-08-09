@@ -448,12 +448,12 @@ export const DiscoveryCTA = () => {
               </span>
             </div>
             <h2 className="font-display font-bold text-navy-950 tracking-tight leading-[1.04] text-[36px] sm:text-[52px] lg:text-[62px] mb-6">
-              Your product could
+              Want Results Like These
               <br />
-              <span style={{ color: FLAME }}>look like this too.</span>
+              <span style={{ color: FLAME }}>For Your Business?</span>
             </h2>
             <p className="text-[16px] sm:text-[17px] leading-relaxed text-navy-500 max-w-md">
-              One 30-minute call to walk through what you're building and whether we're the right team to build it with you.
+              A 30-minute call to walk through your business and see if we're a good fit.
             </p>
           </div>
         </Reveal>
@@ -471,8 +471,8 @@ export const DiscoveryCTA = () => {
               ))}
             </ul>
             <a
-              href="#"
-              className="group relative w-full inline-flex items-center justify-center gap-2 rounded-full bg-navy-950 px-8 py-4 text-[15px] font-medium text-white transition-transform duration-300 hover:scale-[1.02]"
+              href="/contact-us"
+              className="group relative inline-flex w-full items-center justify-center gap-2 rounded-full bg-navy-950 px-8 py-4 text-[15px] font-medium text-white transition-transform duration-300 hover:scale-[1.02]"
             >
               Book My Discovery Call
               <span className="text-lg leading-none transition-transform duration-300 group-hover:translate-x-1" aria-hidden>

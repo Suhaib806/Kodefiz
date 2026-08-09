@@ -1,13 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import CollaborateButton from "../ui/CollaborateButton";
 import logo from "../../assets/logow.png";
+import { serviceList } from "@/data/serviceDetails";
+import { packageOrder } from "@/data/packages";
 
 const navLinks = [
   { label: "HOME", to: "/" },
   { label: "ABOUT", to: "/about" },
   { label: "SERVICES", to: "/services" },
+  { label: "PROGRAMS", to: "/packages" },
   { label: "PORTFOLIO", to: "/portfolio" },
   { label: "CONTACT", to: "/contact-us" },
 ];
@@ -21,8 +25,20 @@ const BrandLogo = () => (
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [programsOpen, setProgramsOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
+
+  const serviceMenuItems = serviceList.map((service) => ({
+    label: service.title,
+    to: `/services/${service.slug}`,
+  }));
+
+  const programMenuItems = packageOrder.map((pkg) => ({
+    label: pkg.label,
+    to: `/packages/${pkg.slug}`,
+  }));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -33,6 +49,8 @@ const Navbar = () => {
 
   useEffect(() => {
     setMobileOpen(false);
+    setServicesOpen(false);
+    setProgramsOpen(false);
   }, [location]);
 
   useEffect(() => {
@@ -68,14 +86,104 @@ const Navbar = () => {
             <ul className="flex items-center gap-8 xl:gap-10">
               {navLinks.map((link) => {
                 const active = isActive(link.to);
+                const isServicesLink = link.label === "SERVICES";
+                const isProgramsLink = link.label === "PROGRAMS";
+
                 return (
-                  <li key={link.to}>
-                    <Link
-                      to={link.to}
-                      className={`nav-atraen-link block py-2 uppercase ${active ? "nav-atraen-link-active" : ""}`}
-                    >
-                      {link.label}
-                    </Link>
+                  <li
+                    key={link.to}
+                    className="relative"
+                    onMouseEnter={() => {
+                      if (isServicesLink) setServicesOpen(true);
+                      if (isProgramsLink) setProgramsOpen(true);
+                    }}
+                    onMouseLeave={() => {
+                      if (isServicesLink) setServicesOpen(false);
+                      if (isProgramsLink) setProgramsOpen(false);
+                    }}
+                  >
+                    {isServicesLink ? (
+                      <div className="relative">
+                        <Link
+                          to={link.to}
+                          onClick={() => setServicesOpen(true)}
+                          className={`nav-atraen-link flex items-center gap-1 py-2 uppercase ${active ? "nav-atraen-link-active" : ""}`}
+                        >
+                          <span>{link.label}</span>
+                          <ChevronDown size={14} className={`transition-transform duration-300 ${servicesOpen ? "rotate-180" : ""}`} />
+                        </Link>
+
+                        <AnimatePresence>
+                          {servicesOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, y: 8 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: 8 }}
+                              transition={{ duration: 0.2 }}
+                              className="absolute left-1/2 top-full mt-3 w-72 -translate-x-1/2 rounded-2xl border border-[#E4E7EB] bg-white p-3 shadow-[0_16px_50px_rgba(0,0,0,0.12)]"
+                            >
+                              <ul className="space-y-1">
+                                {serviceMenuItems.map((item) => (
+                                  <li key={item.to}>
+                                    <Link
+                                      to={item.to}
+                                      onClick={() => setServicesOpen(false)}
+                                      className="block rounded-lg px-3 py-2 text-sm text-[#132F48] transition-colors hover:bg-[#F7F8FA] hover:text-[#F76F01]"
+                                    >
+                                      {item.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    ) : isProgramsLink ? (
+                      <div className="relative">
+                        <Link
+                          to={link.to}
+                          onClick={() => setProgramsOpen(true)}
+                          className={`nav-atraen-link flex items-center gap-1 py-2 uppercase ${active ? "nav-atraen-link-active" : ""}`}
+                        >
+                          <span>{link.label}</span>
+                          <ChevronDown size={14} className={`transition-transform duration-300 ${programsOpen ? "rotate-180" : ""}`} />
+                        </Link>
+
+                        <AnimatePresence>
+                          {programsOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, y: 8 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: 8 }}
+                              transition={{ duration: 0.2 }}
+                              className="absolute left-1/2 top-full mt-3 w-72 -translate-x-1/2 rounded-2xl border border-[#E4E7EB] bg-white p-3 shadow-[0_16px_50px_rgba(0,0,0,0.12)]"
+                            >
+                              <ul className="space-y-1">
+                                {programMenuItems.map((item) => (
+                                  <li key={item.to}>
+                                    <Link
+                                      to={item.to}
+                                      onClick={() => setProgramsOpen(false)}
+                                      className="block rounded-lg px-3 py-2 text-sm text-[#132F48] transition-colors hover:bg-[#F7F8FA] hover:text-[#F76F01]"
+                                    >
+                                      {item.label}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    ) : (
+                      <Link
+                        to={link.to}
+                        className={`nav-atraen-link block py-2 uppercase ${active ? "nav-atraen-link-active" : ""}`}
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 );
               })}
@@ -134,16 +242,74 @@ const Navbar = () => {
               <ul className="flex flex-col gap-1">
                 {navLinks.map((link) => {
                   const active = isActive(link.to);
+                  const isServicesLink = link.label === "SERVICES";
+                  const isProgramsLink = link.label === "PROGRAMS";
+
                   return (
                     <li key={link.to}>
-                      <Link
-                        to={link.to}
-                        className={`block py-3 text-[28px] font-semibold leading-tight tracking-tight text-white ${
-                          active ? "text-[#FF6B1A]" : ""
-                        }`}
-                      >
-                        {link.label}
-                      </Link>
+                      {isServicesLink ? (
+                        <div className="flex flex-col gap-2 py-2">
+                          <Link
+                            to={link.to}
+                            onClick={() => setMobileOpen(false)}
+                            className={`block text-[28px] font-semibold leading-tight tracking-tight text-white ${
+                              active ? "text-[#FF6B1A]" : ""
+                            }`}
+                          >
+                            {link.label}
+                          </Link>
+
+                          <ul className="ml-4 flex flex-col gap-2 border-l border-white/15 pl-4">
+                            {serviceMenuItems.map((item) => (
+                              <li key={item.to}>
+                                <Link
+                                  to={item.to}
+                                  onClick={() => setMobileOpen(false)}
+                                  className="block py-1 text-[16px] font-medium text-white/80 transition-colors hover:text-[#FF6B1A]"
+                                >
+                                  {item.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : isProgramsLink ? (
+                        <div className="flex flex-col gap-2 py-2">
+                          <Link
+                            to={link.to}
+                            onClick={() => setMobileOpen(false)}
+                            className={`block text-[28px] font-semibold leading-tight tracking-tight text-white ${
+                              active ? "text-[#FF6B1A]" : ""
+                            }`}
+                          >
+                            {link.label}
+                          </Link>
+
+                          <ul className="ml-4 flex flex-col gap-2 border-l border-white/15 pl-4">
+                            {programMenuItems.map((item) => (
+                              <li key={item.to}>
+                                <Link
+                                  to={item.to}
+                                  onClick={() => setMobileOpen(false)}
+                                  className="block py-1 text-[16px] font-medium text-white/80 transition-colors hover:text-[#FF6B1A]"
+                                >
+                                  {item.label}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ) : (
+                        <Link
+                          to={link.to}
+                          onClick={() => setMobileOpen(false)}
+                          className={`block py-3 text-[28px] font-semibold leading-tight tracking-tight text-white ${
+                            active ? "text-[#FF6B1A]" : ""
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                      )}
                     </li>
                   );
                 })}

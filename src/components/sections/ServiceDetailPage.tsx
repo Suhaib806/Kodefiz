@@ -1,6 +1,7 @@
 import { ArrowRight, CheckCircle2, Sparkles, Layers3, Rocket } from "lucide-react";
 import { Link } from "react-router-dom";
-import CTASection from "@/components/sections/CTASection";
+import PageHero from "@/components/sections/PageHero";
+import HomeGetInTouch from "@/components/sections/HomeGetInTouch";
 import { ServiceDetail, ServiceSlug, howItWorks, serviceOrder } from "@/data/serviceDetails";
 
 type ServiceDetailPageProps = {
@@ -12,91 +13,90 @@ const ServiceDetailPage = ({ service }: ServiceDetailPageProps) => {
 
   return (
     <>
-      <section className="relative w-full h-[66vh] sm:h-[72vh] min-h-[430px] overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={service.heroImage} alt={`${service.title} service`} className="absolute inset-0 w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-950/85 via-navy-900/50 to-navy-950/70" />
-        </div>
+      <PageHero
+        badge={service.number}
+        title={service.title}
+        description={service.heroIntro}
+        useVideo={false}
+        imageSrc={service.heroImage}
+      />
 
-        <div className="relative z-10 h-full w-full px-4 sm:px-6 md:px-12 lg:px-20 pb-10 sm:pb-14 flex items-end">
-          <div className="max-w-[820px]">
-            <h1 className="text-white font-display font-normal tracking-tight text-[42px] leading-[1.05] sm:text-[56px] sm:leading-[1.04] lg:text-[66px]">
-              {service.title}
-            </h1>
-            <p className="mt-4 text-white/90 text-[15px] sm:text-[20px] leading-[1.45]">{service.heroSubtitle}</p>
-            <p className="mt-4 text-white/85 text-sm sm:text-base leading-[1.7]">{service.heroIntro}</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 sm:py-20 lg:py-24 bg-navy-50">
-        <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20">
-          <div className="mx-auto max-w-[1320px] grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-8 lg:gap-10 items-start">
+      <section className="bg-white py-16 font-atraen sm:py-20 lg:py-24">
+        <div className="w-full px-5 sm:px-8 md:px-12 lg:px-20">
+          <div className="mx-auto grid max-w-[1320px] grid-cols-1 items-start gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-10">
             <div className="space-y-8">
-              <div className="rounded-[28px] bg-white p-6 sm:p-10 lg:p-12 shadow-[0_24px_80px_rgba(15,23,42,0.06)] border border-navy-200">
-                <p className="text-xs tracking-[0.2em] font-medium text-navy-400 flex items-center gap-3 mb-4">
-                  <span className="inline-flex h-[10px] w-[10px] rounded-full bg-brand" />
-                  DESCRIPTIONS
-                </p>
-                <h2 className="text-[34px] sm:text-[44px] leading-[1.08] font-display font-bold text-navy-950 mb-6">
-                  Building measurable outcomes
+              <div className="rounded-[28px] border border-[#E4E7EB] bg-white p-6 shadow-[0_24px_80px_rgba(15,23,42,0.06)] sm:p-10 lg:p-12">
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="h-px w-10 bg-[#F76F01]" />
+                  <span className="text-xs uppercase tracking-[0.25em] text-[#62728A]">Overview</span>
+                </div>
+                <h2 className="text-[34px] font-bold leading-[1.08] text-[#132F48] sm:text-[44px]">
+                  {service.heroSubtitle}
                 </h2>
-                <div className="space-y-5">
+                <div className="mt-6 space-y-5">
                   {service.descriptions.map((paragraph) => (
-                    <p key={paragraph} className="text-[16px] leading-[1.8] text-navy-600">
+                    <p key={paragraph} className="text-[16px] leading-[1.8] text-[#62728A]">
                       {paragraph}
                     </p>
                   ))}
                 </div>
 
-                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className={`mt-8 rounded-2xl border border-[#E4E7EB] p-6 ${service.cardTint}`}>
+                  <h3 className="text-lg font-semibold text-[#132F48]">What's included</h3>
+                  <ul className="mt-5 space-y-3">
+                    {service.detailItems.map((item) => (
+                      <li key={item} className="flex items-start gap-3 text-[15px] text-[#132F48]">
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#132F48]" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {service.comprehensiveItems.map((item) => (
-                    <div key={item} className="flex items-center gap-3 rounded-xl border border-navy-200 bg-navy-50 px-4 py-3">
-                      <CheckCircle2 className="h-4 w-4 text-brand shrink-0" />
-                      <p className="text-sm text-navy-800">{item}</p>
+                    <div
+                      key={item}
+                      className="flex items-center gap-3 rounded-xl border border-[#E4E7EB] bg-[#F8F9FA] px-4 py-3"
+                    >
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-[#F76F01]" />
+                      <p className="text-sm text-[#132F48]">{item}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="rounded-[28px] bg-white p-6 sm:p-10 lg:p-12 border border-navy-200">
-                <p className="text-xs tracking-[0.2em] font-medium text-navy-400 flex items-center gap-3 mb-4">
-                  <span className="inline-flex h-[10px] w-[10px] rounded-full bg-brand" />
-                  FEATURE
-                </p>
-                <h2 className="text-[34px] sm:text-[44px] leading-[1.08] font-display font-bold text-navy-950 mb-8">
+              <div className="rounded-[28px] border border-[#E4E7EB] bg-white p-6 sm:p-10 lg:p-12">
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="h-px w-10 bg-[#F76F01]" />
+                  <span className="text-xs uppercase tracking-[0.25em] text-[#62728A]">Capabilities</span>
+                </div>
+                <h2 className="mb-8 text-[34px] font-bold leading-[1.08] text-[#132F48] sm:text-[44px]">
                   What you get
                 </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
                   {service.features.map((feature) => (
-                    <div key={feature} className="rounded-2xl border border-navy-200 p-5 bg-navy-50">
-                      <p className="text-sm font-medium text-navy-950">{feature}</p>
+                    <div key={feature} className="rounded-2xl border border-[#E4E7EB] bg-[#F8F9FA] p-5">
+                      <p className="text-sm font-medium text-[#132F48]">{feature}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="rounded-[28px] bg-white p-6 sm:p-10 lg:p-12 border border-navy-200">
-                <p className="text-xs tracking-[0.2em] font-medium text-navy-400 flex items-center gap-3 mb-4">
-                  <span className="inline-flex h-[10px] w-[10px] rounded-full bg-brand" />
-                  CREATIVE HIGHLIGHTS
-                </p>
-                <h2 className="text-[30px] sm:text-[38px] leading-[1.12] font-display font-bold text-navy-950 mb-6">
-                  Crafted visuals aligned with {service.title}
+              <div className="rounded-[28px] border border-[#E4E7EB] bg-white p-6 sm:p-10 lg:p-12">
+                <h2 className="mb-6 text-[30px] font-bold leading-[1.12] text-[#132F48] sm:text-[38px]">
+                  Built for measurable outcomes
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                   {service.features.slice(0, 3).map((item, index) => {
                     const icon = index === 0 ? Sparkles : index === 1 ? Layers3 : Rocket;
                     const Icon = icon;
                     return (
-                      <div
-                        key={item}
-                        className="rounded-2xl border border-navy-200 p-5 bg-gradient-card-accent"
-                      >
-                        <Icon className="h-5 w-5 text-brand" />
-                        <h3 className="mt-3 text-base font-semibold text-navy-950">{item}</h3>
-                        <p className="mt-2 text-sm text-navy-500 leading-relaxed">
-                          Design and delivery tailored to this capability for clearer outcomes and stronger conversion.
+                      <div key={item} className="rounded-2xl border border-[#E4E7EB] bg-[#FFF4E8] p-5">
+                        <Icon className="h-5 w-5 text-[#F76F01]" />
+                        <h3 className="mt-3 text-base font-semibold text-[#132F48]">{item}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-[#62728A]">
+                          Delivered with the same strategic approach we use across every Kodefiz engagement.
                         </p>
                       </div>
                     );
@@ -105,18 +105,22 @@ const ServiceDetailPage = ({ service }: ServiceDetailPageProps) => {
               </div>
 
               {service.toolHighlights && service.toolHighlights.length > 0 && (
-                <div className="rounded-[28px] bg-white p-6 sm:p-10 lg:p-12 border border-navy-200">
-                  <h2 className="text-[30px] sm:text-[38px] leading-[1.12] font-display font-bold text-navy-950 mb-6">
-                    Integration Tools
+                <div className="rounded-[28px] border border-[#E4E7EB] bg-white p-6 sm:p-10 lg:p-12">
+                  <h2 className="mb-6 text-[30px] font-bold leading-[1.12] text-[#132F48] sm:text-[38px]">
+                    Tools we work with
                   </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                     {service.toolHighlights.map((tool) => (
-                      <div key={tool.name} className="rounded-2xl border border-navy-200 bg-navy-50 p-5">
+                      <div key={tool.name} className="rounded-2xl border border-[#E4E7EB] bg-[#F8F9FA] p-5">
                         <div className="flex items-center gap-3">
-                          <img src={tool.logoUrl} alt={tool.name} className="h-9 w-9 rounded-md object-contain bg-white border border-navy-200" />
-                          <h3 className="text-lg font-semibold text-navy-950">{tool.name}</h3>
+                          <img
+                            src={tool.logoUrl}
+                            alt={tool.name}
+                            className="h-9 w-9 rounded-md border border-[#E4E7EB] bg-white object-contain"
+                          />
+                          <h3 className="text-lg font-semibold text-[#132F48]">{tool.name}</h3>
                         </div>
-                        <p className="mt-3 text-sm leading-relaxed text-navy-500">{tool.description}</p>
+                        <p className="mt-3 text-sm leading-relaxed text-[#62728A]">{tool.description}</p>
                       </div>
                     ))}
                   </div>
@@ -124,20 +128,25 @@ const ServiceDetailPage = ({ service }: ServiceDetailPageProps) => {
               )}
 
               {service.extraSections?.map((section) => (
-                <div key={section.title} className="rounded-[28px] bg-white p-6 sm:p-10 lg:p-12 border border-navy-200">
-                  <h2 className="text-[30px] sm:text-[38px] leading-[1.12] font-display font-bold text-navy-950 mb-5">{section.title}</h2>
-                  {section.intro && <p className="text-navy-500 mb-6">{section.intro}</p>}
+                <div
+                  key={section.title}
+                  className="rounded-[28px] border border-[#E4E7EB] bg-white p-6 sm:p-10 lg:p-12"
+                >
+                  <h2 className="mb-5 text-[30px] font-bold leading-[1.12] text-[#132F48] sm:text-[38px]">
+                    {section.title}
+                  </h2>
+                  {section.intro && <p className="mb-6 text-[#62728A]">{section.intro}</p>}
                   {section.paragraphs?.map((paragraph) => (
-                    <p key={paragraph} className="text-[16px] leading-[1.8] text-navy-600 mb-4">
+                    <p key={paragraph} className="mb-4 text-[16px] leading-[1.8] text-[#62728A]">
                       {paragraph}
                     </p>
                   ))}
                   {section.cards && (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                       {section.cards.map((card) => (
-                        <div key={card.title} className="rounded-2xl border border-navy-200 bg-navy-50 p-5">
-                          <h3 className="text-base font-semibold text-navy-950">{card.title}</h3>
-                          <p className="mt-2 text-sm leading-relaxed text-navy-500">{card.description}</p>
+                        <div key={card.title} className="rounded-2xl border border-[#E4E7EB] bg-[#F8F9FA] p-5">
+                          <h3 className="text-base font-semibold text-[#132F48]">{card.title}</h3>
+                          <p className="mt-2 text-sm leading-relaxed text-[#62728A]">{card.description}</p>
                         </div>
                       ))}
                     </div>
@@ -145,7 +154,7 @@ const ServiceDetailPage = ({ service }: ServiceDetailPageProps) => {
                   {section.points && (
                     <div className="space-y-3">
                       {section.points.map((point) => (
-                        <p key={point} className="text-[16px] leading-[1.8] text-navy-600">
+                        <p key={point} className="text-[16px] leading-[1.8] text-[#62728A]">
                           {point}
                         </p>
                       ))}
@@ -155,77 +164,82 @@ const ServiceDetailPage = ({ service }: ServiceDetailPageProps) => {
               ))}
 
               {service.faqs && service.faqs.length > 0 && (
-                <div className="rounded-[28px] bg-white p-6 sm:p-10 lg:p-12 border border-navy-200">
-                  <h2 className="text-[30px] sm:text-[38px] leading-[1.12] font-display font-bold text-navy-950 mb-6">
+                <div className="rounded-[28px] border border-[#E4E7EB] bg-white p-6 sm:p-10 lg:p-12">
+                  <h2 className="mb-6 text-[30px] font-bold leading-[1.12] text-[#132F48] sm:text-[38px]">
                     Questions?
                   </h2>
                   <div className="space-y-4">
                     {service.faqs.map((faq) => (
-                      <div key={faq.question} className="rounded-2xl border border-navy-200 bg-navy-50 p-5">
-                        <h3 className="text-lg font-semibold text-navy-950">{faq.question}</h3>
-                        <p className="mt-2 text-sm leading-relaxed text-navy-500">{faq.answer}</p>
+                      <div key={faq.question} className="rounded-2xl border border-[#E4E7EB] bg-[#F8F9FA] p-5">
+                        <h3 className="text-lg font-semibold text-[#132F48]">{faq.question}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-[#62728A]">{faq.answer}</p>
                       </div>
                     ))}
                   </div>
                 </div>
               )}
 
-              <div className="rounded-[28px] bg-white p-6 sm:p-10 lg:p-12 border border-navy-200">
-                <p className="text-xs tracking-[0.2em] font-medium text-navy-400 flex items-center gap-3 mb-4">
-                  <span className="inline-flex h-[10px] w-[10px] rounded-full bg-brand" />
-                  {howItWorks.badge}
-                </p>
-                <h2 className="text-[34px] sm:text-[44px] leading-[1.08] font-display font-bold text-navy-950 mb-2">
+              <div className="rounded-[28px] border border-[#E4E7EB] bg-white p-6 sm:p-10 lg:p-12">
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="h-px w-10 bg-[#F76F01]" />
+                  <span className="text-xs uppercase tracking-[0.25em] text-[#62728A]">
+                    {howItWorks.badge}
+                  </span>
+                </div>
+                <h2 className="mb-2 text-[34px] font-bold leading-[1.08] text-[#132F48] sm:text-[44px]">
                   {howItWorks.title}
                 </h2>
-                <p className="text-navy-500 mb-8">{howItWorks.subtitle}</p>
+                <p className="mb-8 text-[#62728A]">{howItWorks.subtitle}</p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                   {howItWorks.steps.map((step, index) => (
-                    <div key={step.title} className="rounded-2xl border border-navy-200 bg-white p-6">
-                      <div className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-navy-100 text-brand text-sm font-semibold">
+                    <div key={step.title} className="rounded-2xl border border-[#E4E7EB] bg-[#F8F9FA] p-6">
+                      <div className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#132F48] text-sm font-semibold text-white">
                         {index + 1}
                       </div>
-                      <h3 className="mt-3 text-xl font-semibold text-navy-950">{step.title}</h3>
-                      <p className="mt-2 text-sm text-navy-500 leading-relaxed">{step.description}</p>
-                      <button type="button" className="mt-4 text-sm font-medium text-brand hover:opacity-80 transition-opacity">
-                        {step.cta}
-                      </button>
+                      <h3 className="mt-3 text-xl font-semibold text-[#132F48]">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-[#62728A]">{step.description}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="rounded-[28px] border border-navy-200 bg-navy-50 p-6 sm:p-10">
-                <h2 className="text-[30px] sm:text-[38px] leading-[1.1] font-display font-bold text-navy-950">
+              <div className="rounded-[28px] border border-[#E4E7EB] bg-[#F8F9FA] p-6 sm:p-10">
+                <h2 className="text-[30px] font-bold leading-[1.1] text-[#132F48] sm:text-[38px]">
                   {service.advantageTitle}
                 </h2>
-                <p className="mt-4 text-[16px] leading-[1.8] text-navy-600 max-w-[850px]">{service.advantageDescription}</p>
+                <p className="mt-4 max-w-[850px] text-[16px] leading-[1.8] text-[#62728A]">
+                  {service.advantageDescription}
+                </p>
                 <div className="mt-6">
                   <Link
                     to="/contact-us"
-                    className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-brand text-white text-sm font-medium hover:opacity-90 transition-opacity"
+                    className="inline-flex items-center gap-2 rounded-full bg-[#F76F01] px-5 py-3 text-sm font-medium text-white transition-opacity hover:opacity-90"
                   >
-                    Start your project
+                    Book a Free Strategy Call
                   </Link>
                 </div>
               </div>
             </div>
 
-            <aside className="hidden lg:block sticky top-28">
-              <div className="rounded-[18px] border border-navy-200 bg-navy-50 p-6">
-                <h3 className="text-[38px] leading-[1.1] font-display font-semibold text-navy-950 mb-5">All Services</h3>
+            <aside className="sticky top-28 hidden lg:block">
+              <div className="rounded-[18px] border border-[#E4E7EB] bg-[#F8F9FA] p-6">
+                <h3 className="mb-5 text-[32px] font-semibold leading-[1.1] text-[#132F48]">All Services</h3>
                 <div className="space-y-3">
                   {serviceOrder.map((serviceLink) => (
                     <Link
                       key={serviceLink.slug}
                       to={`/services/${serviceLink.slug}`}
-                      className={`group flex items-center justify-between rounded-full px-5 py-4 text-[20px] leading-none transition-colors ${
-                        isActive(serviceLink.slug) ? "bg-brand text-white" : "bg-navy-100 text-navy-800 hover:bg-navy-200"
+                      className={`group flex items-center justify-between rounded-full px-5 py-4 text-[18px] leading-none transition-colors ${
+                        isActive(serviceLink.slug)
+                          ? "bg-[#F76F01] text-white"
+                          : "bg-white text-[#132F48] hover:bg-[#EEF1F3]"
                       }`}
                     >
                       <span>{serviceLink.label}</span>
-                      <ArrowRight className={`h-5 w-5 ${isActive(serviceLink.slug) ? "text-white" : "text-navy-800"}`} />
+                      <ArrowRight
+                        className={`h-5 w-5 ${isActive(serviceLink.slug) ? "text-white" : "text-[#132F48]"}`}
+                      />
                     </Link>
                   ))}
                 </div>
@@ -235,7 +249,7 @@ const ServiceDetailPage = ({ service }: ServiceDetailPageProps) => {
         </div>
       </section>
 
-      <CTASection />
+      <HomeGetInTouch />
     </>
   );
 };

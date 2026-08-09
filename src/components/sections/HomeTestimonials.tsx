@@ -1,137 +1,173 @@
-import { ArrowRight, Play, Quote, Star } from "lucide-react";
+import { ArrowLeft, ArrowRight, Play, Quote, Star } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import { useCallback, useEffect, useState } from "react";
 
 const testimonials = [
   {
+    id: 1,
     company: "Healthcare Startup",
     name: "Michael Carter",
     role: "Founder & CEO",
     review:
       "Kodefiz became an extension of our company. They helped us build an entire remote development team in less than two weeks, and the quality exceeded every expectation.",
-    result: "Reduced hiring time by 65%",
+    result: "65% faster hiring",
     video: false,
   },
   {
+    id: 2,
     company: "Marketing Agency",
     name: "Sarah Williams",
     role: "Managing Director",
     review:
       "We finally found a technology partner we can rely on. Communication was excellent, deadlines were always met, and the entire experience felt seamless.",
-    result: "Scaled from 6 to 18 team members",
+    result: "6 → 18 team members",
     video: true,
   },
   {
+    id: 3,
     company: "SaaS Company",
     name: "David Thompson",
     role: "Product Manager",
     review:
       "Their developers integrated perfectly with our internal team. It never felt like outsourcing—it felt like hiring in-house experts.",
-    result: "40% faster product delivery",
+    result: "40% faster delivery",
     video: false,
   },
   {
-    company: "SaaS Company",
-    name: "David Thompson",
-    role: "Product Manager",
+    id: 4,
+    company: "E-commerce Brand",
+    name: "James Anderson",
+    role: "Co-Founder",
     review:
-      "Their developers integrated perfectly with our internal team. It never felt like outsourcing—it felt like hiring in-house experts.",
-    result: "40% faster product delivery",
+      "The team understood what we needed from day one. They were proactive, responsive, and consistently delivered work that moved the business forward.",
+    result: "32% growth in conversions",
     video: false,
   },
 ];
 
 export default function HomeTestimonials() {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: false,
+    containScroll: "trimSnaps",
+  });
+
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(false);
+
+  const updateButtons = useCallback(() => {
+    if (!emblaApi) return;
+
+    setCanPrev(emblaApi.canScrollPrev());
+    setCanNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    updateButtons();
+
+    emblaApi.on("select", updateButtons);
+    emblaApi.on("reInit", updateButtons);
+
+    return () => {
+      emblaApi.off("select", updateButtons);
+      emblaApi.off("reInit", updateButtons);
+    };
+  }, [emblaApi, updateButtons]);
+
+  const scrollPrev = useCallback(() => {
+    emblaApi?.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    emblaApi?.scrollNext();
+  }, [emblaApi]);
+
   return (
-    <section className="bg-[#132F48] text-white py-28 overflow-hidden">
-      <div className="  px-6 lg:px-12">
+    <section className="bg-[#132F48] text-white py-20 sm:py-24 lg:py-28 overflow-hidden">
+      <div className="w-full px-5 sm:px-8 lg:px-16">
 
-        {/* Header */}
+        {/* ================= HEADER ================= */}
 
-        <div className="grid lg:grid-cols-2 gap-20 items-end">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12">
 
-          <div>
+          <div className="max-w-3xl">
 
-            <div className="flex items-center gap-3 mb-6">
-              <span className="w-10 h-px bg-[#F76F01]" />
-              <span className="uppercase tracking-[0.35em] text-xs text-white/60">
+            {/* Label */}
+            <div className="flex items-center gap-3 mb-5">
+              <span className="w-8 sm:w-10 h-px bg-[#F76F01]" />
+
+              <span className="uppercase tracking-[0.28em] text-[11px] sm:text-xs text-white/50 font-medium">
                 Testimonials
               </span>
             </div>
 
-            <h2 className="text-5xl lg:text-7xl font-bold leading-[0.95]">
-              Trusted by
+            {/* Heading */}
+            <h2 className="text-[40px] sm:text-[52px] lg:text-[64px] font-bold leading-[1] tracking-tight">
+              What our
               <br />
-              businesses
-              <span className="text-[#F76F01]"> worldwide.</span>
+              <span className="text-[#F76F01]">
+                clients say.
+              </span>
             </h2>
 
           </div>
 
-          <div>
+          {/* Description + controls */}
 
-            <p className="text-white/70 leading-8 text-lg">
-              Long-term partnerships are built on trust, communication,
-              and consistent delivery. Here's what our clients say
-              after working with Kodefiz.
+          <div className="flex flex-col sm:flex-row lg:flex-col items-start sm:items-end lg:items-end gap-6">
+
+            <p className="max-w-md text-sm sm:text-base text-white/60 leading-7 lg:text-right">
+              Real feedback from businesses we've helped build,
+              grow, and scale through technology.
             </p>
 
-          </div>
+            {/* Carousel Controls */}
 
-        </div>
+            <div className="flex items-center gap-2">
 
-        {/* Featured Quote */}
+              <button
+                type="button"
+                onClick={scrollPrev}
+                disabled={!canPrev}
+                aria-label="Previous testimonial"
+                className="
+                  w-11 h-11
+                  rounded-full
+                  border border-white/15
+                  flex items-center justify-center
+                  text-white/70
+                  transition-all duration-300
+                  hover:border-[#F76F01]
+                  hover:text-[#F76F01]
+                  disabled:opacity-30
+                  disabled:cursor-not-allowed
+                "
+              >
+                <ArrowLeft size={17} />
+              </button>
 
-        <div className="mt-24 rounded-[40px] max-w-7xl  bg-white text-[#132F48] p-10 lg:p-16 relative overflow-hidden">
-
-          <Quote
-            size={180}
-            className="absolute right-8 top-4 opacity-5"
-          />
-
-          <div className="max-w-4xl">
-
-            <div className="flex gap-1 mb-8">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  className="fill-[#F76F01] text-[#F76F01]"
-                  size={22}
-                />
-              ))}
-            </div>
-
-            <p className="text-3xl lg:text-5xl leading-tight font-medium">
-              "{testimonials[0].review}"
-            </p>
-
-            <div className="mt-12 flex justify-between items-end flex-wrap gap-8">
-
-              <div>
-
-                <h3 className="text-2xl font-semibold">
-                  {testimonials[0].name}
-                </h3>
-
-                <p className="text-gray-500 mt-2">
-                  {testimonials[0].role}
-                </p>
-
-                <p className="text-[#F76F01] mt-2 font-medium">
-                  {testimonials[0].company}
-                </p>
-
-              </div>
-
-              <div>
-
-                <div className="text-5xl font-bold">
-                  65%
-                </div>
-
-                <div className="text-gray-500 mt-2">
-                  Faster Hiring
-                </div>
-
-              </div>
+              <button
+                type="button"
+                onClick={scrollNext}
+                disabled={!canNext}
+                aria-label="Next testimonial"
+                className="
+                  w-11 h-11
+                  rounded-full
+                  border border-white/15
+                  flex items-center justify-center
+                  text-white/70
+                  transition-all duration-300
+                  hover:border-[#F76F01]
+                  hover:text-[#F76F01]
+                  disabled:opacity-30
+                  disabled:cursor-not-allowed
+                "
+              >
+                <ArrowRight size={17} />
+              </button>
 
             </div>
 
@@ -139,104 +175,193 @@ export default function HomeTestimonials() {
 
         </div>
 
-        {/* Stories */}
+        {/* ================= CAROUSEL ================= */}
 
-        <div className="grid md:grid-cols-3 gap-8 mt-20">
+        <div
+          ref={emblaRef}
+          className="overflow-hidden"
+        >
 
-        {testimonials.map((item) => (
-  <article
-    key={item.name}
-    className="group relative rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-sm p-8 transition-all duration-500 hover:-translate-y-2 hover:border-[#F76F01] hover:bg-white/10"
-  >
-    {/* Quote Icon */}
-    <div className="absolute top-6 right-6 text-white/10">
-      <Quote size={46} strokeWidth={1.5} />
-    </div>
+          <div className="flex -ml-4">
 
-    {/* Stars */}
-    <div className="flex gap-1 mb-6">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Star
-          key={i}
-          size={16}
-          className="fill-[#F76F01] text-[#F76F01]"
-        />
-      ))}
-    </div>
+            {testimonials.map((item) => (
 
-    {/* Review */}
-    <p className="text-white/85 leading-7 text-[15px] min-h-[180px]">
-      "{item.review}"
-    </p>
+              <div
+                key={item.id}
+                className="
+                  flex-[0_0_100%]
+                  sm:flex-[0_0_50%]
+                  lg:flex-[0_0_33.333%]
+                  min-w-0
+                  pl-4
+                "
+              >
 
-    {/* Divider */}
-    <div className="my-8 h-px bg-white/10" />
+                {/* ================= CARD ================= */}
 
-    {/* Person */}
-    <div>
-      <h3 className="text-lg font-semibold">
-        {item.name}
-      </h3>
+                <article
+                  className="
+                    relative
+                    h-full
+                    min-h-[410px]
+                    rounded-2xl
+                    border border-white/10
+                    bg-white/[0.045]
+                    p-7 sm:p-8
+                    flex flex-col
+                    transition-all duration-300
+                    hover:border-white/20
+                    hover:bg-white/[0.07]
+                  "
+                >
 
-      <p className="text-sm text-white/60 mt-1">
-        {item.role}
-      </p>
+                  {/* Quote */}
 
-      <p className="text-[#F76F01] text-sm mt-2">
-        {item.company}
-      </p>
-    </div>
+                  <div className="absolute top-7 right-7 text-white/[0.08]">
+                    <Quote
+                      size={42}
+                      strokeWidth={1.3}
+                    />
+                  </div>
 
-    {/* Result */}
+                  {/* Rating */}
 
-    <div className="mt-8 flex items-center justify-between">
+                  <div className="flex gap-1 mb-7">
 
-      <span className="text-xs uppercase tracking-widest text-white/40">
-        Result
-      </span>
+                    {Array.from({ length: 5 }).map((_, index) => (
 
-      <span className="font-semibold text-[#F76F01]">
-        {item.result}
-      </span>
+                      <Star
+                        key={index}
+                        size={15}
+                        className="fill-[#F76F01] text-[#F76F01]"
+                      />
 
-    </div>
+                    ))}
 
-    {/* Video Badge */}
+                  </div>
 
-    {item.video && (
-      <button className="mt-8 flex items-center gap-2 text-sm font-medium text-white group-hover:text-[#F76F01] transition">
-        <Play size={16} fill="currentColor" />
-        Watch Video
-      </button>
-    )}
-  </article>
-))}
-        </div>
+                  {/* Company */}
 
-        {/* Bottom CTA */}
+                  <div className="mb-5">
 
-        <div className="mt-24 border-t border-white/10 pt-16 flex flex-col lg:flex-row justify-between items-center gap-10">
+                    <span
+                      className="
+                        inline-flex
+                        items-center
+                        rounded-full
+                        border border-white/10
+                        px-3 py-1
+                        text-[10px]
+                        uppercase
+                        tracking-[0.15em]
+                        text-white/50
+                      "
+                    >
+                      {item.company}
+                    </span>
 
-          <div>
+                  </div>
 
-            <h3 className="text-3xl font-semibold">
-              Ready to become our next success story?
-            </h3>
+                  {/* Review */}
 
-            <p className="text-white/60 mt-4 max-w-xl">
-              Whether you're hiring one specialist or building an entire remote team,
-              we're here to help you scale with confidence.
-            </p>
+                  <p className="text-[15px] sm:text-[16px] leading-7 text-white/75">
+                    "{item.review}"
+                  </p>
+
+                  {/* Spacer */}
+
+                  <div className="flex-1" />
+
+                  {/* Result */}
+
+                  <div className="pt-7 mb-6 border-t border-white/10">
+
+                    <div className="text-[10px] uppercase tracking-[0.18em] text-white/35 mb-2">
+                      Result
+                    </div>
+
+                    <div className="text-sm font-semibold text-[#F76F01]">
+                      {item.result}
+                    </div>
+
+                  </div>
+
+                  {/* Person */}
+
+                  <div className="flex items-center justify-between gap-4">
+
+                    <div>
+
+                      <h3 className="text-sm sm:text-base font-semibold text-white">
+                        {item.name}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm text-white/45 mt-1">
+                        {item.role}
+                      </p>
+
+                    </div>
+
+                    {/* Video */}
+
+                    {item.video && (
+
+                      <button
+                        type="button"
+                        className="
+                          flex
+                          items-center
+                          justify-center
+                          gap-2
+                          rounded-full
+                          border border-white/10
+                          px-3 py-2
+                          text-xs
+                          text-white/70
+                          hover:border-[#F76F01]
+                          hover:text-[#F76F01]
+                          transition-colors
+                        "
+                      >
+                        <Play
+                          size={12}
+                          fill="currentColor"
+                        />
+
+                        Video
+                      </button>
+
+                    )}
+
+                  </div>
+
+                </article>
+
+              </div>
+
+            ))}
 
           </div>
 
-          <button className="group flex items-center gap-4 rounded-full bg-[#F76F01] px-8 py-4 font-medium hover:scale-105 transition">
+        </div>
 
-            Book a Discovery Call
+        {/* ================= BOTTOM INDICATOR ================= */}
 
-            <ArrowRight className="group-hover:translate-x-1 transition" />
+        <div className="flex items-center justify-between mt-8">
 
-          </button>
+          <div className="flex items-center gap-2">
+
+            <span className="w-8 h-px bg-[#F76F01]" />
+
+            <span className="text-[11px] uppercase tracking-[0.2em] text-white/35">
+              Client stories
+            </span>
+
+          </div>
+
+          <div className="text-xs text-white/30">
+            {testimonials.length} testimonials
+          </div>
 
         </div>
 

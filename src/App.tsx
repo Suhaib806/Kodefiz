@@ -14,12 +14,9 @@ import Portfolio from "./pages/Portfolio";
 import NotFound from "./pages/NotFound";
 import Terms from "./pages/Terms Condition";
 import Privacy from "./pages/Privacy Policy";
-import ServiceWebsiteDevelopment from "./pages/ServiceWebsiteDevelopment";
-import ServiceAppDevelopment from "./pages/ServiceAppDevelopment";
-import ServiceDigitalMarketing from "./pages/ServiceDigitalMarketing";
-import ServiceAutomationAI from "./pages/ServiceAutomationAI";
-import ServiceWebsiteMaintenance from "./pages/ServiceWebsiteMaintenance";
-import ServiceSeoContentWriting from "./pages/ServiceSeoContentWriting";
+import ServiceDetail from "./pages/ServiceDetail";
+import PackageDetail from "./pages/PackageDetail";
+import Packages from "./pages/Packages";
 
 const queryClient = new QueryClient();
 
@@ -36,15 +33,12 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/services/:slug" element={<ServiceDetail />} />
+              <Route path="/packages" element={<Packages />} />
+              <Route path="/packages/:slug" element={<PackageDetail />} />
               <Route path="/testimonials" element={<Testimonials />} />
               <Route path="/contact-us" element={<Contact />} />
-              <Route path="/services/website-development" element={<ServiceWebsiteDevelopment />} />
-              <Route path="/services/app-development" element={<ServiceAppDevelopment />} />
-              <Route path="/services/digital-marketing" element={<ServiceDigitalMarketing />} />
-              <Route path="/services/automation-ai" element={<ServiceAutomationAI />} />
-              <Route path="/services/website-maintenance" element={<ServiceWebsiteMaintenance />} />
-              <Route path="/services/seo-content-writing" element={<ServiceSeoContentWriting />} />
-              <Route path="/terms-condition" element={<Terms/>} />
+              <Route path="/terms-condition" element={<Terms />} />
               <Route path="/privacy-policy" element={<Privacy />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

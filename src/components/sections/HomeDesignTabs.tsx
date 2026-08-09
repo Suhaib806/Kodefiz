@@ -2,21 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-/**
- * HOW WE WORK — "The Page-Turn"
- * -----------------------------------------------------------------------
- * Editorial split layout, no scroll-jacking, no position:fixed pin.
- * Left column holds a single oversized ghost numeral that crossfades
- * between stages as they scroll into view (driven by IntersectionObserver
- * watching each right-column block). Right column is a plain vertical
- * scroll of five stage blocks with a fade-up reveal on entry.
- *
- * Deliberately avoids scroll-jacking so it can't break due to ancestor
- * overflow/transform quirks — the only "trick" here is swapping which
- * numeral is visible, which is a simple state flip driven by a native
- * browser API (IntersectionObserver), not scroll math.
- */
-
 type Stage = {
   n: string;
   title: string;
@@ -51,57 +36,58 @@ const stages: Stage[] = [
   },
 ];
 
-const NAVY = "#132F48";
-const NAVY_DEEP = "#0B2038";
-const FLAME = "#F76F01";
-const MUTED = "rgba(255,255,255,0.55)";
-const HAIRLINE = "rgba(255,255,255,0.12)";
-const PAPER = "#FFFFFF";
 const BODY_FONT = "'Plus Jakarta Sans', sans-serif";
 const DISPLAY_FONT = "'Fraunces', 'Times New Roman', serif";
 
 const HowWeWork = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [visible, setVisible] = useState<Set<number>>(new Set());
+
   const blockRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // --- JS-driven sidebar "sticky" -----------------------------------
-  // CSS `position: sticky` depends on every ancestor cooperating (no
-  // overflow other than visible, no transform/filter/will-change/
-  // perspective/contain anywhere up the tree). That's proven unreliable
-  // here, so this recomputes the sidebar's position on scroll using
-  // getBoundingClientRect instead: `fixed` while the row is mid-viewport,
-  // `absolute` pinned to the top/bottom edge of the row otherwise. This
-  // only depends on `fixed`, which is broken by far fewer things (mainly
-  // a transform/filter/perspective on an ANCESTOR of this component — if
-  // it still doesn't move after this, that's the one remaining suspect,
-  // and it lives in your page/layout wrapper, not this file).
-  const rowRef = useRef<HTMLDivElement>(null);
-  const sidebarRef = useRef<HTMLDivElement>(null);
-  const [sidebarStyle, setSidebarStyle] = useState<React.CSSProperties>({});
-  const rafRef = useRef<number | null>(null);
-  const TOP_CLEARANCE = 112; // px — match to your fixed header height if any
-  const SIDEBAR_WIDTH = 340; // px — matches the fixed column width below
+  // Sidebar positioning
+  const rowRef = useRef<HTMLDivElement | null>(null);
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
 
+  const [sidebarStyle, setSidebarStyle] =
+    useState<React.CSSProperties>({});
+
+  const rafRef = useRef<number | null>(null);
+
+  const TOP_CLEARANCE = 112;
+  const SIDEBAR_WIDTH = 340;
+
+  /*
+   * Sidebar movement
+   */
   useEffect(() => {
     const recompute = () => {
       const row = rowRef.current;
       const sidebar = sidebarRef.current;
+
       if (!row || !sidebar) return;
+
       if (window.innerWidth < 1024) {
-        setSidebarStyle({ position: "static" });
+        setSidebarStyle({
+          position: "static",
+        });
+
         return;
       }
 
       const rowRect = row.getBoundingClientRect();
+
       const sidebarHeight = sidebar.offsetHeight;
       const maxTravel = rowRect.height - sidebarHeight;
 
       if (rowRect.top > TOP_CLEARANCE) {
-        // Row hasn't reached the clearance line yet — sit at natural top.
-        setSidebarStyle({ position: "static" });
-      } else if (rowRect.height - (TOP_CLEARANCE - rowRect.top) < sidebarHeight) {
-        // Row is ending — stop at the bottom of the row, don't overshoot it.
+        setSidebarStyle({
+          position: "static",
+        });
+      } else if (
+        rowRect.height - (TOP_CLEARANCE - rowRect.top) <
+        sidebarHeight
+      ) {
         setSidebarStyle({
           position: "absolute",
           top: Math.max(maxTravel, 0),
@@ -109,7 +95,6 @@ const HowWeWork = () => {
           width: SIDEBAR_WIDTH,
         });
       } else {
-        // Mid-scroll — actually fixed to the clearance line.
         setSidebarStyle({
           position: "fixed",
           top: TOP_CLEARANCE,
@@ -121,6 +106,7 @@ const HowWeWork = () => {
 
     const onScrollOrResize = () => {
       if (rafRef.current) return;
+
       rafRef.current = requestAnimationFrame(() => {
         rafRef.current = null;
         recompute();
@@ -128,182 +114,487 @@ const HowWeWork = () => {
     };
 
     recompute();
-    window.addEventListener("scroll", onScrollOrResize, { passive: true });
+
+    window.addEventListener("scroll", onScrollOrResize, {
+      passive: true,
+    });
+
     window.addEventListener("resize", onScrollOrResize);
+
     return () => {
       window.removeEventListener("scroll", onScrollOrResize);
       window.removeEventListener("resize", onScrollOrResize);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+      }
     };
   }, []);
-  // -------------------------------------------------------------------
 
+  /*
+   * Detect active stage
+   */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const idx = Number((entry.target as HTMLElement).dataset.idx);
+          const idx = Number(
+            (entry.target as HTMLElement).dataset.idx
+          );
+
           if (entry.isIntersecting) {
-            setVisible((prev) => new Set(prev).add(idx));
+            setVisible((prev) => {
+              const next = new Set(prev);
+              next.add(idx);
+              return next;
+            });
           }
         });
 
         const centered = entries
-          .filter((e) => e.isIntersecting)
-          .map((e) => Number((e.target as HTMLElement).dataset.idx));
+          .filter((entry) => entry.isIntersecting)
+          .map((entry) =>
+            Number((entry.target as HTMLElement).dataset.idx)
+          );
+
         if (centered.length > 0) {
           setActiveIndex(Math.min(...centered));
         }
       },
-      { threshold: 0.4, rootMargin: "-35% 0px -35% 0px" }
+      {
+        threshold: 0.4,
+        rootMargin: "-35% 0px -35% 0px",
+      }
     );
 
-    blockRefs.current.forEach((el) => el && observer.observe(el));
+    blockRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
     return () => observer.disconnect();
   }, []);
 
   return (
-    <section
-      className="relative py-24 lg:py-32 overflow-hidden"
-      style={{ background: `linear-gradient(180deg, ${NAVY} 0%, ${NAVY_DEEP} 100%)` }}
-    >
-      {/* Ambient glow, very quiet — keeps the dark bg from feeling flat */}
+    <section className="relative overflow-hidden bg-navy-50 py-20 sm:py-24 lg:py-32">
+
+      {/* ===============================
+          AMBIENT ORANGE GLOW
+      =============================== */}
+
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-40 -right-40 h-[520px] w-[520px] rounded-full blur-3xl"
-        style={{ background: `radial-gradient(circle, ${FLAME}22 0%, transparent 70%)` }}
+        className="
+          pointer-events-none
+          absolute
+          -top-40
+          -right-40
+          h-[520px]
+          w-[520px]
+          rounded-full
+          blur-3xl
+        "
+        style={{
+          background:
+            "radial-gradient(circle, rgba(247,111,1,0.10) 0%, transparent 70%)",
+        }}
       />
-      <div className="relative w-full px-5 md:px-12 lg:px-20">
-        {/* Header */}
-        <div className="mb-16 lg:mb-24 max-w-2xl">
+
+      {/* ===============================
+          MAIN CONTAINER
+      =============================== */}
+
+      <div className="relative w-full px-5 sm:px-8 md:px-12 lg:px-20">
+
+        {/* ===============================
+            HEADER
+        =============================== */}
+
+        <div className="mb-16 max-w-3xl lg:mb-24">
+
+          {/* Label */}
+
           <div
-            className="flex items-center gap-3 text-[13px] font-medium tracking-[0.22em] uppercase mb-8"
-            style={{ fontFamily: BODY_FONT, color: MUTED }}
+            className="
+              mb-7
+              flex
+              items-center
+              gap-3
+              text-[12px]
+              font-medium
+              uppercase
+              tracking-[0.22em]
+              text-navy-400
+            "
+            style={{ fontFamily: BODY_FONT }}
           >
-            <span className="inline-block h-px w-10" style={{ backgroundColor: FLAME }} />
+            <span className="inline-block h-px w-10 bg-brand" />
+
             How We Work
           </div>
+
+          {/* Heading */}
+
           <h2
-            className="text-[40px] sm:text-[58px] lg:text-[72px] leading-[1.05] tracking-[-0.02em]"
-            style={{ fontFamily: DISPLAY_FONT, color: PAPER, fontWeight: 300 }}
+            className="
+              text-[42px]
+              leading-[1.02]
+              tracking-[-0.02em]
+              text-navy-950
+              sm:text-[58px]
+              lg:text-[72px]
+            "
+            style={{
+              fontFamily: DISPLAY_FONT,
+              fontWeight: 300,
+            }}
           >
             Hire.{" "}
-            <span style={{ fontStyle: "italic", fontWeight: 550, color: FLAME }}>
+
+            <span
+              className="text-brand"
+              style={{
+                fontStyle: "italic",
+                fontWeight: 550,
+              }}
+            >
               Meet.
             </span>{" "}
+
             Scale.
+
             <br />
-            <span style={{ color: MUTED, fontSize: "0.55em" }}>That's it.</span>
+
+            <span
+              className="text-navy-400"
+              style={{
+                fontSize: "0.55em",
+              }}
+            >
+              That's it.
+            </span>
           </h2>
+
+          {/* Supporting text */}
+
+          <p
+            className="
+              mt-7
+              max-w-xl
+              text-[15px]
+              leading-7
+              text-navy-500
+              sm:text-[17px]
+              sm:leading-8
+            "
+            style={{
+              fontFamily: BODY_FONT,
+            }}
+          >
+            A straightforward process designed to remove complexity,
+            keep communication clear, and help you build the right
+            team without unnecessary friction.
+          </p>
         </div>
 
-        {/* Split layout */}
-        <div ref={rowRef} className="relative lg:flex lg:gap-16">
-          {/* Left: numeral column — position is computed in JS (see
-              sidebarStyle above), not CSS `position: sticky`. */}
-          <div className="hidden lg:block lg:w-[340px] lg:shrink-0 relative">
-            <div ref={sidebarRef} style={sidebarStyle}>
+        {/* ===============================
+            PROCESS LAYOUT
+        =============================== */}
+
+        <div
+          ref={rowRef}
+          className="relative lg:flex lg:gap-16"
+        >
+
+          {/* ===============================
+              LEFT SIDEBAR
+          =============================== */}
+
+          <div className="relative hidden w-[340px] shrink-0 lg:block">
+
+            <div
+              ref={sidebarRef}
+              style={sidebarStyle}
+            >
+
+              {/* Large Number */}
+
               <div
                 aria-hidden
-                className="leading-none select-none transition-opacity duration-500"
+                className="
+                  select-none
+                  leading-none
+                  transition-opacity
+                  duration-500
+                "
                 style={{
                   fontFamily: DISPLAY_FONT,
                   fontWeight: 300,
                   fontSize: "clamp(140px, 14vw, 220px)",
-                  color: FLAME,
-                  opacity: 0.16,
+                  color: "#132F48",
+                  opacity: 0.075,
                 }}
               >
                 {stages[activeIndex].n}
               </div>
+
+              {/* Current Step */}
+
               <div
-                className="mt-2 text-[15px] font-medium"
-                style={{ fontFamily: BODY_FONT, color: FLAME }}
+                className="
+                  mt-3
+                  text-[13px]
+                  font-medium
+                  uppercase
+                  tracking-[0.16em]
+                  text-brand
+                "
+                style={{
+                  fontFamily: BODY_FONT,
+                }}
               >
-                Step {stages[activeIndex].n} of {String(stages.length).padStart(2, "0")}
+                Step {stages[activeIndex].n} of{" "}
+                {String(stages.length).padStart(2, "0")}
               </div>
+
+              {/* Current Title */}
+
               <div
-                className="mt-1 text-[15px]"
-                style={{ fontFamily: BODY_FONT, color: PAPER }}
+                className="
+                  mt-2
+                  text-[16px]
+                  font-medium
+                  text-navy-950
+                "
+                style={{
+                  fontFamily: BODY_FONT,
+                }}
               >
                 {stages[activeIndex].title}
               </div>
+
             </div>
           </div>
 
-          <div className="hidden lg:block w-px" style={{ backgroundColor: HAIRLINE }} />
+          {/* ===============================
+              VERTICAL DIVIDER
+          =============================== */}
 
-          {/* Right: scrolling stage list */}
-          <div className="flex-1 min-w-0">
+          <div className="hidden w-px bg-navy-200 lg:block" />
+
+          {/* ===============================
+              RIGHT CONTENT
+          =============================== */}
+
+          <div className="min-w-0 flex-1">
+
             {stages.map((stage, i) => {
               const isVisible = visible.has(i);
+
               return (
                 <div
                   key={stage.n}
-                  ref={(el) => (blockRefs.current[i] = el)}
+                  ref={(el) => {
+                    blockRefs.current[i] = el;
+                  }}
                   data-idx={i}
-                  className="py-12 sm:py-16 lg:py-20 border-b first:pt-0"
-                  style={{ borderColor: HAIRLINE }}
+                  className="
+                    border-b
+                    border-navy-200
+                    py-12
+                    first:pt-0
+                    sm:py-16
+                    lg:py-24
+                  "
                 >
+
+                  {/* Mobile Number */}
+
                   <div
-                    className="lg:hidden mb-4 text-[13px] font-medium tracking-widest uppercase"
-                    style={{ fontFamily: BODY_FONT, color: FLAME }}
+                    className="
+                      mb-5
+                      text-[12px]
+                      font-medium
+                      uppercase
+                      tracking-[0.2em]
+                      text-brand
+                      lg:hidden
+                    "
+                    style={{
+                      fontFamily: BODY_FONT,
+                    }}
                   >
                     {stage.n}
                   </div>
 
+                  {/* Stage Heading */}
+
                   <h3
-                    className="text-[28px] sm:text-[36px] lg:text-[44px] leading-tight tracking-[-0.01em] mb-4 transition-all duration-700 ease-out"
+                    className="
+                      mb-4
+                      text-[30px]
+                      leading-tight
+                      tracking-[-0.01em]
+                      text-navy-950
+                      transition-all
+                      duration-700
+                      sm:text-[38px]
+                      lg:text-[46px]
+                    "
                     style={{
                       fontFamily: DISPLAY_FONT,
                       fontWeight: 400,
-                      color: PAPER,
                       opacity: isVisible ? 1 : 0,
-                      transform: isVisible ? "translateY(0)" : "translateY(24px)",
+                      transform: isVisible
+                        ? "translateY(0)"
+                        : "translateY(24px)",
                     }}
                   >
                     {stage.title}
                   </h3>
 
+                  {/* Description */}
+
                   <p
-                    className="max-w-md text-[16px] sm:text-[18px] leading-relaxed transition-all duration-700 ease-out"
+                    className="
+                      max-w-xl
+                      text-[15px]
+                      leading-7
+                      text-navy-500
+                      transition-all
+                      duration-700
+                      sm:text-[17px]
+                      sm:leading-8
+                    "
                     style={{
                       fontFamily: BODY_FONT,
-                      color: MUTED,
                       opacity: isVisible ? 1 : 0,
-                      transform: isVisible ? "translateY(0)" : "translateY(16px)",
-                      transitionDelay: isVisible ? "120ms" : "0ms",
+                      transform: isVisible
+                        ? "translateY(0)"
+                        : "translateY(16px)",
+                      transitionDelay: isVisible
+                        ? "120ms"
+                        : "0ms",
                     }}
                   >
                     {stage.desc}
                   </p>
+
+                  {/* Progress indicator */}
+
+                  <div className="mt-8 flex items-center gap-3">
+
+                    <span
+                      className={`
+                        h-1.5
+                        rounded-full
+                        transition-all
+                        duration-500
+                        ${
+                          activeIndex === i
+                            ? "w-10 bg-brand"
+                            : "w-5 bg-navy-200"
+                        }
+                      `}
+                    />
+
+                    <span
+                      className="
+                        text-[11px]
+                        font-medium
+                        uppercase
+                        tracking-[0.15em]
+                        text-navy-400
+                      "
+                      style={{
+                        fontFamily: BODY_FONT,
+                      }}
+                    >
+                      {stage.n}
+                    </span>
+
+                  </div>
+
                 </div>
               );
             })}
 
-            {/* Closing CTA */}
-            <div className="pt-14 sm:pt-16 flex flex-wrap items-center gap-5">
-              <Link to="/contact" className="group inline-flex items-center gap-3">
+            {/* ===============================
+                CTA
+            =============================== */}
+
+            <div className="flex flex-wrap items-center gap-5 pt-14 sm:pt-16">
+
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-3"
+              >
+
+                {/* Navy Button */}
+
                 <span
-                  className="inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-medium"
-                  style={{ backgroundColor: PAPER, color: NAVY, fontFamily: BODY_FONT }}
+                  className="
+                    inline-flex
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-navy-950
+                    px-7
+                    py-3.5
+                    text-sm
+                    font-medium
+                    text-white
+                    transition-all
+                    duration-300
+                    group-hover:bg-navy-900
+                  "
+                  style={{
+                    fontFamily: BODY_FONT,
+                  }}
                 >
                   Start hiring
                 </span>
+
+                {/* Orange Arrow */}
+
                 <span
-                  className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white transition-transform duration-300 group-hover:scale-105"
-                  style={{ backgroundColor: FLAME }}
+                  className="
+                    inline-flex
+                    h-11
+                    w-11
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-full
+                    bg-brand
+                    text-white
+                    transition-transform
+                    duration-300
+                    group-hover:scale-105
+                  "
                 >
-                  <ArrowUpRight className="h-4 w-4" strokeWidth={2.25} />
+                  <ArrowUpRight
+                    className="h-4 w-4"
+                    strokeWidth={2.25}
+                  />
                 </span>
+
               </Link>
+
               <span
-                className="text-[15px]"
-                style={{ fontFamily: BODY_FONT, color: MUTED }}
+                className="
+                  text-[14px]
+                  text-navy-400
+                  sm:text-[15px]
+                "
+                style={{
+                  fontFamily: BODY_FONT,
+                }}
               >
                 Ready when you are.
               </span>
+
             </div>
+
           </div>
         </div>
       </div>
