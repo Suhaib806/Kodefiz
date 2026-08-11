@@ -1,10 +1,10 @@
 
 import React, { useEffect, useRef, useState } from "react";
 
-import vettingImg from "@/assets/softech.png";
-import pipelineImg from "@/assets/office.png";
-import distributedImg from "@/assets/office2.png";
-import partnershipImg from "@/assets/office3.png";
+import vettingImg from "@/assets/accountable_partener.jpeg";
+import pipelineImg from "@/assets/outcome.jpeg";
+import distributedImg from "@/assets/system_compound.jpeg";
+import partnershipImg from "@/assets/clear.jpeg";
 
 const reasons = [
   {
@@ -203,7 +203,7 @@ const WhyChooseKodefiz = () => {
                   </div>
 
                   {/* Image */}
-                  <div className="relative h-[180px] overflow-hidden rounded-2xl sm:h-[150px] lg:h-[180px]">
+                  <div className="relative h-[180px] overflow-hidden rounded-2xl sm:h-[150px] lg:h-[160px]">
                     <img
                       src={reason.img}
                       alt={reason.title}

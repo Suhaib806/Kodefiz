@@ -20,9 +20,10 @@ const Hero = () => {
           loop
           muted
           playsInline
+          preload="auto"
           className="absolute inset-0 h-full w-full object-cover object-[75%_center]"
         >
-          <source src="/hero-bg.mp4" type="video/mp4" />
+          <source src="/main.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-black/10" />
         <div className="absolute inset-0 bg-[radial-gradient(60%_60%_at_15%_35%,rgba(255,90,20,0.35),transparent_70%)]" />

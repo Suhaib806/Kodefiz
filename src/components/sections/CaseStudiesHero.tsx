@@ -1,9 +1,9 @@
 
-import servicesWebp from "@/assets/Case Studies/7o5_contracting.png";
-import servicesWebp2 from "@/assets/Case Studies/Bidm8.png";
-import servicesWebp3 from "@/assets/Case Studies/bidm8_supplier.png";
-import servicesWebp4 from "@/assets/Case Studies/Claymar_electric.png";
-import servicesWebp5 from "@/assets/Case Studies/builders_game_podcast.png";
+import servicesWebp from "@/assets/Case Studies/furnture.png";
+import servicesWebp2 from "@/assets/Case Studies/afrimac.png";
+import servicesWebp3 from "@/assets/Case Studies/jonesshakes.png";
+import servicesWebp4 from "@/assets/Case Studies/calculator.png";
+import servicesWebp5 from "@/assets/Case Studies/proman.png";
 import servicesWebp6 from "@/assets/Case Studies/trotter_generalcon_tracting.png";
 import servicesWebp7 from "@/assets/Case Studies/Gravel_ridge.png";
 import servicesWebp8 from "@/assets/Case Studies/homestand.png";
@@ -15,11 +15,11 @@ import { ArrowRight, Sparkles } from "lucide-react";
 
 const CaseStudiesHero = () => {
   const caseStudies = [
-    { src: servicesWebp, alt: "7O5 Contracting" },
-    { src: servicesWebp2, alt: "Bidm8" },
-    { src: servicesWebp3, alt: "Bidm8 Supplier" },
-    { src: servicesWebp4, alt: "Claymar Electric" },
-    { src: servicesWebp5, alt: "Builders Game Podcast" },
+    { src: servicesWebp, alt: "Furnture" },
+    { src: servicesWebp2, alt: "afrimac" },
+    { src: servicesWebp3, alt: "jonesshakes" },
+    { src: servicesWebp4, alt: "Calculator" },
+    { src: servicesWebp5, alt: "Proman" },
     { src: servicesWebp6, alt: "Trotter General Contracting" },
     { src: servicesWebp7, alt: "Gravel Ridge" },
     { src: servicesWebp8, alt: "Homestand" },
