@@ -25,47 +25,26 @@ import { serviceList } from "@/data/serviceDetails";
 
 const WebsiteCreative = () => {
   return (
-    <div className="absolute inset-0 bg-[#eef3f7] overflow-hidden">
-      <div className="absolute left-[8%] right-[8%] top-[10%] bottom-[8%] bg-white rounded-[22px] shadow-2xl overflow-hidden border border-[#d9e1e8]">
-        <div className="h-10 bg-[#f5f7f9] border-b border-[#e5e9ed] flex items-center px-4 gap-2">
+    <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 bg-white rounded-[22px] shadow-2xl overflow-hidden border border-[#d9e1e8]">
+        <div className="h-10 bg-[#f5f7f9] border-b border-[#e5e9ed] flex items-center px-4 gap-2 shrink-0">
           <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
           <div className="ml-5 h-5 flex-1 max-w-[180px] rounded-md bg-white border border-[#e3e7eb]" />
         </div>
 
-        <div className="p-5 sm:p-7">
-          <div className="flex justify-between items-center mb-8">
-            <div className="font-bold text-[#132F48] text-sm">KODEFIZ</div>
-            <div className="hidden sm:flex gap-5">
-              <span className="w-8 h-1.5 rounded bg-[#dce3e9]" />
-              <span className="w-8 h-1.5 rounded bg-[#dce3e9]" />
-              <span className="w-8 h-1.5 rounded bg-[#dce3e9]" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-5 items-center">
-            <div>
-              <div className="w-20 h-2 rounded bg-[#F76F01] mb-4" />
-              <div className="h-4 w-full rounded bg-[#132F48] mb-2" />
-              <div className="h-4 w-[80%] rounded bg-[#132F48] mb-5" />
-              <div className="h-2 w-[90%] rounded bg-[#dce3e9] mb-2" />
-              <div className="h-2 w-[70%] rounded bg-[#dce3e9] mb-5" />
-              <div className="h-8 w-24 rounded-full bg-[#F76F01]" />
-            </div>
-
-            <div className="aspect-square rounded-2xl bg-[#132F48] flex items-center justify-center relative overflow-hidden">
-              <div className="absolute w-32 h-32 rounded-full bg-[#F76F01]/80 -right-12 -top-12" />
-              <div className="absolute w-20 h-20 rounded-full border border-white/20 bottom-5 left-5" />
-              <Monitor className="text-white w-12 h-12 relative z-10" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-3 gap-3 mt-7">
-            <div className="h-14 rounded-xl bg-[#f0f3f5]" />
-            <div className="h-14 rounded-xl bg-[#f0f3f5]" />
-            <div className="h-14 rounded-xl bg-[#f0f3f5]" />
-          </div>
+        <div className="flex flex-col h-[calc(100%-40px)] overflow-hidden">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+          >
+            <source src="/Website.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
 
@@ -83,49 +62,26 @@ const WebsiteCreative = () => {
 
 const DesignCreative = () => {
   return (
-    <div className="absolute inset-0 bg-[#f5f2ed] overflow-hidden">
-      <div className="absolute inset-[8%] bg-white rounded-[28px] shadow-xl overflow-hidden border border-[#e6e0d8]">
-        <div className="absolute top-0 left-0 w-[42%] h-full bg-[#132F48] p-6">
-          <div className="text-white text-xs tracking-[0.25em]">BRAND SYSTEM</div>
-          <div className="absolute bottom-8 left-6">
-            <div className="text-5xl sm:text-6xl font-light text-white">Aa</div>
-            <div className="mt-4 w-16 h-1 bg-[#F76F01]" />
-            <p className="text-white/50 text-xs mt-4">
-              Identity
-              <br />
-              Direction
-            </p>
-          </div>
+    <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 bg-white rounded-[22px] shadow-2xl overflow-hidden border border-[#d9e1e8]">
+        <div className="h-10 bg-[#f5f7f9] border-b border-[#e5e9ed] flex items-center px-4 gap-2 shrink-0">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <div className="ml-5 h-5 flex-1 max-w-[180px] rounded-md bg-white border border-[#e3e7eb]" />
         </div>
 
-        <div className="absolute top-0 right-0 w-[58%] h-full p-6">
-          <div className="flex justify-end">
-            <Palette className="text-[#F76F01]" size={20} />
-          </div>
-
-          <div className="mt-12">
-            <div className="text-[9px] uppercase tracking-widest text-[#8b969f]">Typography</div>
-            <div className="text-3xl sm:text-4xl font-bold text-[#132F48] mt-2">
-              Kode<span className="text-[#F76F01]">fiz</span>
-            </div>
-          </div>
-
-          <div className="mt-10">
-            <div className="text-[9px] uppercase tracking-widest text-[#8b969f] mb-3">Colors</div>
-            <div className="flex gap-2">
-              <div className="w-10 h-10 rounded-lg bg-[#132F48]" />
-              <div className="w-10 h-10 rounded-lg bg-[#F76F01]" />
-              <div className="w-10 h-10 rounded-lg bg-[#eef1f3]" />
-            </div>
-          </div>
-
-          <div className="mt-10 border-t border-[#edf0f2] pt-6">
-            <div className="text-[9px] uppercase tracking-widest text-[#8b969f]">UI Components</div>
-            <div className="flex gap-2 mt-3">
-              <div className="w-14 h-7 rounded-full bg-[#132F48]" />
-              <div className="w-14 h-7 rounded-full border border-[#132F48]" />
-            </div>
-          </div>
+        <div className="flex flex-col h-[calc(100%-40px)] overflow-hidden">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+          >
+            <source src="/Ux.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
 
@@ -143,39 +99,26 @@ const DesignCreative = () => {
 
 const VideoCreative = () => {
   return (
-    <div className="absolute inset-0 bg-[#101d2b] overflow-hidden">
-      <div className="absolute inset-[8%] rounded-[28px] overflow-hidden bg-[#172c40] border border-white/10">
-        <div className="absolute top-5 left-5 right-5 h-[58%] rounded-2xl bg-gradient-to-br from-[#F76F01] via-[#d94f00] to-[#132F48] overflow-hidden">
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute w-40 h-40 rounded-full bg-white -right-10 -top-20" />
-            <div className="absolute w-56 h-56 rounded-full border-[30px] border-white -left-20 -bottom-28" />
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
-              <Play size={25} fill="#132F48" className="text-[#132F48] ml-1" />
-            </div>
-          </div>
-          <div className="absolute bottom-4 left-4 right-4">
-            <div className="text-white text-lg sm:text-xl font-bold">STOP THE SCROLL.</div>
-            <div className="w-24 h-1 bg-white mt-2" />
-          </div>
+    <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 bg-white rounded-[22px] shadow-2xl overflow-hidden border border-[#d9e1e8]">
+        <div className="h-10 bg-[#f5f7f9] border-b border-[#e5e9ed] flex items-center px-4 gap-2 shrink-0">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <div className="ml-5 h-5 flex-1 max-w-[180px] rounded-md bg-white border border-[#e3e7eb]" />
         </div>
 
-        <div className="absolute bottom-6 left-5 right-5">
-          <div className="flex justify-between text-[8px] text-white/40 mb-2">
-            <span>00:12</span>
-            <span>00:32</span>
-          </div>
-          <div className="h-2 rounded-full bg-white/10 overflow-hidden">
-            <div className="h-full w-[65%] bg-[#F76F01]" />
-          </div>
-          <div className="grid grid-cols-5 gap-1 mt-4">
-            <div className="h-8 bg-[#F76F01]/30 rounded" />
-            <div className="h-8 bg-white/10 rounded" />
-            <div className="h-8 bg-[#F76F01]/50 rounded" />
-            <div className="h-8 bg-white/10 rounded" />
-            <div className="h-8 bg-white/10 rounded" />
-          </div>
+        <div className="flex flex-col h-[calc(100%-40px)] overflow-hidden">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+          >
+            <source src="/ugc.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
 
@@ -193,44 +136,26 @@ const VideoCreative = () => {
 
 const SeoCreative = () => {
   return (
-    <div className="absolute inset-0 bg-[#f1f5f7] overflow-hidden">
-      <div className="absolute inset-[8%] bg-white rounded-[28px] shadow-xl border border-[#e0e6eb] p-6 sm:p-8">
-        <div className="flex items-center justify-between">
-          <div>
-            <div className="text-xs uppercase tracking-widest text-[#8a96a0]">Search performance</div>
-            <div className="text-2xl sm:text-3xl font-bold text-[#132F48] mt-2">+184%</div>
-            <div className="text-xs text-[#F76F01] mt-1">Organic visibility</div>
-          </div>
-          <div className="w-11 h-11 rounded-xl bg-[#132F48] flex items-center justify-center">
-            <Search className="text-white" size={20} />
-          </div>
+    <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 bg-white rounded-[22px] shadow-2xl overflow-hidden border border-[#d9e1e8]">
+        <div className="h-10 bg-[#f5f7f9] border-b border-[#e5e9ed] flex items-center px-4 gap-2 shrink-0">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <div className="ml-5 h-5 flex-1 max-w-[180px] rounded-md bg-white border border-[#e3e7eb]" />
         </div>
 
-        <div className="relative h-40 mt-10 border-b border-l border-[#e6eaed]">
-          <svg viewBox="0 0 400 150" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-            <path
-              d="M0 130 C45 125 55 110 90 115 C125 120 130 85 165 90 C205 96 205 62 245 67 C285 72 290 35 325 42 C355 48 370 18 400 12"
-              fill="none"
-              stroke="#F76F01"
-              strokeWidth="4"
-            />
-          </svg>
-          <div className="absolute bottom-2 right-2 w-3 h-3 rounded-full bg-[#F76F01] ring-4 ring-[#F76F01]/20" />
-        </div>
-
-        <div className="grid grid-cols-3 gap-3 mt-7">
-          <div className="p-3 rounded-xl bg-[#f5f7f8]">
-            <div className="text-[9px] text-[#8b969f]">Clicks</div>
-            <div className="text-lg font-bold text-[#132F48]">24.8K</div>
-          </div>
-          <div className="p-3 rounded-xl bg-[#f5f7f8]">
-            <div className="text-[9px] text-[#8b969f]">Leads</div>
-            <div className="text-lg font-bold text-[#132F48]">1.9K</div>
-          </div>
-          <div className="p-3 rounded-xl bg-[#f5f7f8]">
-            <div className="text-[9px] text-[#8b969f]">ROAS</div>
-            <div className="text-lg font-bold text-[#132F48]">4.8x</div>
-          </div>
+        <div className="flex flex-col h-[calc(100%-40px)] overflow-hidden">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+          >
+            <source src="/seo_google.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
 
@@ -248,50 +173,26 @@ const SeoCreative = () => {
 
 const SocialCreative = () => {
   return (
-    <div className="absolute inset-0 bg-[#f4f1ee] overflow-hidden">
-      <div className="absolute inset-[8%] rounded-[28px] bg-white shadow-xl border border-[#e4dfda] p-5 sm:p-7">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-full bg-[#132F48] flex items-center justify-center">
-              <Instagram size={17} className="text-white" />
-            </div>
-            <div>
-              <div className="text-xs font-semibold text-[#132F48]">brand.studio</div>
-              <div className="text-[8px] text-[#9ba3aa]">Social content system</div>
-            </div>
-          </div>
-          <div className="text-[#F76F01]">
-            <Sparkles size={18} />
-          </div>
+    <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 bg-white rounded-[22px] shadow-2xl overflow-hidden border border-[#d9e1e8]">
+        <div className="h-10 bg-[#f5f7f9] border-b border-[#e5e9ed] flex items-center px-4 gap-2 shrink-0">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <div className="ml-5 h-5 flex-1 max-w-[180px] rounded-md bg-white border border-[#e3e7eb]" />
         </div>
 
-        <div className="grid grid-cols-3 gap-2 mt-7">
-          <div className="aspect-square rounded-xl bg-[#132F48] relative overflow-hidden">
-            <div className="absolute w-20 h-20 rounded-full bg-[#F76F01] -right-6 -top-6" />
-            <div className="absolute bottom-3 left-3 text-white text-[9px] font-bold">BRAND</div>
-          </div>
-          <div className="aspect-square rounded-xl bg-[#F76F01] relative overflow-hidden">
-            <div className="absolute inset-5 border border-white/40 rounded-full" />
-            <div className="absolute bottom-3 left-3 text-white text-[9px] font-bold">STORY</div>
-          </div>
-          <div className="aspect-square rounded-xl bg-[#dfe5e8] relative overflow-hidden">
-            <div className="absolute top-5 left-5 w-10 h-2 bg-[#132F48] rounded" />
-            <div className="absolute top-9 left-5 w-16 h-2 bg-[#132F48]/30 rounded" />
-          </div>
-          <div className="aspect-square rounded-xl bg-[#e9ecee]" />
-          <div className="aspect-square rounded-xl bg-[#132F48]" />
-          <div className="aspect-square rounded-xl bg-[#F76F01]" />
-        </div>
-
-        <div className="flex items-center justify-between mt-6">
-          <div>
-            <div className="text-xl font-bold text-[#132F48]">48.2K</div>
-            <div className="text-[9px] text-[#8d979f]">Monthly reach</div>
-          </div>
-          <div className="flex items-center gap-2 text-xs text-[#F76F01]">
-            <ArrowUpRight size={14} />
-            +42%
-          </div>
+        <div className="flex flex-col h-[calc(100%-40px)] overflow-hidden">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+          >
+            <source src="/social.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
 
@@ -309,61 +210,26 @@ const SocialCreative = () => {
 
 const AutomationCreative = () => {
   return (
-    <div className="absolute inset-0 bg-[#101d2b] overflow-hidden">
-      <div className="absolute inset-[8%] rounded-[28px] bg-[#142b40] border border-white/10 p-6 sm:p-8">
-        <div className="flex justify-between items-center">
-          <div>
-            <div className="text-[9px] tracking-[0.25em] uppercase text-white/40">Automation</div>
-            <div className="text-xl font-semibold text-white mt-2">Lead workflow</div>
-          </div>
-          <div className="w-10 h-10 rounded-xl bg-[#F76F01] flex items-center justify-center">
-            <Bot size={19} className="text-white" />
-          </div>
+    <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 bg-white rounded-[22px] shadow-2xl overflow-hidden border border-[#d9e1e8]">
+        <div className="h-10 bg-[#f5f7f9] border-b border-[#e5e9ed] flex items-center px-4 gap-2 shrink-0">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#d6dce2]" />
+          <div className="ml-5 h-5 flex-1 max-w-[180px] rounded-md bg-white border border-[#e3e7eb]" />
         </div>
 
-        <div className="relative mt-10 h-60">
-          <div className="absolute left-[23%] top-[45px] w-[25%] h-px bg-[#F76F01]" />
-          <div className="absolute left-[48%] top-[45px] w-[25%] h-px bg-[#F76F01]" />
-          <div className="absolute left-[48%] top-[45px] w-px h-[80px] bg-[#F76F01]" />
-          <div className="absolute left-[48%] top-[125px] w-[25%] h-px bg-[#F76F01]" />
-
-          <div className="absolute left-0 top-6 w-[23%]">
-            <div className="aspect-square max-w-[55px] mx-auto rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
-              <MousePointer2 size={18} className="text-white" />
-            </div>
-            <div className="text-[8px] text-white/50 text-center mt-2">New Lead</div>
-          </div>
-
-          <div className="absolute left-[37%] top-6 w-[23%]">
-            <div className="aspect-square max-w-[55px] mx-auto rounded-xl bg-[#F76F01] flex items-center justify-center">
-              <Workflow size={18} className="text-white" />
-            </div>
-            <div className="text-[8px] text-white/50 text-center mt-2">AI Process</div>
-          </div>
-
-          <div className="absolute right-0 top-6 w-[23%]">
-            <div className="aspect-square max-w-[55px] mx-auto rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
-              <Zap size={18} className="text-[#F76F01]" />
-            </div>
-            <div className="text-[8px] text-white/50 text-center mt-2">Follow Up</div>
-          </div>
-
-          <div className="absolute left-[37%] top-[125px] w-[23%]">
-            <div className="aspect-square max-w-[55px] mx-auto rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
-              <CheckCircle2 size={18} className="text-[#F76F01]" />
-            </div>
-            <div className="text-[8px] text-white/50 text-center mt-2">Qualified</div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-6 left-6 right-6 rounded-xl bg-white/5 border border-white/10 p-3 flex items-center gap-3">
-          <div className="w-7 h-7 rounded-lg bg-[#F76F01]/20 flex items-center justify-center">
-            <Sparkles size={13} className="text-[#F76F01]" />
-          </div>
-          <div>
-            <div className="text-[9px] text-white/80">AI workflow active</div>
-            <div className="text-[8px] text-white/40">24 tasks automated today</div>
-          </div>
+        <div className="flex flex-col h-[calc(100%-40px)] overflow-hidden">
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+          >
+            <source src="/ai_automation.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
 
@@ -496,8 +362,8 @@ const HomeServices = ({ showHeader = true }: { showHeader?: boolean }) => {
                         }`}
                       >
                         <div className="overflow-hidden">
-                          <div className="flex max-w-4xl flex-col gap-6 lg:flex-row-reverse lg:gap-10">
-                            <div className="w-full shrink-0 lg:w-[320px]">
+                          <div className="flex w-full flex-col gap-6 lg:flex-row-reverse lg:gap-10">
+                            <div className="w-full shrink-0 lg:w-[460px]">
                               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-xl">
                                 <Creative />
                               </div>

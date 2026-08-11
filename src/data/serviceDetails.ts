@@ -126,7 +126,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
     features: ["Conversion-focused UX", "Mobile-first design", "Fast load times", "SEO-ready builds", "Easy content management"],
     advantageTitle: "Your website should work as hard as your team.",
     advantageDescription:
-      "We combine strategy, design, and development so your site becomes a reliable growth asset—not just a digital brochure.",
+      "We combine strategy, design, and development so your site becomes a reliable growth asset—not just a static website.",
     heroImage: websiteDevelopment,
     cardTint: "bg-[#FFF4E8]",
   },

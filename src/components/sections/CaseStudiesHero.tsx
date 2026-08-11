@@ -4,12 +4,18 @@ import servicesWebp2 from "@/assets/Case Studies/afrimac.png";
 import servicesWebp3 from "@/assets/Case Studies/jonesshakes.png";
 import servicesWebp4 from "@/assets/Case Studies/calculator.png";
 import servicesWebp5 from "@/assets/Case Studies/proman.png";
-import servicesWebp6 from "@/assets/Case Studies/trotter_generalcon_tracting.png";
-import servicesWebp7 from "@/assets/Case Studies/Gravel_ridge.png";
-import servicesWebp8 from "@/assets/Case Studies/homestand.png";
-import servicesWebp9 from "@/assets/Case Studies/Masons_Exterior.png";
-import servicesWebp10 from "@/assets/Case Studies/Masons_exterior_builtreach.png";
-import servicesWebp11 from "@/assets/Case Studies/troy_cluthe_sales.png";
+import servicesWebp6 from "@/assets/Case Studies/alnisar.png";
+import servicesWebp7 from "@/assets/Case Studies/cabe.png";
+import servicesWebp8 from "@/assets/Case Studies/autofixc.png";
+import servicesWebp9 from "@/assets/Case Studies/businesstransaction.png";
+import servicesWebp10 from "@/assets/Case Studies/calculator.png";
+import servicesWebp11 from "@/assets/Case Studies/compression.png";
+import servicesWebp12 from "@/assets/Case Studies/emp.png";
+import servicesWebp13 from "@/assets/Case Studies/invoice.png";
+import servicesWebp14 from "@/assets/Case Studies/leadflow.png";
+import servicesWebp15 from "@/assets/Case Studies/panjkora.png";
+import servicesWebp16 from "@/assets/Case Studies/softechgenics.png";
+
 
 import { ArrowRight, Sparkles } from "lucide-react";
 
@@ -45,7 +51,7 @@ const CaseStudiesHero = () => {
       {/* Large navy glow - top left */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -top-48 -left-48 w-[650px] h-[650px] rounded-full blur-3xl opacity-70"
+        className="pointer-events-none absolute -top-48 -left-48 w-[850px] h-[650px] rounded-full blur-3xl opacity-70"
         style={{
           background:
             "radial-gradient(circle, rgba(19,47,72,0.18) 0%, rgba(19,47,72,0.06) 40%, rgba(19,47,72,0) 72%)",
@@ -287,8 +293,8 @@ const CaseStudiesHero = () => {
                     hover:shadow-[0_24px_60px_rgba(19,47,72,0.22)]
                   "
                   style={{
-                    width: "clamp(280px, 32vw, 400px)",
-                    height: "clamp(220px, 24vw, 300px)",
+                    width: "clamp(280px, 35vw, 530px)",
+                    height: "clamp(220px, 24vw, 350px)",
                   }}
                 >
 

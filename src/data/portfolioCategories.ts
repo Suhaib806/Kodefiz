@@ -12,7 +12,11 @@ import emp from "@/assets/Case Studies/emp.png";
 import compression from "@/assets/Case Studies/compression.png";
 import invoice from "@/assets/Case Studies/invoice.png";
 import LeadFlow from "@/assets/Case Studies/leadflow.png";
-
+import business from "@/assets/Case Studies/businesstransaction.png";
+import Home from "@/assets/Case Studies/Home.png";
+import Cloudtica from "@/assets/Case Studies/Cloudtica Home.png";
+import techpartner from "@/assets/Case Studies/techpartner.png";
+import walkthrough from "@/assets/Case Studies/wlkthru - Home.png";
 import { a } from "vitest/dist/chunks/suite.d.FvehnV49.js";
 
 export type PortfolioCategorySlug =
@@ -187,6 +191,16 @@ export const portfolioCategories: PortfolioCategory[] = [
         outcome: "Better first impression for high-ticket service inquiries.",
         tags: ["Custom Dev", "Lead Generation", "Saas"],
       },
+      {
+        id: "Business",
+        name: "Business Transaction Website",
+        client: "Business Website",
+        image: business,
+        alt: "Business Transaction Website",
+        description: "Business Transaction Website highlighting projects, credibility, and contact pathways.",
+        outcome: "Better first impression for high-ticket service inquiries.",
+        tags: ["Wordpress", "Investment Company", "Business Website"],
+      },
     ],
   },
   {
@@ -195,45 +209,47 @@ export const portfolioCategories: PortfolioCategory[] = [
     subtitle: "Brand systems, UI/UX, and visual design that make businesses look established and trustworthy.",
     projects: [
       {
-        id: "masons-exterior",
-        name: "Masons Exterior",
-        client: "Masons Exterior",
-        image: panjkora,
-        alt: "Masons Exterior brand and web design",
-        description: "Visual identity and web design aligned to a premium exterior services brand.",
-        outcome: "Stronger brand perception and clearer service positioning.",
-        tags: ["Brand Identity", "UI/UX", "Web Design"],
+        id: "home-design",
+        name: "Home Design",
+        client: "Home Design Portfolio",
+        image: Home,
+        alt: "Home design showcase",
+        description: "Modern web design and visual system for digital presence.",
+        outcome: "Enhanced brand representation and user experience.",
+        tags: ["UI/UX", "Web Design", "Visual Design"],
+      },
+       {
+        id: "Cloudtica",
+        name: "Cloudtica",
+        client: "Cloudtica",
+        image: Cloudtica,
+        alt: "Cloudtica web design",
+        description: "Modern web design and visual system for digital presence.",
+        outcome: "Enhanced brand representation and user experience.",
+        tags: ["UI/UX", "Web Design", "Visual Design"],
       },
       {
-        id: "gravel-ridge",
-        name: "Gravel Ridge",
-        client: "Gravel Ridge Outdoor Equipment",
-        image: Cabnearme,
-        alt: "Gravel Ridge design",
-        description: "Retail-focused design system with bold visuals and product-led layout structure.",
-        outcome: "More cohesive brand presentation across web touchpoints.",
-        tags: ["Retail", "Visual Design", "E-commerce UX"],
+        id: "TechPartner",
+        name: "TechPartner",
+        client: "Tech Partner",
+        image: techpartner,
+        alt: "TechPartner web design",
+        description: "Modern web design and visual system for digital presence.",
+        outcome: "Enhanced brand representation and user experience.",
+        tags: ["UI/UX", "Web Design", "Visual Design"],
       },
       {
-        id: "claymar-electric",
-        name: "Claymar Electric",
-        client: "Claymar Electric",
-        image: calculator,
-        alt: "Claymar Electric web design",
-        description: "Clean, professional design for a trades business with strong trust signals.",
-        outcome: "Improved clarity for service categories and contact conversion.",
-        tags: ["Trades", "Web Design", "Trust UX"],
+        id: "Walk Through",
+        name: "Walk Through",
+        client: "Walk Through",
+        image: walkthrough,
+        alt: "Walk Through web design",
+        description: "Modern web design and visual system for digital presence.",
+        outcome: "Enhanced brand representation and user experience.",
+        tags: ["UI/UX", "Web Design", "Visual Design"],
       },
-      {
-        id: "troy-cluthe",
-        name: "Troy Cluthe Sales",
-        client: "Troy Cluthe Sales",
-        image: emp,
-        alt: "Troy Cluthe Sales design",
-        description: "Personal brand and sales-focused web design built around authority and lead capture.",
-        outcome: "Sharper positioning for a professional sales brand.",
-        tags: ["Personal Brand", "Sales Pages", "UI/UX"],
-      },
+     
+      
     ],
   },
   {
