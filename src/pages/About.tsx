@@ -6,6 +6,7 @@ import HomeGlobalPresence from "@/components/sections/globalpresence";
 import HomeGetInTouch from "@/components/sections/HomeGetInTouch";
 import HomeFAQ from "@/components/sections/faq";
 import PageHero from "@/components/sections/PageHero";
+import aboutHero from "@/assets/about.jpeg";
 
 const About = () => {
   return (
@@ -21,6 +22,7 @@ const About = () => {
     </>
   }
   description="Not a freelancer. Not a task order desk. A growth partner that treats your business like it's our own."
+  imageSrc={aboutHero}
 />
 
       <AboutStory />

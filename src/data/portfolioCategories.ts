@@ -16,8 +16,21 @@ import business from "@/assets/Case Studies/businesstransaction.png";
 import Home from "@/assets/Case Studies/Home.png";
 import Cloudtica from "@/assets/Case Studies/Cloudtica Home.png";
 import techpartner from "@/assets/Case Studies/techpartner.png";
-import walkthrough from "@/assets/Case Studies/wlkthru - Home.png";
-import { a } from "vitest/dist/chunks/suite.d.FvehnV49.js";
+import ad1 from "@/assets/Case Studies/add1.jpeg";
+import ad2 from "@/assets/Case Studies/ad2.jpeg";
+import ad3 from "@/assets/Case Studies/ad3.jpeg";
+import ad4 from "@/assets/Case Studies/ad4.jpeg";
+import ad5 from "@/assets/Case Studies/ad5.jpeg";
+import automation from "@/assets/Case Studies/automation.jpeg";
+import automation2 from "@/assets/Case Studies/automation2.jpeg";
+import masonsVideo from "/jarvis.mp4";
+
+
+// NOTE: the stray `import { a } from "vitest/dist/chunks/suite.d.FvehnV49.js"`
+// that was in the previous version of this file is removed — that's a
+// vitest internal type-declaration chunk, not something meant to be
+// imported into application code. It was almost certainly pulled in by
+// an editor auto-import accident and wasn't being used anywhere below.
 
 export type PortfolioCategorySlug =
   | "web-development"
@@ -36,6 +49,7 @@ export type PortfolioProject = {
   description: string;
   outcome: string;
   tags: string[];
+  videoUrl?: string;
 };
 
 export type PortfolioCategory = {
@@ -91,7 +105,7 @@ export const portfolioCategories: PortfolioCategory[] = [
         outcome: "Better first impression for high-ticket service inquiries.",
         tags: ["Custom Dev", "Calc Conversion", "MVP"],
       },
-       {
+      {
         id: "afrimac",
         name: "Afrimac",
         client: "Afrimac",
@@ -151,7 +165,7 @@ export const portfolioCategories: PortfolioCategory[] = [
         outcome: "Better first impression for high-ticket service inquiries.",
         tags: ["Wordpress", "Auto Repair", "Service Marketplace"],
       },
-       {
+      {
         id: "emp",
         name: "Employee Management Portal",
         client: "Employee Management Portal",
@@ -171,7 +185,7 @@ export const portfolioCategories: PortfolioCategory[] = [
         outcome: "Better first impression for high-ticket service inquiries.",
         tags: ["Custom Dev", "Compression Tool", "Saas"],
       },
-       {
+      {
         id: "invoice",
         name: "Pdf Invoice Generator",
         client: "Pdf Invoice Generator",
@@ -218,7 +232,7 @@ export const portfolioCategories: PortfolioCategory[] = [
         outcome: "Enhanced brand representation and user experience.",
         tags: ["UI/UX", "Web Design", "Visual Design"],
       },
-       {
+      {
         id: "Cloudtica",
         name: "Cloudtica",
         client: "Cloudtica",
@@ -238,57 +252,71 @@ export const portfolioCategories: PortfolioCategory[] = [
         outcome: "Enhanced brand representation and user experience.",
         tags: ["UI/UX", "Web Design", "Visual Design"],
       },
-      {
-        id: "Walk Through",
-        name: "Walk Through",
-        client: "Walk Through",
-        image: walkthrough,
-        alt: "Walk Through web design",
-        description: "Modern web design and visual system for digital presence.",
-        outcome: "Enhanced brand representation and user experience.",
-        tags: ["UI/UX", "Web Design", "Visual Design"],
-      },
-     
-      
     ],
   },
   {
-    slug: "video",
-    title: "Video & UGC Creative",
-    subtitle: "Scroll-stopping video, UGC-style ads, and short-form content built for modern platforms.",
-    projects: [
-      {
-        id: "builders-podcast",
-        name: "Builders Game Podcast",
-        client: "Builders Game Podcast",
-        image: Afrimac,
-        alt: "Builders Game Podcast video creative",
-        description: "Podcast and promotional creative with strong visual hooks and platform-ready formats.",
-        outcome: "More engaging promotion assets for audience growth.",
-        tags: ["Podcast", "Short-form", "Promo Creative"],
-      },
-      {
-        id: "masons-builtreach-video",
-        name: "Masons Exterior Campaign",
-        client: "Masons Exterior / Builtreach",
-        image: alnisar,
-        alt: "Masons Exterior video campaign",
-        description: "Campaign visuals and video-ready creative supporting paid and organic promotion.",
-        outcome: "Stronger ad creative for service-based lead generation.",
-        tags: ["UGC Style", "Ad Creative", "Campaign"],
-      },
-      {
-        id: "bidm8-supplier-video",
-        name: "BidM8 Supplier Promo",
-        client: "BidM8 Supplier",
-        image: Furniture,
-        alt: "BidM8 supplier promotional creative",
-        description: "Promotional creative and motion-led assets for B2B audience engagement.",
-        outcome: "Clearer product storytelling for supplier-facing campaigns.",
-        tags: ["B2B", "Promo Video", "Motion"],
-      },
-    ],
-  },
+  slug: "video",
+  title: "Video & UGC Creative",
+  subtitle:
+    "Scroll-stopping video, UGC-style ads, and short-form content built for modern platforms.",
+  projects: [
+    {
+      id: "builders-podcast",
+      name: "Builders Game Podcast",
+      client: "Builders Game Podcast",
+      image: "",
+      alt: "Builders Game Podcast video",
+      description: "",
+      outcome: "",
+      tags: [],
+      videoUrl: "/ugc.mp4",
+    },
+    {
+      id: "masons-builtreach-video",
+      name: "Masons Exterior Campaign",
+      client: "Masons Exterior",
+      image: "",
+      alt: "Masons Exterior video",
+      description: "",
+      outcome: "",
+      tags: [],
+      videoUrl: "/ugc1.mp4",
+    },
+    {
+      id: "bidm8-supplier-video",
+      name: "BidM8 Supplier Promo",
+      client: "BidM8 Supplier",
+      image: "",
+      alt: "BidM8 supplier promotional video",
+      description: "",
+      outcome: "",
+      tags: [],
+      videoUrl: "/ugc2.mp4",
+    },
+    {
+      id: "bidm8-supplier-video",
+      name: "BidM8 Supplier Promo",
+      client: "BidM8 Supplier",
+      image: "",
+      alt: "BidM8 supplier promotional video",
+      description: "",
+      outcome: "",
+      tags: [],
+      videoUrl: "/ugc3.mp4",
+    },
+    {
+      id: "bidm8-supplier-video",
+      name: "BidM8 Supplier Promo",
+      client: "BidM8 Supplier",
+      image: "",
+      alt: "BidM8 supplier promotional video",
+      description: "",
+      outcome: "",
+      tags: [],
+      videoUrl: "/ugc4.mp4",
+    },
+  ],
+},
   {
     slug: "seo-marketing",
     title: "SEO & Google Ads",
@@ -298,7 +326,7 @@ export const portfolioCategories: PortfolioCategory[] = [
         id: "bidm8-seo",
         name: "BidM8 Search Growth",
         client: "BidM8",
-        image: jonesshakes,
+        image: ad1,
         alt: "BidM8 SEO and ads",
         description: "Search-focused landing structure and campaign-ready pages for high-intent keywords.",
         outcome: "Better alignment between ad traffic and on-site conversion paths.",
@@ -308,7 +336,7 @@ export const portfolioCategories: PortfolioCategory[] = [
         id: "705-seo",
         name: "705 Contractors Local Search",
         client: "705 Contractors",
-        image: heroBg,
+        image: ad2,
         alt: "705 Contractors SEO",
         description: "Local SEO structure, service-area pages, and search-friendly site architecture.",
         outcome: "Improved discoverability for local service searches.",
@@ -318,7 +346,27 @@ export const portfolioCategories: PortfolioCategory[] = [
         id: "homestand-ads",
         name: "Homestand Acquisition",
         client: "Homestand",
-        image: Softechgenics,
+        image: ad3,
+        alt: "Homestand marketing",
+        description: "Paid and organic search strategy supporting consultation-driven lead generation.",
+        outcome: "More consistent inbound interest from search channels.",
+        tags: ["Google Ads", "SEO", "Consultations"],
+      },
+      {
+        id: "homestand-ads",
+        name: "Homestand Acquisition",
+        client: "Homestand",
+        image: ad4,
+        alt: "Homestand marketing",
+        description: "Paid and organic search strategy supporting consultation-driven lead generation.",
+        outcome: "More consistent inbound interest from search channels.",
+        tags: ["Google Ads", "SEO", "Consultations"],
+      },
+{
+        id: "homestand-ads",
+        name: "Homestand Acquisition",
+        client: "Homestand",
+        image: ad5,
         alt: "Homestand marketing",
         description: "Paid and organic search strategy supporting consultation-driven lead generation.",
         outcome: "More consistent inbound interest from search channels.",
@@ -326,88 +374,81 @@ export const portfolioCategories: PortfolioCategory[] = [
       },
     ],
   },
-  {
-    slug: "social-media",
-    title: "Social Media Growth",
-    subtitle: "Consistent content systems that build attention, trust, and demand across social platforms.",
-    projects: [
-      {
-        id: "masons-social",
-        name: "Masons Exterior Social",
-        client: "Masons Exterior",
-        image: alnisar,
-        alt: "Masons Exterior social media",
-        description: "Social creative direction and content formats aligned to a premium service brand.",
-        outcome: "More cohesive social presence and stronger project showcase content.",
-        tags: ["Social Creative", "Content System", "Brand"],
-      },
-      {
-        id: "gravel-ridge-social",
-        name: "Gravel Ridge Social",
-        client: "Gravel Ridge",
-        image: Cabnearme,
-        alt: "Gravel Ridge social media",
-        description: "Retail-focused social templates and campaign visuals for product promotion.",
-        outcome: "Better consistency across seasonal and product-led posts.",
-        tags: ["Retail Social", "Templates", "Campaigns"],
-      },
-      {
-        id: "builders-social",
-        name: "Builders Game Social",
-        client: "Builders Game Podcast",
-        image: Afrimac,
-        alt: "Builders Game social content",
-        description: "Episode promotion assets and short-form content designed for discovery.",
-        outcome: "Stronger clip and promo output for audience growth.",
-        tags: ["Podcast Clips", "Short-form", "Promotion"],
-      },
-      {
-        id: "builders-social",
-        name: "Builders Game Social",
-        client: "Builders Game Podcast",
-        image: Afrimac,
-        alt: "Builders Game social content",
-        description: "Episode promotion assets and short-form content designed for discovery.",
-        outcome: "Stronger clip and promo output for audience growth.",
-        tags: ["Podcast Clips", "Short-form", "Promotion"],
-      },
-    ],
-  },
-  {
-    slug: "ai-automation",
-    title: "AI Automation",
-    subtitle: "Workflows and integrations that remove repetitive work and help teams respond faster.",
-    projects: [
-      {
-        id: "bidm8-automation",
-        name: "BidM8 Workflow Automation",
-        client: "BidM8",
-        image: Furniture,
-        alt: "BidM8 automation",
-        description: "Lead routing and follow-up automations connecting forms, CRM, and internal notifications.",
-        outcome: "Faster response times and less manual handoff between teams.",
-        tags: ["CRM", "Lead Routing", "Make.com"],
-      },
-      {
-        id: "builtreach-automation",
-        name: "Builtreach Client Systems",
-        client: "Builtreach / Masons Exterior",
-        image: alnisar,
-        alt: "Builtreach automation systems",
-        description: "Marketing and operations automations supporting client campaign workflows.",
-        outcome: "Reduced manual coordination across campaign delivery.",
-        tags: ["Automation", "Marketing Ops", "Integrations"],
-      },
-      {
-        id: "consulting-automation",
-        name: "Consulting Lead Engine",
-        client: "Professional Services",
-        image: emp,
-        alt: "Consulting automation workflow",
-        description: "Consultation booking, follow-up sequences, and CRM automation for service businesses.",
-        outcome: "More reliable lead nurturing without adding headcount.",
-        tags: ["AI Workflows", "CRM", "Follow-up"],
-      },
-    ],
-  },
+  // {
+  //   slug: "social-media",
+  //   title: "Social Media Growth",
+  //   subtitle: "Consistent content systems that build attention, trust, and demand across social platforms.",
+  //   projects: [
+  //     {
+  //       id: "masons-social",
+  //       name: "Masons Exterior Social",
+  //       client: "Masons Exterior",
+  //       image: alnisar,
+  //       alt: "Masons Exterior social media",
+  //       description: "Social creative direction and content formats aligned to a premium service brand.",
+  //       outcome: "More cohesive social presence and stronger project showcase content.",
+  //       tags: ["Social Creative", "Content System", "Brand"],
+  //     },
+  //     {
+  //       id: "gravel-ridge-social",
+  //       name: "Gravel Ridge Social",
+  //       client: "Gravel Ridge",
+  //       image: Cabnearme,
+  //       alt: "Gravel Ridge social media",
+  //       description: "Retail-focused social templates and campaign visuals for product promotion.",
+  //       outcome: "Better consistency across seasonal and product-led posts.",
+  //       tags: ["Retail Social", "Templates", "Campaigns"],
+  //     },
+  //     {
+  //       id: "builders-social",
+  //       name: "Builders Game Social",
+  //       client: "Builders Game Podcast",
+  //       image: Afrimac,
+  //       alt: "Builders Game social content",
+  //       description: "Episode promotion assets and short-form content designed for discovery.",
+  //       outcome: "Stronger clip and promo output for audience growth.",
+  //       tags: ["Podcast Clips", "Short-form", "Promotion"],
+  //     },
+  //   ],
+  // },
+ {
+  slug: "ai-automation",
+  title: "AI Automation",
+  subtitle:
+    "Workflows and integrations that remove repetitive work and help teams respond faster.",
+  projects: [
+    {
+      id: "automation-dashboard",
+      name: "AI Automation Dashboard",
+      client: "AI",
+      image: automation2,
+      alt: "AI automation dashboard",
+      description: "",
+      outcome: "",
+      tags: [],
+    },
+    {
+      id: "automation-workflow",
+      name: "Automated Workflow",
+      client: "AI Automation",
+      image: automation,
+      alt: "AI automation workflow",
+      description: "",
+      outcome: "",
+      tags: [],
+    },
+   
+    {
+      id: "automation-demo",
+      name: "Automation Process",
+      client: "Jarvis Ai",
+      image: "",
+      alt: "AI automation process video",
+      description: "",
+      outcome: "",
+      tags: [],
+      videoUrl: masonsVideo,
+    },
+  ],
+},
 ];

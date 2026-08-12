@@ -140,6 +140,7 @@ export const techGroups = [
   { label: "Backend", items: ["Node.js", "Laravel", "Python", "PostgreSQL"] },
   { label: "AI & Data", items: ["OpenAI", "LangChain", "Pinecone", "Snowflake"] },
   { label: "Infrastructure", items: ["AWS", "Vercel", "Docker", "Cloudflare"] },
+  { label: "CMS", items: ["Wordpress", "Shopify", "Woocommerce", "Webflow", "framer", "GHL"] },
 ];
 
 export const clientStories = [

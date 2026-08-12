@@ -4,6 +4,12 @@ import makeLogo from "@/assets/make.png";
 import seoContentWriting from "@/assets/seo.jpg";
 import websiteDevelopment from "@/assets/web_development.jpg";
 import zapierLogo from "@/assets/Zapier.png";
+import web from "/Website.mp4";
+import ui from "/Ux.mp4";
+import ai from "/ugc.mp4";
+import seo from "/seo_google.mp4";
+import socail from "/social.mp4";
+import automations from "/ai_automation.mp4"
 
 export type ServiceSlug =
   | "websites-online-stores"
@@ -42,6 +48,25 @@ export type ServiceDetail = {
   advantageTitle: string;
   advantageDescription: string;
   heroImage: string;
+  /**
+   * Optional hero banner video for this service's detail page. When
+   * present, ServiceDetailPage passes `useVideo={true}` to PageHero and
+   * this becomes the video source (with `heroImage` still passed as the
+   * fallback/poster). When absent, the page falls back to the plain
+   * `heroImage` banner exactly as before — so you can add these one
+   * service at a time without breaking the others.
+   *
+   * Import real video files the same way `websiteDevelopment` etc. are
+   * imported above, e.g.:
+   *   import websiteDevVideo from "@/assets/videos/websites-hero.mp4";
+   * then set `heroVideo: websiteDevVideo` below.
+   *
+   * Keep these compressed (H.264 MP4, ideally a few MB) — hero videos
+   * ARE meant to load eagerly (they're above the fold on page load,
+   * unlike the lazy-loaded portfolio preview cards), so file size
+   * directly affects how fast the page feels on load.
+   */
+  heroVideo?: string;
   cardTint: string;
   extraSections?: ServiceExtraSection[];
   faqs?: ServiceFAQ[];
@@ -128,6 +153,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
     advantageDescription:
       "We combine strategy, design, and development so your site becomes a reliable growth asset—not just a static website.",
     heroImage: websiteDevelopment,
+    heroVideo: web,  
     cardTint: "bg-[#FFF4E8]",
   },
   "brand-ui-ux-design": {
@@ -168,6 +194,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
     advantageDescription:
       "We help you look like the category leader you are becoming—with visuals that build credibility and make every interaction feel on-brand.",
     heroImage: digitalMarketing,
+    heroVideo: ui,
     cardTint: "bg-[#F3EEFF]",
   },
   "ai-video-ugc-creative": {
@@ -208,6 +235,9 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
     advantageDescription:
       "We help you test more angles, launch faster, and find winning creative without juggling multiple freelancers.",
     heroImage: digitalMarketing,
+    heroVideo: ai,
+    // strong candidate to prioritize first, since a video hero for a
+    // "we make video content" page is the most self-evidently on-brand.
     cardTint: "bg-[#E8F4FF]",
   },
   "seo-google-ads": {
@@ -248,6 +278,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
     advantageDescription:
       "We connect search strategy to business outcomes—helping you show up where it matters and convert that traffic into real opportunities.",
     heroImage: seoContentWriting,
+    heroVideo: seo,
     cardTint: "bg-[#FFF4E8]",
   },
   "social-media-growth": {
@@ -288,6 +319,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
     advantageDescription:
       "We treat social as a growth channel, not a checkbox—building systems that create attention, trust, and demand over time.",
     heroImage: digitalMarketing,
+    heroVideo: socail,
     cardTint: "bg-[#F3EEFF]",
   },
   "ai-automation": {
@@ -354,6 +386,7 @@ export const serviceDetails: Record<ServiceSlug, ServiceDetail> = {
     advantageDescription:
       "We help you reclaim hours every week by replacing manual tasks with reliable automations that keep your business moving.",
     heroImage: automation,
+    heroVideo: automations,
     cardTint: "bg-[#E8F4FF]",
   },
 };

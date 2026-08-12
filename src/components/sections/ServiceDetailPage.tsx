@@ -13,11 +13,24 @@ const ServiceDetailPage = ({ service }: ServiceDetailPageProps) => {
 
   return (
     <>
+      {/* ASSUMPTION: PageHero accepts a `videoSrc` prop alongside the
+          `useVideo` flag it already has (that flag wouldn't exist
+          otherwise). If PageHero's actual video prop is named
+          differently — e.g. `heroVideo`, `videoUrl` — this is the one
+          line to rename; everything else here is unaffected.
+
+          `useVideo` is now derived from whether this specific service
+          has a `heroVideo` set in serviceDetails.ts, rather than being
+          hardcoded to false. Services without one yet fall back to the
+          plain image banner automatically — nothing breaks while you
+          add video files one service at a time. `imageSrc` is still
+          passed alongside the video as a fallback/poster. */}
       <PageHero
         badge={service.number}
         title={service.title}
         description={service.heroIntro}
-        useVideo={false}
+        useVideo={Boolean(service.heroVideo)}
+        videoSrc={service.heroVideo}
         imageSrc={service.heroImage}
       />
 

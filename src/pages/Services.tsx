@@ -1,6 +1,7 @@
 import HomeServices from "@/components/sections/HomeServices";
 import HomeGetInTouch from "@/components/sections/HomeGetInTouch";
 import PageHero from "@/components/sections/PageHero";
+import srvcHero from "@/assets/Services.png";
 
 const Services = () => {
   return (
@@ -15,6 +16,7 @@ const Services = () => {
           </>
         }
         description="From high-converting websites and memorable brands to AI-powered marketing systems, we bring strategy, creativity, and technology together under one team."
+        imageSrc={srvcHero}
       />
 
       <HomeServices showHeader={false} />

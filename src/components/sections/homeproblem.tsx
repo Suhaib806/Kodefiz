@@ -1,4 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
+import about from "@/assets/Case Studies/proman.png";
+import ad from "@/assets/ad.jpeg";
+// Add these imports at the top of your file
+import image1 from "@/assets/image1.jpeg";
+import image2 from "@/assets/image2.jpeg";
+import image3 from "@/assets/image4.jpeg";
+import image4 from "@/assets/image5.jpeg";
+import socialVideo from "@/assets/social.mp4";
 
 /**
  * PROBLEM / AGITATION SECTION — "Sound Familiar?"
@@ -56,7 +64,10 @@ const ProblemAgitation = () => {
   });
 
   return (
-    <section ref={ref} className="relative bg-white py-24 lg:py-32 px-5 md:px-12 lg:px-20 overflow-hidden">
+    <section
+      ref={ref}
+      className="relative bg-white py-24 lg:py-32 px-5 md:px-12 lg:px-20 overflow-hidden"
+    >
       <div
         aria-hidden
         className="pointer-events-none absolute top-0 left-[-5%] h-[360px] w-[360px] rounded-full blur-[100px]"
@@ -68,7 +79,10 @@ const ProblemAgitation = () => {
         <div className="max-w-2xl">
           <div
             className="flex items-center gap-3 mb-8 transition-all duration-700 ease-out"
-            style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)" }}
+            style={{
+              opacity: visible ? 1 : 0,
+              transform: visible ? "translateY(0)" : "translateY(16px)",
+            }}
           >
             <span className="inline-flex h-[10px] w-[10px] rounded-full bg-brand" />
             <span className="text-xs tracking-[0.22em] font-medium text-navy-400 uppercase">
@@ -98,7 +112,10 @@ const ProblemAgitation = () => {
                   transitionDelay: `${180 + i * 90}ms`,
                 }}
               >
-                <span className="mt-[13px] h-px w-6 shrink-0 bg-navy-300" aria-hidden />
+                <span
+                  className="mt-[13px] h-px w-6 shrink-0 bg-navy-300"
+                  aria-hidden
+                />
                 <span className="text-[18px] sm:text-[20px] leading-snug text-navy-950">
                   {point}
                 </span>
@@ -115,8 +132,8 @@ const ProblemAgitation = () => {
             }}
           >
             That's not a marketing problem. That's a{" "}
-            <span style={{ color: "#F76F01" }}>systems problem</span> — and
-            it's exactly what we fix.
+            <span style={{ color: "#F76F01" }}>systems problem</span> — and it's
+            exactly what we fix.
           </p>
         </div>
 
@@ -127,22 +144,50 @@ const ProblemAgitation = () => {
           className="hidden lg:grid grid-cols-2 gap-6 mt-16 lg:mt-0"
         >
           {/* 1. Website — browser chrome, empty state, bad stat */}
-          <div className="rounded-[24px] overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.14)]" style={cardStyle(0, -3)}>
+          <div
+            className="rounded-[24px] overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.14)]"
+            style={cardStyle(0, -3)}
+          >
             <div className="bg-white h-[220px] flex flex-col">
-              <div className="flex items-center gap-1.5 px-3 py-2.5 border-b" style={{ borderColor: "#E4E7EB" }}>
-                <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "#D1D5DB" }} />
-                <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "#D1D5DB" }} />
-                <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "#D1D5DB" }} />
-                <span className="ml-2 flex-1 rounded-full h-4" style={{ backgroundColor: "#F1F3F5" }} />
+              <div
+                className="flex items-center gap-1.5 px-3 py-2.5 border-b"
+                style={{ borderColor: "#E4E7EB" }}
+              >
+                <span
+                  className="h-2 w-2 rounded-full"
+                  style={{ backgroundColor: "#D1D5DB" }}
+                />
+                <span
+                  className="h-2 w-2 rounded-full"
+                  style={{ backgroundColor: "#D1D5DB" }}
+                />
+                <span
+                  className="h-2 w-2 rounded-full"
+                  style={{ backgroundColor: "#D1D5DB" }}
+                />
+                <span
+                  className="ml-2 flex-1 rounded-full h-4"
+                  style={{ backgroundColor: "#F1F3F5" }}
+                />
               </div>
-              <div className="flex-1 p-4 space-y-2.5">
-                <div className="h-3 w-3/4 rounded" style={{ backgroundColor: "#E4E7EB" }} />
-                <div className="h-3 w-1/2 rounded" style={{ backgroundColor: "#E4E7EB" }} />
-                <div className="h-16 w-full rounded-lg mt-3" style={{ backgroundColor: "#F1F3F5" }} />
+              <div className="flex-1  space-y-2.5">
+                <img
+                  src={about}
+                  alt=""
+                  className="h-full w-full object-cover"
+                />
               </div>
-              <div className="px-4 py-3 flex items-center justify-between" style={{ backgroundColor: "#F8F9FA" }}>
-                <span className="text-[11px] font-medium text-navy-950">Website</span>
-                <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>
+              <div
+                className="px-4 py-3 flex items-center justify-between"
+                style={{ backgroundColor: "#F8F9FA" }}
+              >
+                <span className="text-[11px] font-medium text-navy-950">
+                  Website
+                </span>
+                <span
+                  className="text-[11px] font-semibold"
+                  style={{ color: NEGATIVE }}
+                >
                   0 leads this month
                 </span>
               </div>
@@ -150,40 +195,98 @@ const ProblemAgitation = () => {
           </div>
 
           {/* 2. Social — mismatched grid, stale caption */}
-          <div className="rounded-[24px] overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.14)] mt-10" style={cardStyle(1, 4)}>
-            <div className="bg-white h-[220px] flex flex-col">
-              <div className="grid grid-cols-3 gap-[2px] flex-1 p-[2px]">
-                {[MUTED_1, "#C7CDD4", MUTED_2, "#DADFE4", MUTED_1, "#B8C0C9", MUTED_2, "#C7CDD4", MUTED_1].map((c, idx) => (
-                  <div key={idx} style={{ backgroundColor: c }} />
-                ))}
-              </div>
-              <div className="px-4 py-3 flex items-center justify-between" style={{ backgroundColor: "#F8F9FA" }}>
-                <span className="text-[11px] font-medium text-navy-950">Social</span>
-                <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>
-                  Last post: 47 days ago
-                </span>
-              </div>
-            </div>
-          </div>
+          <div
+  className="rounded-[24px] overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.14)] mt-10"
+  style={cardStyle(1, 4)}
+>
+  <div className="bg-white h-[220px] flex flex-col">
+
+    {/* Video */}
+    <div className="relative flex-1 overflow-hidden bg-[#132F48]">
+
+      <video
+        src={socialVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+
+      {/* Subtle overlay */}
+      <div className="absolute inset-0 bg-[#132F48]/20 pointer-events-none" />
+
+      {/* Play button */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div
+          className="h-12 w-12 rounded-full bg-white/95 flex items-center justify-center shadow-lg"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            className="ml-0.5"
+          >
+            <path
+              d="M5 3.5L12 8L5 12.5V3.5Z"
+              fill="#132F48"
+            />
+          </svg>
+        </div>
+      </div>
+
+      {/* Video label */}
+      <div className="absolute top-3 left-3">
+        <span className="px-3 py-1.5 rounded-full bg-white/90 text-[10px] font-semibold text-[#132F48] uppercase tracking-[0.12em]">
+          Social Creative
+        </span>
+      </div>
+
+    </div>
+
+    {/* Bottom info */}
+    <div
+      className="px-4 py-3 flex items-center justify-between"
+      style={{ backgroundColor: "#F8F9FA" }}
+    >
+      <span className="text-[11px] font-medium text-navy-950">
+        Social Video
+      </span>
+
+      <span
+        className="text-[11px] font-semibold"
+        style={{ color: NEGATIVE }}
+      >
+        Short-form Creative
+      </span>
+    </div>
+
+  </div>
+</div>
 
           {/* 3. Ads — banner unit, bad CTR */}
-          <div className="rounded-[24px] overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.14)]" style={cardStyle(2, 3)}>
+          <div
+            className="rounded-[24px] overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.14)]"
+            style={cardStyle(2, 3)}
+          >
             <div className="bg-white h-[220px] flex flex-col">
-              <div className="flex-1 p-4 flex flex-col justify-center gap-3" style={{ backgroundColor: "#F8F9FA" }}>
-                <div
-                  className="rounded-xl p-4 flex flex-col gap-2"
-                  style={{ background: `linear-gradient(155deg, ${MUTED_1} 0%, ${MUTED_2} 100%)` }}
-                >
-                  <div className="h-2.5 w-2/3 rounded bg-white/50" />
-                  <div className="h-2 w-1/2 rounded bg-white/30" />
-                  <div className="mt-1 h-6 w-16 rounded-full bg-white/25 flex items-center justify-center">
-                    <span className="text-[9px] text-white/70">Shop Now</span>
-                  </div>
+              <div
+                className="flex-1  flex flex-col justify-center gap-3"
+                style={{ backgroundColor: "#F8F9FA" }}
+              >
+                <div className="flex-1  space-y-2.5">
+                  <img src={ad} alt="" className="h-full w-full object-cover" />
                 </div>
               </div>
               <div className="px-4 py-3 flex items-center justify-between bg-white">
-                <span className="text-[11px] font-medium text-navy-950">Ad Creative</span>
-                <span className="text-[11px] font-semibold flex items-center gap-1" style={{ color: NEGATIVE }}>
+                <span className="text-[11px] font-medium text-navy-950">
+                  Ad Creative
+                </span>
+                <span
+                  className="text-[11px] font-semibold flex items-center gap-1"
+                  style={{ color: NEGATIVE }}
+                >
                   CTR 0.3% ↓
                 </span>
               </div>
@@ -191,28 +294,69 @@ const ProblemAgitation = () => {
           </div>
 
           {/* 4. Freelancers — avatar stack, unvetted marker */}
-          <div className="rounded-[24px] overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.14)] mt-10" style={cardStyle(3, -4)}>
+          <div
+            className="rounded-[24px] overflow-hidden shadow-[0_24px_60px_rgba(15,23,42,0.14)] mt-10"
+            style={cardStyle(3, -4)}
+          >
             <div className="bg-white h-[220px] flex flex-col">
-              <div className="flex-1 flex items-center justify-center" style={{ backgroundColor: "#F8F9FA" }}>
+              {/* Image avatars */}
+              <div
+                className="flex-1 flex items-center justify-center"
+                style={{ backgroundColor: "#F8F9FA" }}
+              >
                 <div className="flex -space-x-3">
-                  {[MUTED_1, "#B8C0C9", MUTED_2, "#C7CDD4"].map((c, idx) => (
-                    <span
-                      key={idx}
-                      className="h-11 w-11 rounded-full border-2 border-white"
-                      style={{ backgroundColor: c }}
-                    />
-                  ))}
+                  {/* Image 1 */}
+                  <img
+                    src={image1}
+                    alt="Team member 1"
+                    className="h-11 w-11 rounded-full border-2 border-white object-cover"
+                  />
+
+                  {/* Image 2 */}
+                  <img
+                    src={image2}
+                    alt="Team member 2"
+                    className="h-11 w-11 rounded-full border-2 border-white object-cover"
+                  />
+
+                  {/* Image 3 */}
+                  <img
+                    src={image3}
+                    alt="Team member 3"
+                    className="h-11 w-11 rounded-full border-2 border-white object-cover"
+                  />
+
+                  {/* Image 4 */}
+                  <img
+                    src={image4}
+                    alt="Team member 4"
+                    className="h-11 w-11 rounded-full border-2 border-white object-cover"
+                  />
+
+                  {/* More indicator */}
                   <span
                     className="h-11 w-11 rounded-full border-2 border-dashed flex items-center justify-center text-[13px] font-semibold"
-                    style={{ borderColor: NEGATIVE, color: NEGATIVE, backgroundColor: "#fff" }}
+                    style={{
+                      borderColor: NEGATIVE,
+                      color: NEGATIVE,
+                      backgroundColor: "#fff",
+                    }}
                   >
-                    ?
+                    +
                   </span>
                 </div>
               </div>
+
+              {/* Bottom info */}
               <div className="px-4 py-3 flex items-center justify-between bg-white">
-                <span className="text-[11px] font-medium text-navy-950">Freelancers</span>
-                <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>
+                <span className="text-[11px] font-medium text-navy-950">
+                  Freelancers
+                </span>
+
+                <span
+                  className="text-[11px] font-semibold"
+                  style={{ color: NEGATIVE }}
+                >
                   #14 this year
                 </span>
               </div>
@@ -235,18 +379,41 @@ const ProblemAgitation = () => {
 const MobileMockupWebsite = () => (
   <div className="rounded-[24px] overflow-hidden shadow-[0_16px_40px_rgba(15,23,42,0.10)]">
     <div className="bg-white h-[190px] flex flex-col">
-      <div className="flex items-center gap-1.5 px-3 py-2.5 border-b" style={{ borderColor: "#E4E7EB" }}>
-        <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "#D1D5DB" }} />
-        <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "#D1D5DB" }} />
-        <span className="h-2 w-2 rounded-full" style={{ backgroundColor: "#D1D5DB" }} />
+      <div
+        className="flex items-center gap-1.5 px-3 py-2.5 border-b"
+        style={{ borderColor: "#E4E7EB" }}
+      >
+        <span
+          className="h-2 w-2 rounded-full"
+          style={{ backgroundColor: "#D1D5DB" }}
+        />
+        <span
+          className="h-2 w-2 rounded-full"
+          style={{ backgroundColor: "#D1D5DB" }}
+        />
+        <span
+          className="h-2 w-2 rounded-full"
+          style={{ backgroundColor: "#D1D5DB" }}
+        />
       </div>
       <div className="flex-1 p-4 space-y-2">
-        <div className="h-3 w-3/4 rounded" style={{ backgroundColor: "#E4E7EB" }} />
-        <div className="h-3 w-1/2 rounded" style={{ backgroundColor: "#E4E7EB" }} />
+        <div
+          className="h-3 w-3/4 rounded"
+          style={{ backgroundColor: "#E4E7EB" }}
+        />
+        <div
+          className="h-3 w-1/2 rounded"
+          style={{ backgroundColor: "#E4E7EB" }}
+        />
       </div>
-      <div className="px-4 py-3 flex items-center justify-between" style={{ backgroundColor: "#F8F9FA" }}>
+      <div
+        className="px-4 py-3 flex items-center justify-between"
+        style={{ backgroundColor: "#F8F9FA" }}
+      >
         <span className="text-[11px] font-medium text-navy-950">Website</span>
-        <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>0 leads</span>
+        <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>
+          0 leads
+        </span>
       </div>
     </div>
   </div>
@@ -256,13 +423,20 @@ const MobileMockupSocial = () => (
   <div className="rounded-[24px] overflow-hidden shadow-[0_16px_40px_rgba(15,23,42,0.10)]">
     <div className="bg-white h-[190px] flex flex-col">
       <div className="grid grid-cols-3 gap-[2px] flex-1 p-[2px]">
-        {[MUTED_1, "#C7CDD4", MUTED_2, "#DADFE4", MUTED_1, "#B8C0C9"].map((c, idx) => (
-          <div key={idx} style={{ backgroundColor: c }} />
-        ))}
+        {[MUTED_1, "#C7CDD4", MUTED_2, "#DADFE4", MUTED_1, "#B8C0C9"].map(
+          (c, idx) => (
+            <div key={idx} style={{ backgroundColor: c }} />
+          ),
+        )}
       </div>
-      <div className="px-4 py-3 flex items-center justify-between" style={{ backgroundColor: "#F8F9FA" }}>
+      <div
+        className="px-4 py-3 flex items-center justify-between"
+        style={{ backgroundColor: "#F8F9FA" }}
+      >
         <span className="text-[11px] font-medium text-navy-950">Social</span>
-        <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>47 days ago</span>
+        <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>
+          47 days ago
+        </span>
       </div>
     </div>
   </div>
@@ -271,15 +445,27 @@ const MobileMockupSocial = () => (
 const MobileMockupAds = () => (
   <div className="rounded-[24px] overflow-hidden shadow-[0_16px_40px_rgba(15,23,42,0.10)]">
     <div className="bg-white h-[190px] flex flex-col">
-      <div className="flex-1 p-4 flex items-center" style={{ backgroundColor: "#F8F9FA" }}>
-        <div className="rounded-xl p-3 w-full" style={{ background: `linear-gradient(155deg, ${MUTED_1} 0%, ${MUTED_2} 100%)` }}>
+      <div
+        className="flex-1 p-4 flex items-center"
+        style={{ backgroundColor: "#F8F9FA" }}
+      >
+        <div
+          className="rounded-xl p-3 w-full"
+          style={{
+            background: `linear-gradient(155deg, ${MUTED_1} 0%, ${MUTED_2} 100%)`,
+          }}
+        >
           <div className="h-2.5 w-2/3 rounded bg-white/50 mb-2" />
           <div className="h-2 w-1/2 rounded bg-white/30" />
         </div>
       </div>
       <div className="px-4 py-3 flex items-center justify-between bg-white">
-        <span className="text-[11px] font-medium text-navy-950">Ad Creative</span>
-        <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>CTR 0.3%</span>
+        <span className="text-[11px] font-medium text-navy-950">
+          Ad Creative
+        </span>
+        <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>
+          CTR 0.3%
+        </span>
       </div>
     </div>
   </div>
@@ -288,22 +474,37 @@ const MobileMockupAds = () => (
 const MobileMockupFreelancers = () => (
   <div className="rounded-[24px] overflow-hidden shadow-[0_16px_40px_rgba(15,23,42,0.10)]">
     <div className="bg-white h-[190px] flex flex-col">
-      <div className="flex-1 flex items-center justify-center" style={{ backgroundColor: "#F8F9FA" }}>
+      <div
+        className="flex-1 flex items-center justify-center"
+        style={{ backgroundColor: "#F8F9FA" }}
+      >
         <div className="flex -space-x-3">
           {[MUTED_1, "#B8C0C9", MUTED_2].map((c, idx) => (
-            <span key={idx} className="h-10 w-10 rounded-full border-2 border-white" style={{ backgroundColor: c }} />
+            <span
+              key={idx}
+              className="h-10 w-10 rounded-full border-2 border-white"
+              style={{ backgroundColor: c }}
+            />
           ))}
           <span
             className="h-10 w-10 rounded-full border-2 border-dashed flex items-center justify-center text-[12px] font-semibold"
-            style={{ borderColor: NEGATIVE, color: NEGATIVE, backgroundColor: "#fff" }}
+            style={{
+              borderColor: NEGATIVE,
+              color: NEGATIVE,
+              backgroundColor: "#fff",
+            }}
           >
             ?
           </span>
         </div>
       </div>
       <div className="px-4 py-3 flex items-center justify-between bg-white">
-        <span className="text-[11px] font-medium text-navy-950">Freelancers</span>
-        <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>#14 this year</span>
+        <span className="text-[11px] font-medium text-navy-950">
+          Freelancers
+        </span>
+        <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>
+          #14 this year
+        </span>
       </div>
     </div>
   </div>
@@ -319,7 +520,7 @@ function useReveal<T extends HTMLElement>(threshold = 0.25) {
       ([entry]) => {
         if (entry.isIntersecting) setVisible(true);
       },
-      { threshold }
+      { threshold },
     );
     observer.observe(el);
     return () => observer.disconnect();

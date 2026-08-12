@@ -1,6 +1,7 @@
 import ProgramSection from "@/components/sections/homeprogram";
 import HomeGetInTouch from "@/components/sections/HomeGetInTouch";
 import PageHero from "@/components/sections/PageHero";
+import ProgramHero from "@/assets/Program .png";
 
 const Packages = () => {
   return (
@@ -15,6 +16,7 @@ const Packages = () => {
           </>
         }
         description="Every business is at a different stage. Our programs are designed around where you are today—and where you want to go next."
+        imageSrc={ProgramHero}
       />
 
       <ProgramSection showHeader={false} />

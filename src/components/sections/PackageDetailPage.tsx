@@ -24,6 +24,7 @@ const PackageDetailPage = ({ pkg }: PackageDetailPageProps) => {
           </>
         }
         description={pkg.tagline}
+        imageSrc={pkg.heroImage}
       />
 
       <section className="bg-white py-16 font-atraen sm:py-20 lg:py-24">

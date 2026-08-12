@@ -1,3 +1,8 @@
+import Foundation from "@/assets/Foundadtion .png";
+import Authority from "@/assets/Authority.png";
+import momentum from "@/assets/momentum.png";
+import scalability from "@/assets/Foundadtion .png";
+
 export type PackageSlug = "foundation" | "momentum" | "authority" | "scalability-blueprint";
 
 export type PackageDetail = {
@@ -15,6 +20,18 @@ export type PackageDetail = {
   timeline: string;
   servicesIncluded: string[];
   process: Array<{ title: string; description: string }>;
+  /**
+   * Hero banner image for this package's detail page. No dedicated
+   * package photography was available, so these currently reuse the
+   * same images already imported for the service detail pages
+   * (web_development.jpg, marketing.jpg, seo.jpg, automation.jpg) —
+   * picked to loosely match each package's focus, not because they're
+   * meant to be final. Swap each for real package-specific imagery
+   * (or a hero video, same pattern as ServiceDetailPage) when you
+   * have it — this field is required so every package always has
+   * *something*, but "something" isn't "correct" yet.
+   */
+  heroImage: string;
 };
 
 export const packageOrder: Array<{ slug: PackageSlug; label: string }> = [
@@ -70,6 +87,7 @@ export const packageDetails: Record<PackageSlug, PackageDetail> = {
         description: "We deliver, test, and hand off with documentation so your team can move forward confidently.",
       },
     ],
+    heroImage: Foundation,
   },
   momentum: {
     slug: "momentum",
@@ -121,6 +139,7 @@ export const packageDetails: Record<PackageSlug, PackageDetail> = {
         description: "We review performance data and refine the system based on real results.",
       },
     ],
+    heroImage: momentum,
   },
   authority: {
     slug: "authority",
@@ -174,6 +193,7 @@ export const packageDetails: Record<PackageSlug, PackageDetail> = {
         description: "Ongoing optimization based on analytics, creative testing, and business feedback.",
       },
     ],
+    heroImage: Authority,
   },
   "scalability-blueprint": {
     slug: "scalability-blueprint",
@@ -225,6 +245,7 @@ export const packageDetails: Record<PackageSlug, PackageDetail> = {
         description: "We embed as an extension of your team and evolve the system as you scale.",
       },
     ],
+    heroImage: scalability,
   },
 };
 
