@@ -18,7 +18,6 @@ const PortfolioCategorySections = () => {
           }`}
         >
           <div className="w-full px-5 sm:px-8 md:px-12 lg:px-20">
-
             {/* HEADER */}
             <Reveal>
               <div className="mb-10 flex flex-col gap-6 lg:mb-14 lg:flex-row lg:items-end lg:justify-between">
@@ -50,10 +49,7 @@ const PortfolioCategorySections = () => {
             {category.slug === "ai-automation" ? (
               <div className="grid grid-cols-1 gap-7 md:grid-cols-2">
                 {category.projects.map((project, projectIndex) => (
-                  <Reveal
-                    key={project.id}
-                    delay={projectIndex * 0.05}
-                  >
+                  <Reveal key={project.id} delay={projectIndex * 0.05}>
                     <AutomationCard project={project} />
                   </Reveal>
                 ))}
@@ -62,14 +58,13 @@ const PortfolioCategorySections = () => {
               /* OTHER CATEGORIES */
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {category.projects.map((project, projectIndex) => (
-                  <Reveal
-                    key={project.id}
-                    delay={projectIndex * 0.05}
-                  >
+                  <Reveal key={project.id} delay={projectIndex * 0.05}>
                     {category.slug === "video" ? (
                       <VideoCard project={project} />
                     ) : category.slug === "web-design" ? (
                       <WebDesignCard project={project} />
+                    ) : category.slug === "seo-marketing" ? (
+                      <SeoAdsCard project={project} />
                     ) : (
                       <StandardCard project={project} />
                     )}
@@ -91,11 +86,7 @@ const PortfolioCategorySections = () => {
    No tags
 ========================================================= */
 
-const AutomationCard = ({
-  project,
-}: {
-  project: PortfolioProject;
-}) => {
+const AutomationCard = ({ project }: { project: PortfolioProject }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const videoUrl = project.videoUrl;
@@ -127,7 +118,6 @@ const AutomationCard = ({
       >
         {videoUrl ? (
           <div className="relative">
-
             <video
               src={videoUrl}
               controls
@@ -249,9 +239,7 @@ const AutomationCard = ({
         </div>
 
         {videoUrl && (
-          <span className="text-xs font-medium text-[#62728A]">
-            Video
-          </span>
+          <span className="text-xs font-medium text-[#62728A]">Video</span>
         )}
       </div>
     </article>
@@ -262,11 +250,7 @@ const AutomationCard = ({
    WEB DESIGN CARD
 ========================================================= */
 
-const WebDesignCard = ({
-  project,
-}: {
-  project: PortfolioProject;
-}) => {
+const WebDesignCard = ({ project }: { project: PortfolioProject }) => {
   const [hovered, setHovered] = useState(false);
 
   const PAN_DURATION_MS = 20000;
@@ -311,26 +295,62 @@ const WebDesignCard = ({
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
 
         <div className="pointer-events-none absolute bottom-4 left-4 right-4">
-          <h3 className="text-xl font-semibold text-white">
-            {project.name}
-          </h3>
+          <h3 className="text-xl font-semibold text-white">{project.name}</h3>
         </div>
       </div>
     </article>
   );
 };
 
+const SeoAdsCard = ({ project }: { project: PortfolioProject }) => {
+  return (
+    <article className="group relative overflow-hidden rounded-[28px] border border-[#E4E7EB] bg-white shadow-[0_20px_60px_rgba(15,47,72,0.07)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_rgba(15,47,72,0.13)]">
+      {/* Orange/Navy decorative background */}
+      <div className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-[#F76F01]/10 blur-3xl transition-all duration-500 group-hover:bg-[#F76F01]/20" />
+
+      <div className="pointer-events-none absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-[#132F48]/10 blur-3xl" />
+
+      {/* Screenshot frame */}
+      <div className="relative p-3 sm:p-4">
+        {/* Browser-style frame */}
+        <div className="relative overflow-hidden rounded-[20px] border border-[#E4E7EB] bg-[#F8F9FA] shadow-[0_15px_45px_rgba(15,23,42,0.10)]">
+          {/* Small browser bar */}
+          <div className="flex h-9 items-center gap-1.5 border-b border-[#E4E7EB] bg-white px-4">
+            <span className="h-2.5 w-2.5 rounded-full bg-[#132F48]/20" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#F76F01]/40" />
+            <span className="h-2.5 w-2.5 rounded-full bg-[#132F48]/10" />
+
+            <div className="ml-3 h-4 flex-1 rounded-full bg-[#F8F9FA]" />
+          </div>
+
+          {/* Actual screenshot */}
+          <div className="relative overflow-hidden bg-white">
+            <img
+              src={project.image}
+              alt={project.alt}
+              loading="lazy"
+              decoding="async"
+              className="block h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.015]"
+            />
+
+            {/* Very subtle glass highlight */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-[#F76F01]/[0.03]" />
+          </div>
+        </div>
+      </div>
+
+      {/* Orange accent */}
+      <div className="pointer-events-none absolute bottom-0 left-8 right-8 h-[2px] origin-left scale-x-0 bg-[#F76F01] transition-transform duration-500 group-hover:scale-x-100" />
+    </article>
+  );
+};
 /* =========================================================
    VIDEO & UGC CARD
    No autoplay
    No details
 ========================================================= */
 
-const VideoCard = ({
-  project,
-}: {
-  project: PortfolioProject;
-}) => {
+const VideoCard = ({ project }: { project: PortfolioProject }) => {
   /*
    * Add videoUrl to your project in portfolioCategories.ts
    *
@@ -341,9 +361,11 @@ const VideoCard = ({
    * videoUrl: "https://your-domain.com/video.mp4"
    */
 
-  const videoUrl = (project as PortfolioProject & {
-    videoUrl?: string;
-  }).videoUrl;
+  const videoUrl = (
+    project as PortfolioProject & {
+      videoUrl?: string;
+    }
+  ).videoUrl;
 
   return (
     <article className="group relative overflow-hidden rounded-[24px] border border-[#E4E7EB] bg-[#132F48] shadow-[0_20px_60px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_28px_75px_rgba(15,23,42,0.14)]">
@@ -395,16 +417,11 @@ const VideoCard = ({
   );
 };
 
-
 /* =========================================================
    STANDARD CARD
 ========================================================= */
 
-const StandardCard = ({
-  project,
-}: {
-  project: PortfolioProject;
-}) => {
+const StandardCard = ({ project }: { project: PortfolioProject }) => {
   return (
     <article
       className="
