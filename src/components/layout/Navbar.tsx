@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import CollaborateButton from "../ui/CollaborateButton";
-import logo from "../../assets/logow.png";
+import logo from "../../assets/logos1.png";
 import { serviceList } from "@/data/serviceDetails";
 import { packageOrder } from "@/data/packages";
 
@@ -18,7 +18,7 @@ const navLinks = [
 
 const BrandLogo = () => (
   <Link to="/" className="group flex shrink-0 items-center gap-3" aria-label="Kodefiz home">
-    <img src={logo} alt="Kodefiz" className="w-auto h-24" />
+    <img src={logo} alt="Kodefiz" className="w-auto h-10" />
   </Link>
 );
 

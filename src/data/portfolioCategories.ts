@@ -24,8 +24,13 @@ import ad5 from "@/assets/Case Studies/ad5.jpeg";
 import automation from "@/assets/Case Studies/automation.jpeg";
 import automation2 from "@/assets/Case Studies/automation2.jpeg";
 import masonsVideo from "/jarvis.mp4";
-
-
+import sm from "@/assets/Case Studies/sm.jpeg";
+import sm1 from "@/assets/Case Studies/sm1.jpeg";
+import sm2 from "@/assets/Case Studies/sm2.jpeg";
+import sm3 from "@/assets/Case Studies/sm3.jpeg";
+import sm4 from "@/assets/Case Studies/sm4.jpeg";
+import sm5 from "@/assets/Case Studies/sm5.jpeg";
+import sm6 from "@/assets/Case Studies/sm6.jpeg";
 // NOTE: the stray `import { a } from "vitest/dist/chunks/suite.d.FvehnV49.js"`
 // that was in the previous version of this file is removed — that's a
 // vitest internal type-declaration chunk, not something meant to be
@@ -374,43 +379,83 @@ export const portfolioCategories: PortfolioCategory[] = [
       },
     ],
   },
-  // {
-  //   slug: "social-media",
-  //   title: "Social Media Growth",
-  //   subtitle: "Consistent content systems that build attention, trust, and demand across social platforms.",
-  //   projects: [
-  //     {
-  //       id: "masons-social",
-  //       name: "Masons Exterior Social",
-  //       client: "Masons Exterior",
-  //       image: alnisar,
-  //       alt: "Masons Exterior social media",
-  //       description: "Social creative direction and content formats aligned to a premium service brand.",
-  //       outcome: "More cohesive social presence and stronger project showcase content.",
-  //       tags: ["Social Creative", "Content System", "Brand"],
-  //     },
-  //     {
-  //       id: "gravel-ridge-social",
-  //       name: "Gravel Ridge Social",
-  //       client: "Gravel Ridge",
-  //       image: Cabnearme,
-  //       alt: "Gravel Ridge social media",
-  //       description: "Retail-focused social templates and campaign visuals for product promotion.",
-  //       outcome: "Better consistency across seasonal and product-led posts.",
-  //       tags: ["Retail Social", "Templates", "Campaigns"],
-  //     },
-  //     {
-  //       id: "builders-social",
-  //       name: "Builders Game Social",
-  //       client: "Builders Game Podcast",
-  //       image: Afrimac,
-  //       alt: "Builders Game social content",
-  //       description: "Episode promotion assets and short-form content designed for discovery.",
-  //       outcome: "Stronger clip and promo output for audience growth.",
-  //       tags: ["Podcast Clips", "Short-form", "Promotion"],
-  //     },
-  //   ],
-  // },
+  {
+    slug: "social-media",
+    title: "Social Media Growth",
+    subtitle: "Consistent content systems that build attention, trust, and demand across social platforms.",
+    projects: [
+      {
+        id: "masons-social",
+        name: "Masons Exterior Social",
+        client: "Masons Exterior",
+        image: sm,
+        alt: "Masons Exterior social media",
+        description: "Social creative direction and content formats aligned to a premium service brand.",
+        outcome: "More cohesive social presence and stronger project showcase content.",
+        tags: ["Social Creative", "Content System", "Brand"],
+      },
+      {
+        id: "gravel-ridge-social",
+        name: "Gravel Ridge Social",
+        client: "Gravel Ridge",
+        image: sm1,
+        alt: "Gravel Ridge social media",
+        description: "Retail-focused social templates and campaign visuals for product promotion.",
+        outcome: "Better consistency across seasonal and product-led posts.",
+        tags: ["Retail Social", "Templates", "Campaigns"],
+      },
+      {
+        id: "builders-social",
+        name: "Builders Game Social",
+        client: "Builders Game Podcast",
+        image: sm2,
+        alt: "Builders Game social content",
+        description: "Episode promotion assets and short-form content designed for discovery.",
+        outcome: "Stronger clip and promo output for audience growth.",
+        tags: ["Podcast Clips", "Short-form", "Promotion"],
+      },
+      {
+        id: "builders-social",
+        name: "Builders Game Social",
+        client: "Builders Game Podcast",
+        image: sm3,
+        alt: "Builders Game social content",
+        description: "Episode promotion assets and short-form content designed for discovery.",
+        outcome: "Stronger clip and promo output for audience growth.",
+        tags: ["Podcast Clips", "Short-form", "Promotion"],
+      },
+      {
+        id: "builders-social",
+        name: "Builders Game Social",
+        client: "Builders Game Podcast",
+        image: sm4,
+        alt: "Builders Game social content",
+        description: "Episode promotion assets and short-form content designed for discovery.",
+        outcome: "Stronger clip and promo output for audience growth.",
+        tags: ["Podcast Clips", "Short-form", "Promotion"],
+      },
+      {
+        id: "builders-social",
+        name: "Builders Game Social",
+        client: "Builders Game Podcast",
+        image: sm5,
+        alt: "Builders Game social content",
+        description: "Episode promotion assets and short-form content designed for discovery.",
+        outcome: "Stronger clip and promo output for audience growth.",
+        tags: ["Podcast Clips", "Short-form", "Promotion"],
+      },
+      {
+        id: "builders-social",
+        name: "Builders Game Social",
+        client: "Builders Game Podcast",
+        image: sm6,
+        alt: "Builders Game social content",
+        description: "Episode promotion assets and short-form content designed for discovery.",
+        outcome: "Stronger clip and promo output for audience growth.",
+        tags: ["Podcast Clips", "Short-form", "Promotion"],
+      },
+    ],
+  },
  {
   slug: "ai-automation",
   title: "AI Automation",

@@ -54,6 +54,15 @@ const PortfolioCategorySections = () => {
                   </Reveal>
                 ))}
               </div>
+            ) : category.slug === "social-media" ? (
+              /* SOCIAL MEDIA — portrait mobile screenshots, image only */
+              <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                {category.projects.map((project, projectIndex) => (
+                  <Reveal key={project.id} delay={projectIndex * 0.05}>
+                    <SocialMediaCard project={project} />
+                  </Reveal>
+                ))}
+              </div>
             ) : (
               /* OTHER CATEGORIES */
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -241,6 +250,54 @@ const AutomationCard = ({ project }: { project: PortfolioProject }) => {
         {videoUrl && (
           <span className="text-xs font-medium text-[#62728A]">Video</span>
         )}
+      </div>
+    </article>
+  );
+};
+
+/* =========================================================
+   SOCIAL MEDIA CARD
+   Portrait mobile screenshots, image only
+   No title, no description, no tags
+========================================================= */
+
+const SocialMediaCard = ({ project }: { project: PortfolioProject }) => {
+  return (
+    <article
+      className="
+        group
+        relative
+        overflow-hidden
+        rounded-[20px]
+        border
+        border-[#E4E7EB]
+        bg-[#132F48]
+        shadow-[0_16px_45px_rgba(15,23,42,0.08)]
+        transition-all
+        duration-300
+        hover:-translate-y-1
+        hover:shadow-[0_22px_60px_rgba(15,23,42,0.13)]
+      "
+    >
+      <div className="relative aspect-[9/16] overflow-hidden bg-[#132F48]">
+        <img
+          src={project.image}
+          alt={project.alt}
+          loading="lazy"
+          decoding="async"
+          className="
+            h-full
+            w-full
+            object-cover
+            transition-transform
+            duration-700
+            ease-out
+            group-hover:scale-105
+          "
+        />
+
+        {/* subtle premium frame, no text overlay */}
+        <div className="pointer-events-none absolute inset-0 rounded-[20px] ring-1 ring-inset ring-white/10" />
       </div>
     </article>
   );

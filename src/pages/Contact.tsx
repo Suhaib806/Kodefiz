@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import Reveal from "@/components/ui/Reveal";
-import AnimatedButton from "@/components/ui/AnimatedButton";
 import CTASection from "@/components/sections/CTASection";
 import { Mail, Phone, MapPin, Clock, ChevronDown, ShieldCheck, BadgeCheck, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import HomeGetInTouch from "@/components/sections/HomeGetInTouch";
 import HomeFAQ from "@/components/sections/faq";
 import PageHero from "@/components/sections/PageHero";
+import herocontact from "@/assets/contact.png"
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: "hello@Kodefiz.com" },
@@ -23,15 +23,8 @@ const faqs = [
   { q: "What is your approach to project management?", a: "We follow an agile methodology to ensure flexibility and responsiveness throughout the project lifecycle. Our approach includes regular updates and client feedback sessions." },
 ];
 
-const underlineInput =
-  "w-full border-0 border-b border-navy-200 bg-transparent px-0 py-2.5 text-[15px] text-navy-950 placeholder:text-navy-300 focus:border-brand focus:ring-0 focus:outline-none transition-colors";
-
 const Contact = () => {
-  const emailApiUrl = import.meta.env.VITE_EMAIL_API_URL || "http://localhost:4000/api/contact";
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const calendlyRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -40,7 +33,7 @@ const Contact = () => {
       if (calendly?.initInlineWidget && calendlyRef.current) {
         calendlyRef.current.innerHTML = "";
         calendly.initInlineWidget({
-          url: "https://calendly.com/contact-Kodefiz",
+          url: "https://calendly.com/kodefiz1/30min",
           parentElement: calendlyRef.current,
         });
       }
@@ -63,59 +56,16 @@ const Contact = () => {
     return () => window.clearTimeout(timer);
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    const name = (formData.get("name") as string) || "";
-    const email = (formData.get("email") as string) || "";
-    const phone = (formData.get("phone") as string) || "";
-    const message = (formData.get("message") as string) || "";
-
-    setIsSubmitting(true);
-    setError(null);
-
-    try {
-      const res = await fetch(emailApiUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          phone,
-          message,
-          category: "Contact Page Inquiry",
-        }),
-      });
-
-      if (!res.ok) {
-        throw new Error("Failed to send");
-      }
-
-      setSubmitted(true);
-      form.reset();
-      window.setTimeout(() => setSubmitted(false), 5000);
-    } catch (err) {
-      console.error(err);
-      setError("We couldn't send your message. Please try again in a moment.");
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   return (
     <>
       <PageHero
         badge="Get in Touch"
         title="Contact us"
         description="Premium support with personalized solutions—tell us what you're building, and we'll respond with clear next steps. Based in Pakistan, trusted by clients worldwide."
+        imageSrc={herocontact}  
       />
 
-      {/* Contact Form + Info */}
+      {/* Calendly + Info */}
       <section className="relative py-20 lg:py-28 bg-navy-50 overflow-hidden">
         <div
           className="pointer-events-none absolute inset-0 opacity-60"
@@ -133,82 +83,23 @@ const Contact = () => {
                   <div className="flex items-center gap-3 mb-4">
                     <span className="inline-flex h-[10px] w-[10px] rounded-full bg-brand" />
                     <span className="text-xs tracking-[0.2em] font-medium text-navy-400 uppercase">
-                      Contact Form
+                      Book a Call
                     </span>
                   </div>
                   <h2 className="text-[34px] sm:text-[44px] leading-[1.08] font-display font-bold text-navy-950">
-                    Send us a <span className="text-gradient-brand">message</span>
+                    Schedule a <span className="text-gradient-brand">time to talk</span>
                   </h2>
                   <p className="mt-3 text-[15px] text-navy-500 leading-relaxed max-w-[520px]">
-                    Share a few details and we&apos;ll route your request to the right team.
+                    Pick a slot that works for you and we&apos;ll take it from there.
                   </p>
                 </Reveal>
 
-                <form className="mt-8 space-y-7" onSubmit={handleSubmit}>
-                  <Reveal delay={0.05}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="block text-sm font-medium text-navy-500 mb-1">Full Name</label>
-                        <input
-                          id="contact-name"
-                          name="name"
-                          type="text"
-                          placeholder="John Smith"
-                          required
-                          className={underlineInput}
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-navy-500 mb-1">Email Address</label>
-                        <input
-                          id="contact-email"
-                          name="email"
-                          type="email"
-                          placeholder="john@company.com"
-                          required
-                          className={underlineInput}
-                        />
-                      </div>
-                    </div>
-                  </Reveal>
-
-                  <Reveal delay={0.1}>
-                    <div>
-                      <label className="block text-sm font-medium text-navy-500 mb-1">Phone Number</label>
-                      <input id="contact-phone" name="phone" type="tel" placeholder="+92 300 0000000" className={underlineInput} />
-                    </div>
-                  </Reveal>
-
-                  <Reveal delay={0.15}>
-                    <div>
-                      <label className="block text-sm font-medium text-navy-500 mb-1">Project Details</label>
-                      <textarea
-                        id="contact-message"
-                        name="message"
-                        rows={5}
-                        required
-                        placeholder="Tell us about your project, goals, and timeline..."
-                        className={`${underlineInput} resize-none`}
-                      />
-                    </div>
-                  </Reveal>
-
-                  <Reveal delay={0.2}>
-                    <AnimatedButton type="submit" size="lg" showArrow className="w-full">
-                      {isSubmitting ? "Sending..." : "Send Message"}
-                    </AnimatedButton>
-                  </Reveal>
-                  {submitted && (
-                    <p className="text-sm text-[#15803d]" role="status">
-                      Thanks - we&apos;ll be in touch soon.
-                    </p>
-                  )}
-                  {error && (
-                    <p className="text-sm text-red-600" role="alert">
-                      {error}
-                    </p>
-                  )}
-                </form>
+                <Reveal delay={0.1}>
+                  <div
+                    ref={calendlyRef}
+                    className="mt-8 w-[265px] h-[360px] sm:w-full sm:h-[700px] mx-auto"
+                  />
+                </Reveal>
               </div>
             </div>
 
@@ -298,24 +189,6 @@ const Contact = () => {
               </Reveal>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Calendly */}
-      <section className="py-20 lg:py-24 bg-white">
-        <div className="container mx-auto px-6 lg:px-8">
-          <Reveal>
-            <div className="rounded-[28px] border border-navy-200 bg-navy-50 p-6 sm:p-8 lg:p-10 shadow-card">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="inline-flex h-[10px] w-[10px] rounded-full bg-brand" />
-                <span className="text-xs tracking-[0.2em] font-medium text-navy-400 uppercase">Book a Call</span>
-              </div>
-              <div
-                ref={calendlyRef}
-                className="w-[265px] h-[360px] sm:w-full sm:h-[700px] mx-auto"
-              />
-            </div>
-          </Reveal>
         </div>
       </section>
 

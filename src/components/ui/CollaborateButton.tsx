@@ -16,7 +16,7 @@ const CollaborateButton = ({
 
   return (
     <Link
-      to="/contact-us"
+      to="https://calendly.com/kodefiz1/30min"
       className={`group inline-flex items-center gap-2 ${className}`}
       aria-label={`${label} — contact us`}
     >

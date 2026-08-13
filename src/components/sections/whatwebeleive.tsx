@@ -1,3 +1,4 @@
+
 const beliefs = [
   {
     number: "01",
@@ -153,11 +154,16 @@ export default function AboutBeliefs() {
 
             </p>
 
-            <button className="mt-10 rounded-full bg-[#F76F01] px-8 py-4 font-medium text-white transition hover:scale-105">
 
-              Start Your Journey
-
-            </button>
+<a
+  href="https://calendly.com/kodefiz1/30min"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <button className="mt-10 rounded-full bg-[#F76F01] px-8 py-4 font-medium text-white transition hover:scale-105">
+    Start Your Journey
+  </button>
+</a>
 
           </div>
 

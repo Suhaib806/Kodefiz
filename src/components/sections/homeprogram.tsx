@@ -134,7 +134,7 @@ const ProgramSection = ({ showHeader = true }: { showHeader?: boolean }) => {
           </div>
 
           <Link
-            to="/contact-us"
+            to="https://calendly.com/kodefiz1/30min"
             className="group inline-flex shrink-0 items-center justify-center gap-3 rounded-full bg-[#F76F01] px-6 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.03] hover:bg-[#ff7d12] sm:px-7"
           >
             Book a Free Strategy Call

@@ -30,7 +30,8 @@ export default function HomeCTA() {
               current setup is leaking leads - and how to fix it.
             </p>
 
-            <button
+            <a
+            href="https://calendly.com/kodefiz1/30min"
               type="button"
               className="group mt-10 inline-flex items-center gap-3 rounded-full bg-[#F76F01] px-8 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-[#ff7d14] hover:shadow-lg hover:shadow-[#F76F01]/25"
             >
@@ -40,7 +41,7 @@ export default function HomeCTA() {
                 size={19}
                 className="transition-transform duration-300 group-hover:translate-x-1"
               />
-            </button>
+            </a>
           </div>
 
         </div>

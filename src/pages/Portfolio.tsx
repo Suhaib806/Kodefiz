@@ -1,6 +1,7 @@
 import HeroSection from "@/components/sections/featuredcasestudy";
 import HomeTestimonials from "@/components/sections/HomeTestimonials";
 import PortfolioCategorySections from "@/components/sections/portfolio/PortfolioCategorySections";
+import heroimage from "@/assets/portfolio.png";
 import {
   DiscoveryCTA,
   IndustriesServed,
@@ -23,6 +24,7 @@ const PortfolioPage = () => {
           </>
         }
         description="A look at what we've built and the outcomes behind it."
+        imageSrc={heroimage}
       />
   
       <PortfolioCategorySections />

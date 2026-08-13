@@ -59,7 +59,7 @@ const CTASection = () => {
         <Reveal delay={0.15}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
-                  to="/contact-us"
+                  to="https://calendly.com/kodefiz1/30min"
                   className="animate-bottom-top inline-flex items-center gap-2 px-4 sm:px-5 py-2 rounded-full bg-brand text-white font-normal text-[14px] sm:text-[16px] leading-[22px] sm:leading-[24px] transition-colors duration-200 hover:bg-brand/90"
                 >
                   <span className="button-children inline-flex items-center gap-2">

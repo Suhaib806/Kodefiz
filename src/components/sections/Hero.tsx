@@ -31,11 +31,11 @@ const Hero = () => {
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
       </div>
 
-      <div className="relative z-10  flex min-h-[90svh] w-full flex-col px-5 pt-28 pb-0 sm:px-8 lg:px-12">
+      <div className="relative z-10  flex min-h-[90svh] w-full flex-col justify-center px-5 pt-28 pb-0 sm:px-8 lg:px-12">
         {/* Badge */}
         <Reveal>
           <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-wide text-white backdrop-blur-sm sm:text-xs">
-            <span>Software</span>
+            <span>AI</span>
             <span className="h-1 w-1 rounded-full bg-white/50" />
             <span>Innovation</span>
             <span className="h-1 w-1 rounded-full bg-white/50" />
@@ -46,7 +46,7 @@ const Hero = () => {
         {/* Headline */}
         <Reveal delay={0.08}>
           <h1 className="mt-6 w-full font-atraen text-[clamp(2.25rem,6vw,6rem)] font-bold leading-[0.98] tracking-[-0.02em] text-white">
-         Your Digital Presence,
+         Your Digital Presence
             <br />
         Built as One <span className="text-primary">System</span>
           </h1>
@@ -61,7 +61,7 @@ const Hero = () => {
               </p>
 
               <Link
-                to="/contact-us"
+                to="https://calendly.com/kodefiz1/30min"
                 className="group mt-6 inline-flex items-center gap-2"
                 aria-label="Book Free Strategy Call — contact us"
               >
