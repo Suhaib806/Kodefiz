@@ -16,9 +16,9 @@ const Footer = () => {
       <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20 py-12 sm:py-14 md:py-16">
         <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 pb-8">
           <h2 className="font-display text-[36px] sm:text-[48px] md:text-[72px] leading-[0.95] tracking-[-0.03em]">
-            Transforming ideas into
+           One System. Every Piece 
             <br />
-            digital <span className="text-brand">excellence.</span>
+            Working <span className="text-brand">Together.</span>
           </h2>
           <Link
             to="/contact-us"
