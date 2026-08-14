@@ -74,7 +74,7 @@ const Footer = () => {
               </b>
               <br />
               Monday - Friday <br />
-              09am - 06pm (PKT)
+              09am - 07pm (PKT)
             </div>
           </div>
 
