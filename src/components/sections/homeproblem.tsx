@@ -364,7 +364,7 @@ const ProblemAgitation = () => {
           </div>
         </div>
 
-        {/* Mobile — same four mockups, simplified spacing, no parallax */}
+        {/* Mobile — same four mockups, same real images/video as desktop, simplified spacing, no parallax */}
         <div className="lg:hidden mt-14 grid grid-cols-1 sm:grid-cols-2 gap-6">
           <MobileMockupWebsite />
           <MobileMockupSocial />
@@ -395,16 +395,13 @@ const MobileMockupWebsite = () => (
           className="h-2 w-2 rounded-full"
           style={{ backgroundColor: "#D1D5DB" }}
         />
+        <span
+          className="ml-2 flex-1 rounded-full h-4"
+          style={{ backgroundColor: "#F1F3F5" }}
+        />
       </div>
-      <div className="flex-1 p-4 space-y-2">
-        <div
-          className="h-3 w-3/4 rounded"
-          style={{ backgroundColor: "#E4E7EB" }}
-        />
-        <div
-          className="h-3 w-1/2 rounded"
-          style={{ backgroundColor: "#E4E7EB" }}
-        />
+      <div className="flex-1">
+        <img src={about} alt="" className="h-full w-full object-cover" />
       </div>
       <div
         className="px-4 py-3 flex items-center justify-between"
@@ -412,7 +409,7 @@ const MobileMockupWebsite = () => (
       >
         <span className="text-[11px] font-medium text-navy-950">Website</span>
         <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>
-          0 leads
+          0 leads this month
         </span>
       </div>
     </div>
@@ -422,20 +419,39 @@ const MobileMockupWebsite = () => (
 const MobileMockupSocial = () => (
   <div className="rounded-[24px] overflow-hidden shadow-[0_16px_40px_rgba(15,23,42,0.10)]">
     <div className="bg-white h-[190px] flex flex-col">
-      <div className="grid grid-cols-3 gap-[2px] flex-1 p-[2px]">
-        {[MUTED_1, "#C7CDD4", MUTED_2, "#DADFE4", MUTED_1, "#B8C0C9"].map(
-          (c, idx) => (
-            <div key={idx} style={{ backgroundColor: c }} />
-          ),
-        )}
+      <div className="relative flex-1 overflow-hidden bg-[#132F48]">
+        <video
+          src={socialVideo}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+
+        <div className="absolute inset-0 bg-[#132F48]/20 pointer-events-none" />
+
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="h-10 w-10 rounded-full bg-white/95 flex items-center justify-center shadow-lg">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="ml-0.5">
+              <path d="M5 3.5L12 8L5 12.5V3.5Z" fill="#132F48" />
+            </svg>
+          </div>
+        </div>
+
+        <div className="absolute top-2.5 left-2.5">
+          <span className="px-2.5 py-1 rounded-full bg-white/90 text-[9px] font-semibold text-[#132F48] uppercase tracking-[0.12em]">
+            Social Creative
+          </span>
+        </div>
       </div>
       <div
         className="px-4 py-3 flex items-center justify-between"
         style={{ backgroundColor: "#F8F9FA" }}
       >
-        <span className="text-[11px] font-medium text-navy-950">Social</span>
+        <span className="text-[11px] font-medium text-navy-950">Social Video</span>
         <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>
-          47 days ago
+          Short-form Creative
         </span>
       </div>
     </div>
@@ -445,26 +461,15 @@ const MobileMockupSocial = () => (
 const MobileMockupAds = () => (
   <div className="rounded-[24px] overflow-hidden shadow-[0_16px_40px_rgba(15,23,42,0.10)]">
     <div className="bg-white h-[190px] flex flex-col">
-      <div
-        className="flex-1 p-4 flex items-center"
-        style={{ backgroundColor: "#F8F9FA" }}
-      >
-        <div
-          className="rounded-xl p-3 w-full"
-          style={{
-            background: `linear-gradient(155deg, ${MUTED_1} 0%, ${MUTED_2} 100%)`,
-          }}
-        >
-          <div className="h-2.5 w-2/3 rounded bg-white/50 mb-2" />
-          <div className="h-2 w-1/2 rounded bg-white/30" />
-        </div>
+      <div className="flex-1" style={{ backgroundColor: "#F8F9FA" }}>
+        <img src={ad} alt="" className="h-full w-full object-cover" />
       </div>
       <div className="px-4 py-3 flex items-center justify-between bg-white">
         <span className="text-[11px] font-medium text-navy-950">
           Ad Creative
         </span>
         <span className="text-[11px] font-semibold" style={{ color: NEGATIVE }}>
-          CTR 0.3%
+          CTR 0.3% ↓
         </span>
       </div>
     </div>
@@ -479,13 +484,26 @@ const MobileMockupFreelancers = () => (
         style={{ backgroundColor: "#F8F9FA" }}
       >
         <div className="flex -space-x-3">
-          {[MUTED_1, "#B8C0C9", MUTED_2].map((c, idx) => (
-            <span
-              key={idx}
-              className="h-10 w-10 rounded-full border-2 border-white"
-              style={{ backgroundColor: c }}
-            />
-          ))}
+          <img
+            src={image1}
+            alt="Team member 1"
+            className="h-10 w-10 rounded-full border-2 border-white object-cover"
+          />
+          <img
+            src={image2}
+            alt="Team member 2"
+            className="h-10 w-10 rounded-full border-2 border-white object-cover"
+          />
+          <img
+            src={image3}
+            alt="Team member 3"
+            className="h-10 w-10 rounded-full border-2 border-white object-cover"
+          />
+          <img
+            src={image4}
+            alt="Team member 4"
+            className="h-10 w-10 rounded-full border-2 border-white object-cover"
+          />
           <span
             className="h-10 w-10 rounded-full border-2 border-dashed flex items-center justify-center text-[12px] font-semibold"
             style={{
@@ -494,7 +512,7 @@ const MobileMockupFreelancers = () => (
               backgroundColor: "#fff",
             }}
           >
-            ?
+            +
           </span>
         </div>
       </div>
